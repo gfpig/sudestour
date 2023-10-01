@@ -1,0 +1,101 @@
+html, body {
+    height: 96.7%;
+}
+
+.menu {
+    list-style-type: none;
+    margin-left: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #CECECE;
+}
+
+.logo {
+
+}
+
+.slogan {
+    width: 250px;
+    height: min-content;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: chocolate;
+}
+  
+li.dropdown {
+    padding: 10px;
+    display: inline-block;
+    float: inline-end;
+    margin-left: 50px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #FFFFE0;
+    min-width: 160px;
+    box-shadow: 0px 4px 8px 0px rgba(0,0,0,1);
+    z-index: 0.2;
+}
+
+.dropdown-content a {
+    color: darkblue;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+  
+.dropdown-content a:hover {
+    background-color: #CD853F
+}
+  
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.container-principal {
+    display: flex;
+    height: 100%;
+}
+
+.container-esquerda {
+    display:table-column;
+    margin-top: 10%;
+    margin-left: 40px;
+    margin-right: 10%;
+}
+
+.container-busca {
+    margin-top: 50px;
+}
+
+.container-direita {
+    float: right;
+    align-items: center;
+    background-color: #EAE8E8;
+    width: 80%;
+    height: 100%;
+}
+
+.container-carrossel {
+    align-self: center;
+}
+
+.carousel-slide {
+    width: 70%;
+    height: 75%;
+}
+
+.texto {
+    width: 250px;
+    margin: 5px;
+    background-color: #ECECEC;
+    color: black;
+}
+
+#CarrosselSudestour {
+    width: 70% !important;
+    height: 75% !important;
+}
