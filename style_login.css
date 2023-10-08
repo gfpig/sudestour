@@ -1,0 +1,11 @@
+.container {
+    float: center;
+    background-color: #CECECE;
+}
+
+.text {
+    width: 250px;
+    margin: 5px;
+    background-color: #ECECEC;
+    color: #545454;
+}
