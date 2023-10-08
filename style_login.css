@@ -1,9 +1,32 @@
 .container {
     float: center;
     background-color: #CECECE;
+    min-width: 500px;
+    min-height: fit-content;
+}
+
+.container-teste {
+    display: inline-block;
+}
+
+.c-bemvindo {
+    height: 80%;
+    width: 60%;
+}
+
+.c-buttons {
+    float:center;
+}
+
+button {
+    width: 250px;
+    height: 40px;
+    background-color: #535353;
+    color: white;
 }
 
 .text {
+    margin-left: 500px;
     width: 250px;
     margin: 5px;
     background-color: #ECECEC;
