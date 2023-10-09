@@ -1,53 +1,72 @@
-@font-face {
-    font-family: 'League_Spartan';
-    src: url(../fontes/LeagueSpartan-VariableFont_wght.ttf) format('ttf');
-}
-
 html {
     height: 80%;
 }
 
-body {
-    background-color: #11d6dd;
+body {   
+    font-family: 'Roboto', sans-serif;   
+    background-color: #EAE8E8;
     height: 100%;
+
+}
+
+p {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 25px;
+    color: #545454;
+}
+
+a {
+    font-family: 'Roboto', sans-serif;
+    font-style: italic;
+    color: #545454;
+    margin-left: 51%;
+    padding: 1%;
 }
 
 .container {
-    /*float: center; */
     background-color: #CECECE;
-    max-width:50px;
+    max-width:25%;
     height:100%;
     margin-top: 4.5%;
+    margin-left: 40%;
 }
 
-.container-teste {
+.container-cabecalho {
+    margin-top: 25%;
+    margin-left: 25%;
     display: inline-flex;
 }
 
 .c-bemvindo {
+    /*margin-top: 5%;*/
     height: 50%;
     width: 40%;
-    margin-top: 10%;
 }
 
 .c-inputs {
+    font-family: 'Roboto', sans-serif;
+    margin-left: 15%;
     width: 30%;
 }
 
 .c-buttons {
+    margin-left: 17%;
     width: 30%;
     float:center;
 }
 
 button {
     width: 250px;
-    height: 40px;
+    height: 50px;
+    margin-top: 15%;
     background-color: #535353;
+    font-size: large;
     color: white;
 }
 
 .text {
     margin-left: 500px;
+    height: 30px;
     width: 250px;
     margin: 5px;
     background-color: #ECECEC;
