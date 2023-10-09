@@ -1,20 +1,41 @@
+@font-face {
+    font-family: 'League_Spartan';
+    src: url(../fontes/LeagueSpartan-VariableFont_wght.ttf) format('ttf');
+}
+
+html {
+    height: 80%;
+}
+
+body {
+    background-color: #11d6dd;
+    height: 100%;
+}
+
 .container {
-    float: center;
+    /*float: center; */
     background-color: #CECECE;
-    min-width: 500px;
-    min-height: fit-content;
+    max-width:50px;
+    height:100%;
+    margin-top: 4.5%;
 }
 
 .container-teste {
-    display: inline-block;
+    display: inline-flex;
 }
 
 .c-bemvindo {
-    height: 80%;
-    width: 60%;
+    height: 50%;
+    width: 40%;
+    margin-top: 10%;
+}
+
+.c-inputs {
+    width: 30%;
 }
 
 .c-buttons {
+    width: 30%;
     float:center;
 }
 
