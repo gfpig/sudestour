@@ -15,12 +15,23 @@ p {
     color: #545454;
 }
 
-a {
+.esqueci_senha {
     font-family: 'Roboto', sans-serif;
     font-style: italic;
     color: #545454;
     margin-left: 51%;
     padding: 1%;
+}
+
+.voltar {
+    margin-top: 4px;
+    margin-left: 42.5%;
+    font-family: 'Roboto', sans-serif;
+    color: #545454;
+}
+
+.botao {
+    color: white;
 }
 
 .container {

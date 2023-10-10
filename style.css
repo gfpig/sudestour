@@ -17,12 +17,13 @@ html, body {
 }
 
 li a.categorias-menu:hover, .dropdown:hover .dropbtn {
+    color: black;
     background-color: #CDCDCD;
 }
 
 li a.categorias-menu, .dropbtn {
     display: inline-block;
-    color: black;
+    color: #CDCDCD;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -43,13 +44,13 @@ li.dropdown {
     z-index: 0.2;
 }
 
-.dropdown-content a {
+/*.dropdown-content a {
     color: darkblue;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
     text-align: left;
-}
+}*/
   
 .dropdown-content a:hover {
     background-color: #CDCDCD;
@@ -60,6 +61,7 @@ li.dropdown {
 }
 
 #botao-login {
+    margin-left: 150px;
     background-color: #737373;
     color: #ECECEC;
 }
@@ -89,13 +91,16 @@ li.dropdown {
 }
 
 .container-carrossel {
+    /*margin-left: 20%;*/
     align-self: center;
+    margin-top: 3%;
+    margin-left: 4%;
 }
 
-.carousel-slide {
+/*.carousel-slide {
     width: 70%;
     height: 75%;
-}
+}*/
 
 .texto {
     width: 250px;

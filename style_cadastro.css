@@ -1,0 +1,90 @@
+html {
+    height: 80%;
+}
+
+body {
+    background-color: #ECECEC;
+    height: 100%;
+}
+
+h3 {
+    text-align: center;
+}
+
+.titulo {
+    text-align: center;
+    color: #535353;
+}
+
+.tipo_conta {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-style: italic;
+    text-align: center;
+    font-size: 20px;
+    color: white;
+}
+
+.cabecalho {
+    background-color: #CECECE;
+    border-radius: 50%;
+}
+
+.container_tiposconta {
+    display:flex;
+    margin-left: 20%;
+   /* background-color: #535353;*/
+    height:100%;
+    margin-top: 4.5%;
+}
+
+.cadastro_anunciante {
+    height: 80%;
+    min-width: 25% !important;
+    background-color: #535353;
+    border: #535353;
+    border-radius: 10px;
+    float:left;
+    margin-left: 20%;
+    /*margin-top: 30%;
+    /*display: inline-flex;*/
+}
+
+.cadastro_turista {
+    height: 80%;
+    min-width: 25% !important;
+    background-color: #535353;
+    border: #535353;
+    border-radius: 10px;
+    float: right;
+    margin-right: 20%;
+    /*margin-top: 30%;*/
+}
+
+label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    color: white;
+    margin-top: 4%;
+    margin-left: 17%;
+}
+
+.texto {
+    background-color: #ECECEC;
+    color: black;
+    border-radius: 5px;
+    margin: 15px;
+    margin-left: 17%;
+    width: 70%;
+    height: 5%;
+}
+
+.cadastrar {
+    border-radius: 5px;
+    margin-top: 5%;
+    margin-left: 25%;
+    width: 150px;
+    height: 40px;
+    background-color: #CECECE;
+    color: #545454;
+}
