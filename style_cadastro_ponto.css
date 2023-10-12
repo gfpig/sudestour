@@ -1,8 +1,13 @@
-html, body {
-    height: 96.7%;
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
 }
 
 .menu {
+    font-family: 'Roboto', sans-serif;
     list-style-type: none;
     margin: 0;
     margin-left: 0;
@@ -11,18 +16,13 @@ html, body {
     background-color: #545454;
 }
 
-.slogan {
-    width: 250px;
-    height: min-content;
-}
-
 li a.categorias-menu:hover, .dropdown:hover .dropbtn {
     color: black;
     background-color: #CDCDCD;
 }
 
 li a.categorias-menu, .dropbtn {
-    display: inline-block;
+    display: inline-flexbox;
     color: #CDCDCD;
     text-align: center;
     padding: 14px 16px;
@@ -35,73 +35,33 @@ li.dropdown {
     margin-left: 8%;
 }
 
-.dropdown-content {
+/*.dropdown-content {
     display: none;
     position: absolute;
     background-color: #FFFFE0;
     min-width: 160px;
     box-shadow: 0px 4px 8px 0px rgba(0,0,0,1);
     z-index: 0.2;
-}
-  
-.dropdown-content a:hover {
-    background-color: #CDCDCD;
-}
-  
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-#botao-login {
-    margin-left: 150px;
-    background-color: #737373;
-    color: #ECECEC;
-}
+}*/
 
 .container-principal {
+    background-color: #EAE8E8;
     display: flex;
     height: 100%;
 }
 
 .container-esquerda {
+    background-color: rgb(223, 49, 208); /*Cor temporaria*/
     display:table-column;
     margin-top: 10%;
     margin-left: 40px;
     margin-right: 10%;
 }
 
-.container-busca {
-    margin-top: 50px;
-}
-
 .container-direita {
+    background-color: aqua; /*Cor temporaria*/
     float: right;
     align-items: center;
-    background-color: #EAE8E8;
     width: 80%;
     height: 100%;
-}
-
-.container-carrossel {
-    /*margin-left: 20%;*/
-    align-self: center;
-    margin-top: 3%;
-    margin-left: 4%;
-}
-
-/*.carousel-slide {
-    width: 70%;
-    height: 75%;
-}*/
-
-.texto {
-    width: 250px;
-    margin: 5px;
-    background-color: #ECECEC;
-    color: black;
-}
-
-#CarrosselSudestour {
-    width: 70% !important;
-    height: 75% !important;
 }
