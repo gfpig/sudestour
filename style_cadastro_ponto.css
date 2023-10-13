@@ -77,28 +77,23 @@ li.dropdown {
     height: 100%;
 }
 
-.primeira_linha {
-    margin-top: 3%;
-}
-
 .segunda_linha {
     display: inline-flex;
-    margin-top: 3%;
+    margin-top: 1%;
 }
 
-.terceira_linha {
-    display: inline-flex;
-    margin-top: 3%;
+.terceira-linha {
+    margin-top: 1%;
 }
 
 .quarta_linha {
     display: inline-flex;
-    margin-top: 3%;
+    margin-top: 1%;
 }
 
 .quinta_linha {
     display: inline-flex;
-    margin-top: 3%;
+    margin-top: 1%;
 }
 
 .bairro {
