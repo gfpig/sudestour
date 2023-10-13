@@ -15,38 +15,70 @@
         <ul class="menu">
           <li class="dropdown"><a href="index.html"><img src="../images/logos/sudestour_logo_claro.png" width="50" height="50" ></a></li>
           <li class="dropdown"><a class="categorias-menu" href="espiritosanto.html">Premium</a></li>
-          <li class="dropdown"><a class="#" href="minasgerais.html">Adicionar Local</a></li>
+          <li class="dropdown"><a class="categorias-menu" href="#">Adicionar Local</a></li>
           <li class="dropdown"><a class="categorias-menu" href="riodejaneiro.html">Perfil</a></li>
           </ul>
     </nav>
     <div class="container-principal">
         <div class="container-esquerda">
-            <form action="/action_page.php">
-                <input type="file" id="myFile" name="filename">
+            <!--<form action="/action_page.php">
+                <input type="file" id="img_ponto" name="fachada_ponto">
                 <input type="submit">
-              </form>
+            </form>
+            É IMPORTANTE COLOCAR NO FORM DEPOIS PARA FAZER O BACKEND (EU ACHO)-->
+            <label class="escolher_img">
+                <img src="../images/icones/add_imagem1.png">
+                <input type="file" id="img_ponto" name="fachada_ponto">
+            </label>
+            <p>HORÁRIO DE FUNCIONAMENTO</p>             
         </div>
         <div class="container-direita">
-            <label>Nome do Local:</label><br>
-            <input type="text" class="texto"><br>
-            <label>CEP:</label><br>
-            <input type="text" class="texto"><br>
-            <label>Bairro:</label><br>
-            <input type="text" class="texto"><br>
-            <label>Logradouro:</label><br>
-            <input type="text" class="texto"><br>
-            <label>Cidade:</label><br>
-            <input type="text" class="texto"><br>
-            <label>UF:</label><br>
-            <input type="text" class="texto"><br>
-            <label>Complemento:</label><br>
-            <input type="text" class="texto"><br>
-            <label>Nº:</label><br>
-            <input type="text" class="texto"><br>
-            <label>Telefone:</label><br>
-            <input type="text" class="texto"><br>
-            <label>Descrição:</label><br>
-            <input type="text" class="texto"><br>
+            <div class="primeira_linha">
+                <label class="label_formulario">Nome do Local:</label><br>
+                <input type="text" class="texto_nome"><br>
+            </div><br>
+            <div class="segunda_linha">
+                <div>
+                    <label class="label_formulario">CEP:</label><br>
+                    <input type="text" class="texto_CEP">
+                </div>
+                <div class="bairro">
+                    <label class="label_formulario">Bairro:</label><br>
+                    <input type="text" class="texto_bairro"><br>
+                </div>
+            </div><br>
+            <div class="terceira-linha">
+                <label class="label_formulario">Logradouro:</label><br>
+                <input type="text" class="texto_logradouro"><br>
+            </div><br>
+            <div class="quarta_linha">
+                <div>
+                    <label class="label_formulario">Cidade:</label><br>
+                    <input type="text" class="texto_cidade">
+                </div>
+                <div class="UF">
+                    <label class="label_formulario">UF:</label><br>
+                    <input type="text" class="texto_UF">
+                </div>
+            </div><br>
+            <div class="quinta_linha">
+                <div>
+                    <label class="label_formulario">Complemento:</label><br>
+                    <input type="text" class="texto_complemento"><br>
+                </div>
+                <div class="numero">
+                    <label class="label_formulario">Nº:</label><br>
+                    <input type="text" class="texto_No"><br>
+                </div>
+                <div class="telefone">
+                    <label class="label_formulario">Telefone:</label><br>
+                    <input type="text" class="texto_telefone"><br>
+                </div>
+            </div><br>
+            <div>
+                <label class="label_formulario">Descrição:</label><br>
+                <input type="text" class="texto_descricao"><br>
+            </div>
             <button>VOLTAR</button>
             <button>ADICIONAR</button>
         </div>

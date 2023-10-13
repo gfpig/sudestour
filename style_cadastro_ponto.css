@@ -6,6 +6,12 @@ body {
     height: 100%;
 }
 
+p {
+    font-family: 'Roboto', sans-serif;
+    color: #545454;
+    text-align: center;
+}
+
 .menu {
     font-family: 'Roboto', sans-serif;
     list-style-type: none;
@@ -35,15 +41,6 @@ li.dropdown {
     margin-left: 8%;
 }
 
-/*.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #FFFFE0;
-    min-width: 160px;
-    box-shadow: 0px 4px 8px 0px rgba(0,0,0,1);
-    z-index: 0.2;
-}*/
-
 .container-principal {
     background-color: #EAE8E8;
     display: flex;
@@ -51,17 +48,112 @@ li.dropdown {
 }
 
 .container-esquerda {
-    background-color: rgb(223, 49, 208); /*Cor temporaria*/
+    /*background-color: rgb(223, 49, 208); /*Cor temporaria*/
     display:table-column;
-    margin-top: 10%;
-    margin-left: 40px;
+    margin-top: 3%;
+    margin-left: 10%;
     margin-right: 10%;
 }
 
+.escolher_img {
+    cursor: hand;
+}
+
+.escolher_img>input {
+    display: none;
+}
+
+.label_formulario {
+    font-family: 'Roboto', sans-serif;
+}
+
 .container-direita {
-    background-color: aqua; /*Cor temporaria*/
+    margin-top: 5%;
+    margin-left: 10%;
+    /*background-color: aqua; /*Cor temporaria*/
     float: right;
     align-items: center;
     width: 80%;
     height: 100%;
+}
+
+.primeira_linha {
+    margin-top: 3%;
+}
+
+.segunda_linha {
+    display: inline-flex;
+    margin-top: 3%;
+}
+
+.terceira_linha {
+    display: inline-flex;
+    margin-top: 3%;
+}
+
+.quarta_linha {
+    display: inline-flex;
+    margin-top: 3%;
+}
+
+.quinta_linha {
+    display: inline-flex;
+    margin-top: 3%;
+}
+
+.bairro {
+    margin-left: 92px;
+}
+
+.UF {
+    margin-left: 9%;
+}
+
+.numero {
+    margin-left: 10%;
+}
+
+.telefone {
+    margin-left: 10%;
+}
+
+.texto_nome {
+    width:500px;
+}
+
+.texto_CEP {
+    width: 200px;
+}
+
+.texto_bairro {
+    width: 200px;
+}
+
+.texto_logradouro {
+    width: 500px;
+}
+
+.texto_cidade {
+    width: 400px;
+}
+
+.texto_UF {
+    width: 50px;
+}
+
+.texto_complemento {
+    width: 200px;
+}
+
+.texto_No {
+    width: 50px;
+}
+
+.texto_telefone {
+    width: 150px;
+}
+
+.texto_descricao {
+    width: 500px;
+    height: 200px;
 }
