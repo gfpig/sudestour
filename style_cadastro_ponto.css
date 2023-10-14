@@ -1,15 +1,16 @@
-html {
-    height: 100%;
-}
-
-body {
-    height: 100%;
+html, body {
+    height: 96.7%;
 }
 
 p {
     font-family: 'Roboto', sans-serif;
     color: #545454;
     text-align: center;
+}
+
+.link {
+    color: white;
+    text-decoration: none;
 }
 
 .menu {
@@ -28,6 +29,7 @@ li a.categorias-menu:hover, .dropdown:hover .dropbtn {
 }
 
 li a.categorias-menu, .dropbtn {
+    margin-left: 30px;
     display: inline-flexbox;
     color: #CDCDCD;
     text-align: center;
@@ -48,7 +50,6 @@ li.dropdown {
 }
 
 .container-esquerda {
-    /*background-color: rgb(223, 49, 208); /*Cor temporaria*/
     display:table-column;
     margin-top: 3%;
     margin-left: 10%;
@@ -68,9 +69,8 @@ li.dropdown {
 }
 
 .container-direita {
-    margin-top: 5%;
+    margin-top: 3%;
     margin-left: 10%;
-    /*background-color: aqua; /*Cor temporaria*/
     float: right;
     align-items: center;
     width: 80%;
@@ -97,58 +97,78 @@ li.dropdown {
 }
 
 .bairro {
-    margin-left: 92px;
+    margin-left: 100px;
 }
 
 .UF {
-    margin-left: 9%;
+    margin-left: 50px;
 }
 
 .numero {
-    margin-left: 10%;
+    margin-left: 50px;
 }
 
 .telefone {
-    margin-left: 10%;
+    margin-left: 50px;
 }
 
 .texto_nome {
+    background-color: #D2D2D3;
     width:500px;
 }
 
 .texto_CEP {
+    background-color: #D2D2D3;
     width: 200px;
 }
 
 .texto_bairro {
+    background-color: #D2D2D3;
     width: 200px;
 }
 
 .texto_logradouro {
+    background-color: #D2D2D3;
     width: 500px;
 }
 
 .texto_cidade {
+    background-color: #D2D2D3;
     width: 400px;
 }
 
 .texto_UF {
+    background-color: #D2D2D3;
     width: 50px;
 }
 
 .texto_complemento {
+    background-color: #D2D2D3;
     width: 200px;
 }
 
 .texto_No {
+    background-color: #D2D2D3;
     width: 50px;
 }
 
 .texto_telefone {
+    background-color: #D2D2D3;
     width: 150px;
 }
 
 .texto_descricao {
+    background-color: #D2D2D3;
     width: 500px;
     height: 200px;
+}
+
+button {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    color: white;
+    background-color: #737373;
+    margin-top: 3%;
+    width: 140px;
+    height: 40px;
 }
