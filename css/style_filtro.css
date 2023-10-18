@@ -1,0 +1,79 @@
+html, body {
+    height: 96.7%;
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+}
+
+.menu {
+    list-style-type: none;
+    margin: 0;
+    margin-left: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #545454;
+}
+
+li a.categorias-menu:hover, .dropdown:hover .dropbtn {
+    color: black;
+    background-color: #CDCDCD;
+}
+
+li a.categorias-menu, .dropbtn {
+    margin-left: 30px;
+    display: inline-flexbox;
+    color: #CDCDCD;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+  
+li.dropdown {
+    padding: 0px;
+    display: inline-block;
+    margin-left: 8%;
+}
+
+.container-principal {
+    background-color: #EAE8E8;
+    display: flex;
+    height: 100%;
+}
+
+.container-esquerda {
+    background-color: aqua;
+    display:table-column;
+    margin-top: 3%;
+    margin-left: 5%;
+    margin-right: 10%;
+}
+
+.container-filtros {
+    margin-top: 70%;
+}
+
+.container-direita {
+    background-color: rebeccapurple;
+    margin-top: 3%;
+    margin-left: 10%;
+    float: right;
+    align-items: center;
+    width: 80%;
+    height: 100%;
+}
+
+button {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    color: white;
+    background-color: #737373;
+    margin-top: 3%;
+    width: 140px;
+    height: 40px;
+}
+
+.combobox_filtros {
+    background-color: white;
+}
