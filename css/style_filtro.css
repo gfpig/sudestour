@@ -105,3 +105,28 @@ label {
     width: 50%;
     height: 50%;
 }
+
+
+/* ÁREA DOS PONTO DE INTERESSE DESTACADOS */
+#listaDestaques img {
+    margin: 10px;
+    max-height: 150px;
+}
+
+.divisaoItens {
+    opacity: 1;
+    text-align: left;
+    width: auto;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.divisaoCategorias {
+    background-color: rgba(0, 0, 0, 0.5); 
+}
+
+figure {
+    text-align: center;
+    display: inline-table;
+    position: static;
+}
