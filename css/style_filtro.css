@@ -1,5 +1,5 @@
 html, body {
-    height: 96.7%;
+    height: 100%;
 }
 
 .link {
@@ -63,7 +63,6 @@ label {
 }
 
 .container-direita {
-    background-color: rebeccapurple;
     margin-top: 3%;
     float: right;
     align-items: center;
@@ -106,14 +105,18 @@ label {
     height: 50%;
 }
 
-
 /* ÁREA DOS PONTO DE INTERESSE DESTACADOS */
 #listaDestaques img {
     margin: 10px;
     max-height: 150px;
 }
 
-.divisaoItens {
+#listaPontos img {
+    margin: 10px;
+    max-height: 150px;
+}
+
+.divisaoItensDestaque {
     opacity: 1;
     text-align: left;
     width: auto;
@@ -121,12 +124,26 @@ label {
     white-space: nowrap;
 }
 
+.divisaoItensNormais {
+    opacity: 1;
+    text-align: left;
+    width: auto;
+    overflow-x: auto;
+}
+
 .divisaoCategorias {
-    background-color: rgba(0, 0, 0, 0.5); 
+    background-color: #CECECE; 
 }
 
 figure {
     text-align: center;
     display: inline-table;
     position: static;
+}
+
+.legenda {
+    font-family: 'Roboto', sans-serif;
+    font-size: 17px;
+    margin: -10px;
+    color: #545454;
 }
