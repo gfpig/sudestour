@@ -5,20 +5,32 @@ var listaDeDestaques = ["../images/masp.jpg",
                       '../images/bondinho-rj.webp',
                       '../images/espirito-santo.jpg',
                       '../images/ouro-preto-mg.jpg',
-                      '../images/masp.jpg'];
+                      '../images/masp.jpg',
+                      "../images/masp.jpg",
+                      '../images/bondinho-rj.webp',
+                      '../images/espirito-santo.jpg',
+                      '../images/ouro-preto-mg.jpg'];
 
 var listaDeNomesDestaques = ["MASP",
                             'Bondinho',
                             'Praia ES',
                             'Ouro Preto',
-                            'MASP 2'
+                            'MASP 2',
+                            "MASP",
+                            'Bondinho',
+                            'Praia ES',
+                            'Ouro Preto'
                             ];  
                             
 var listaEnderecosDestaques = ["Av. Paulista",
                                "Av. Pedro Álvares Cabral - SP",
                                "R. da Cantareira - SP",
                                "Pico de Montanha - Rj",
-                               "Av. Paulista"
+                               "Av. Paulista",
+                               "Av. Paulista",
+                               "Av. Pedro Álvares Cabral - SP",
+                               "R. da Cantareira - SP",
+                               "Pico de Montanha - Rj",
                             ];
 
 //adicionando os pontos do vetor na tela

@@ -1,6 +1,4 @@
-html, body {
-    height: 100%;
-}
+
 
 .link {
     color: white;
@@ -114,6 +112,10 @@ label {
 #listaPontos img {
     margin: 10px;
     max-height: 150px;
+}
+
+.direita-destaques {
+    overflow: hidden;
 }
 
 .divisaoItensDestaque {
