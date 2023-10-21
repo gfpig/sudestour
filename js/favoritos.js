@@ -1,7 +1,6 @@
-var elementoListaDestaques = document.getElementById('listaDestaques');
-var elementoListaPontos = document.getElementById('listaPontos');
+var elementoListaFavoritos = document.getElementById('listaFavoritos');
 
-var listaDeDestaques = ["../images/masp.jpg",
+var listaDeFavoritos = ["../images/masp.jpg",
                       '../images/bondinho-rj.webp',
                       '../images/espirito-santo.jpg',
                       '../images/ouro-preto-mg.jpg',
@@ -11,7 +10,7 @@ var listaDeDestaques = ["../images/masp.jpg",
                       '../images/espirito-santo.jpg',
                       '../images/ouro-preto-mg.jpg'];
 
-var listaDeNomesDestaques = ["MASP",
+var listaDeNomesFavoritos = ["MASP",
                             'Bondinho',
                             'Praia ES',
                             'Ouro Preto',
@@ -22,7 +21,7 @@ var listaDeNomesDestaques = ["MASP",
                             'Ouro Preto'
                             ];  
                             
-var listaEnderecosDestaques = ["Av. Paulista",
+var listaEnderecosFavoritos = ["Av. Paulista",
                                "Av. Pedro Álvares Cabral - SP",
                                "R. da Cantareira - SP",
                                "Pico de Montanha - Rj",
@@ -34,21 +33,11 @@ var listaEnderecosDestaques = ["Av. Paulista",
                             ];
 
 //adicionando os pontos do vetor na tela
-for (var i = 0; i < listaDeDestaques.length; ++i) {
-    elementoListaDestaques.innerHTML += `
+for (var i = 0; i < listaDeFavoritos.length; ++i) {
+    elementoListaFavoritos.innerHTML += `
     <figure style="margin-top: 2%;">
-      <img src = ${listaDeDestaques[i]} title = ${listaDeNomesDestaques[i]}></img>
-      <p class = legenda><b>${listaDeNomesDestaques[i]}</b></p>
-      <p class = legenda>${listaEnderecosDestaques[i]}</p>
-    </figure>`
-}
-
-//adicionando os pontos normais do vetor na tela (mesmos vetores só pra testar)
-for (var i = 0; i < listaDeDestaques.length; ++i) {
-    elementoListaPontos.innerHTML += `
-    <figure style="margin-top: 2%;">
-      <img src = ${listaDeDestaques[i]} title = ${listaDeNomesDestaques[i]}></img>
-      <p class = legenda>${listaDeNomesDestaques[i]}</p>
-      <p class = legenda>${listaEnderecosDestaques[i]}</p>
+      <img src = ${listaDeFavoritos[i]} title = ${listaDeNomesFavoritos[i]}></img>
+      <p class = legenda><b>${listaDeNomesFavoritos[i]}</b></p>
+      <p class = legenda>${listaEnderecosFavoritos[i]}</p>
     </figure>`
 }

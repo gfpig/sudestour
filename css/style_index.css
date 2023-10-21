@@ -22,7 +22,8 @@ li a.categorias-menu:hover, .dropdown:hover .dropbtn {
 }
 
 li a.categorias-menu, .dropbtn {
-    display: inline-block;
+    margin-left: 30px;
+    display: inline-flexbox;
     color: #CDCDCD;
     text-align: center;
     padding: 14px 16px;
@@ -53,7 +54,7 @@ li.dropdown {
 }
 
 #botao-login {
-    margin-left: 150px;
+    margin-top: 3%;
     background-color: #737373;
     color: #ECECEC;
 }

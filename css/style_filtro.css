@@ -1,8 +1,11 @@
-
-
 .link {
     color: white;
     text-decoration: none;
+}
+
+nav {
+    position: sticky;
+    top: 0;
 }
 
 .menu {
@@ -61,7 +64,7 @@ label {
 }
 
 .container-direita {
-    margin-top: 3%;
+    margin-top: 1%;
     float: right;
     align-items: center;
     width: 80%;
@@ -115,6 +118,7 @@ label {
 }
 
 .direita-destaques {
+    margin-top: -1%;
     overflow: hidden;
 }
 
