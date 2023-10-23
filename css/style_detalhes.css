@@ -57,7 +57,7 @@ li.dropdown {
 }
 
 .container-filtros {
-    margin-top: 40%;
+    margin-top: 30%;
     margin-left: 10%;
 }
 
@@ -66,6 +66,16 @@ li.dropdown {
     margin-bottom: 5%;
     width: 50%;
     height: 50%;
+}
+
+.botaoBuscar {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    color: white;
+    background-color: #737373;
+    margin-top: 3%;
+    width: 140px;
+    height: 40px;
 }
 
 .container-direita {

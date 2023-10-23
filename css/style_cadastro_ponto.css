@@ -1,9 +1,15 @@
 html, body {
-    height: 96.7%;
+    height: 100%;
+}
+
+nav {
+    position: sticky;
+    top: 0;
 }
 
 p {
     font-family: 'Roboto', sans-serif;
+    display: inline-block;
     color: #545454;
     text-align: center;
 }
@@ -57,11 +63,20 @@ li.dropdown {
 }
 
 .escolher_img {
-    cursor: hand;
+    cursor: pointer;
 }
 
 .escolher_img>input {
     display: none;
+}
+
+div.hora_funcionamento {
+    margin-left: 15%;
+}
+
+.hora {
+    height: 20px;
+    width: 50px;
 }
 
 .label_formulario {
