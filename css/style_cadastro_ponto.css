@@ -66,6 +66,10 @@ li.dropdown {
     cursor: pointer;
 }
 
+.escolher_img>img {
+    max-width: 500px;
+}
+
 .escolher_img>input {
     display: none;
 }
