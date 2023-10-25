@@ -83,25 +83,25 @@
             <div class="segunda_linha" style="margin-top:1%">
                 <div>
                     <label class="label_formulario">CEP:</label><br>
-                    <input type="text" class="texto_CEP">
+                    <input type="text" class="texto_CEP" value="" id="cep" onblur="pesquisacep(this.value);" >
                 </div>
                 <div class="bairro">
                     <label class="label_formulario">Bairro:</label><br>
-                    <input type="text" class="texto_bairro"><br>
+                    <input type="text" class="texto_bairro" id="bairro"><br>
                 </div>
             </div><br>
             <div class="terceira-linha">
                 <label class="label_formulario">Logradouro:</label><br>
-                <input type="text" class="texto_logradouro"><br>
+                <input type="text" class="texto_logradouro" id="rua"><br>
             </div><br>
             <div class="quarta_linha" style="margin-top:1%">
                 <div>
                     <label class="label_formulario">Cidade:</label><br>
-                    <input type="text" class="texto_cidade">
+                    <input type="text" class="texto_cidade" id="cidade">
                 </div>
                 <div class="UF">
                     <label class="label_formulario">UF:</label><br>
-                    <input type="text" class="texto_UF">
+                    <input type="text" class="texto_UF" id="uf">
                 </div>
             </div><br>
             <div class="quinta_linha" style="margin-top:1%">
