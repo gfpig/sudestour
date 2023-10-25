@@ -23,6 +23,18 @@ p {
     padding: 1%;
 }
 
+button.esqueci {
+    background: none;
+    border: none;
+    font-family: 'Roboto', sans-serif;
+    font-style: italic;
+    font-size: 15px;
+    color: #545454;
+    margin-left: 110%;
+    width: 150px;
+    cursor: pointer;
+}
+
 .voltar {
     margin-top: 4px;
     margin-left: 42.5%;
@@ -31,6 +43,11 @@ p {
 }
 
 .botao {
+    width: 250px;
+    height: 50px;
+    margin-top: 15%;
+    background-color: #535353;
+    font-size: large;
     color: white;
     text-decoration: none;
 }
@@ -67,14 +84,14 @@ p {
     float:center;
 }
 
-button {
+/*button {
     width: 250px;
     height: 50px;
     margin-top: 15%;
     background-color: #535353;
     font-size: large;
     color: white;
-}
+}*/
 
 .text {
     margin-left: 500px;
