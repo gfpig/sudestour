@@ -48,6 +48,20 @@ li.dropdown {
     margin-left: 8%;
 }
 
+.logo {
+    display: flex;
+    float: left;
+}
+
+.opcoes_menu {
+    width: 87%;
+    margin-top: 0.7%;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .container-principal {
     background-color: #EAE8E8;
     display: flex;

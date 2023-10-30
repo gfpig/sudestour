@@ -33,7 +33,6 @@ li a.categorias-menu, .dropbtn {
 li.dropdown {
     padding: 0px;
     display: inline-block;
-    margin-left: 8%;
 }
 
 .dropdown-content {
@@ -57,6 +56,11 @@ li.dropdown {
     margin-top: 3%;
     background-color: #737373;
     color: #ECECEC;
+}
+
+.link_botao {
+    color: #ECECEC;
+    text-decoration: none;
 }
 
 .container-principal {
@@ -84,16 +88,10 @@ li.dropdown {
 }
 
 .container-carrossel {
-    /*margin-left: 20%;*/
     align-self: center;
     margin-top: 3%;
     margin-left: 4%;
 }
-
-/*.carousel-slide {
-    width: 70%;
-    height: 75%;
-}*/
 
 .texto {
     width: 250px;
@@ -103,6 +101,6 @@ li.dropdown {
 }
 
 #CarrosselSudestour {
-    width: 70% !important;
-    height: 75% !important;
+    width: 98% !important;
+    height: 80% !important;
 }

@@ -30,7 +30,7 @@ button.esqueci {
     font-style: italic;
     font-size: 15px;
     color: #545454;
-    margin-left: 110%;
+    margin-left: 93%;
     width: 150px;
     cursor: pointer;
 }
@@ -62,7 +62,7 @@ button.esqueci {
 
 .container-cabecalho {
     margin-top: 25%;
-    margin-left: 25%;
+    margin-left: 29%;
     display: inline-flex;
 }
 
@@ -74,12 +74,14 @@ button.esqueci {
 
 .c-inputs {
     font-family: 'Roboto', sans-serif;
-    margin-left: 15%;
+    margin-top: 10%;
+    margin-left: 21%;
     width: 30%;
 }
 
 .c-buttons {
-    margin-left: 17%;
+    margin-top: 8%;
+    margin-left: 23%;
     width: 30%;
     float:center;
 }
