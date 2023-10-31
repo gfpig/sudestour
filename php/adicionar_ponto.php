@@ -154,6 +154,7 @@
                 <button><a href="index.html" class="link">VOLTAR</a></button>
                 <button type="submit">ADICIONAR</button>
 
+                <!-- Código para adicionar o ponto de interesse ao banco de dados -->
                 <?php
                     if(empty($_POST["nome"])||empty($_POST["CEP"])||empty($_POST["bairro"])||empty($_POST["logradouro"])||empty($_POST["cidade"])||empty($_POST["UF"])||empty($_POST["complemento"])||empty($_POST["numero"])||empty($_POST["telefone"])||empty($_POST["descricao"])){    
                     //echo "<p style='color:red;'>Preencha todos os campos corretamente</p>";
