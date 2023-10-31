@@ -21,7 +21,7 @@
     <nav>
         <ul class="menu">
             <div style="display:inline-block;">
-                <li class="dropdown"><a href="index.html"><img src="../images/logos/sudestour_logo_claro.png" width="50" height="50" ></a></li>
+                <li class="dropdown"><a href="../paginas/index.html"><img src="../images/logos/sudestour_logo_claro.png" width="50" height="50" ></a></li>
             </div>
             <div class="opcoes_menu">
                 <li class="dropdown"><a class="categorias-menu" href="espiritosanto.html">Premium</a></li>
@@ -42,7 +42,7 @@
                 <input type="file" id="input">
             </label>
             <div class="hora_funcionamento">
-                <p>HORÁRIO DE FUNCIONAMENTO</p><img src="../images/icones/ajuda.png" width="20px" title="Insira os dados no formato 00:00" style="margin-left:5px;">
+                <p>HORÁRIO DE FUNCIONAMENTO</p>
                 <table>
                     <tr>
                       <td><label>Segunda-feira</label></td>
@@ -82,74 +82,107 @@
                   </table> 
             </div>        
         </div>
-        <div class="container-direita">
-            <div class="primeira_linha" style="margin-top:1%">
-                <label class="label_formulario">Nome do Local:</label><br>
-                <input type="text" class="texto_nome"><br>
-            </div><br>
-            <div class="linha_combobox">
-                <label class="label_formulario">Categoria:</label>
-                <select name="categoria" id="categoia" maxlength="30" onchange="this.form.submit();">
-                    
-                    <option value=""></option>
-                    <?php
-                    //$val = $_POST['NomeCategoria']?:'';
-    
-                    //$sql = "SELECT `NomeCategoria` FROM `categoria` ORDER BY `NomeCategoria`";
-                    $res = $mysqli->query("SELECT `NomeCategoria` FROM `categoria` ORDER BY `IdCategoria`"); //$mysqli->query("SELECT * FROM `clientes`"); 
-                    while ($query = $res->fetch_assoc()) {
-                        //$selected = ($val == $row1['NomeCategoria'] ? 'selected="selected"' : '');
-                        echo '<option value ="' . $query['NomeCategoria'] . '" '. $selected .'>' . $query['NomeCategoria'] . '</option>';
-                    }
-                    ?>
-                </select><br>
-            </div>
-            
 
-            <div class="segunda_linha" style="margin-top:1%">
-                <div>
-                    <label class="label_formulario">CEP:</label><br>
-                    <input type="text" class="texto_CEP" value="" id="cep" onblur="pesquisacep(this.value);" >
+        <div class="container-direita">
+            <form action="adicionar_ponto.php" method="POST">
+                <div class="primeira_linha" style="margin-top:1%">
+                    <label class="label_formulario">Nome do Local:</label><br>
+                    <input type="text" name="nome" class="texto_nome"><br>
+                </div><br>
+
+                <div class="linha_combobox">
+                    <label class="label_formulario">Categoria:</label>
+                    <select name="categoria" id="categoria" maxlength="30">
+                        
+                        <option value=""></option>
+                        <?php
+                        //$val = $_POST['NomeCategoria']?:'';
+        
+                        //$sql = "SELECT `NomeCategoria` FROM `categoria` ORDER BY `NomeCategoria`";
+                        $res = $mysqli->query("SELECT `NomeCategoria` FROM `categoria` ORDER BY `IdCategoria`"); //$mysqli->query("SELECT * FROM `clientes`"); 
+                        while ($query = $res->fetch_assoc()) {
+                            //$selected = ($val == $row1['NomeCategoria'] ? 'selected="selected"' : '');
+                            echo '<option value ="' . $query['NomeCategoria'] . '">' . $query['NomeCategoria'] . '</option>';
+                        }
+                        ?>
+                    </select><br>
                 </div>
-                <div class="bairro">
-                    <label class="label_formulario">Bairro:</label><br>
-                    <input type="text" class="texto_bairro" id="bairro"><br>
+            
+                <div class="segunda_linha" style="margin-top:1%">
+                    <div>
+                        <label class="label_formulario">CEP:</label><br>
+                        <input type="text" name="CEP" class="texto_CEP" value="" id="cep" onblur="pesquisacep(this.value);" >
+                        <script src="../js/add_ponto.js"></script>
+                    </div>
+                    <div class="bairro">
+                        <label class="label_formulario">Bairro:</label><br>
+                        <input type="text" name="bairro" class="texto_bairro" id="bairro"><br>
+                    </div>
+                </div><br>
+                <div class="terceira-linha">
+                    <label class="label_formulario">Logradouro:</label><br>
+                    <input type="text" name="logradouro" class="texto_logradouro" id="rua"><br>
+                </div><br>
+                <div class="quarta_linha" style="margin-top:1%">
+                    <div>
+                        <label class="label_formulario">Cidade:</label><br>
+                        <input type="text" name="cidade" class="texto_cidade" id="cidade">
+                    </div>
+                    <div class="UF">
+                        <label class="label_formulario">UF:</label><br>
+                        <input type="text" name="UF" class="texto_UF" id="uf">
+                    </div>
+                </div><br>
+                <div class="quinta_linha" style="margin-top:1%">
+                    <div>
+                        <label class="label_formulario">Complemento:</label><br>
+                        <input type="text" name="complemento" class="texto_complemento"><br>
+                    </div>
+                    <div class="numero">
+                        <label class="label_formulario">Nº:</label><br>
+                        <input type="text" name="numero" class="texto_No"><br>
+                    </div>
+                    <div class="telefone">
+                        <label class="label_formulario">Telefone:</label><br>
+                        <input type="text" name="telefone" class="texto_telefone"><br>
+                    </div>
+                </div><br>
+                <div style="margin-top:1%">
+                    <label class="label_formulario">Descrição:</label><br>
+                    <textarea class="texto_descricao" name="descricao"></textarea>             
                 </div>
-            </div><br>
-            <div class="terceira-linha">
-                <label class="label_formulario">Logradouro:</label><br>
-                <input type="text" class="texto_logradouro" id="rua"><br>
-            </div><br>
-            <div class="quarta_linha" style="margin-top:1%">
-                <div>
-                    <label class="label_formulario">Cidade:</label><br>
-                    <input type="text" class="texto_cidade" id="cidade">
-                </div>
-                <div class="UF">
-                    <label class="label_formulario">UF:</label><br>
-                    <input type="text" class="texto_UF" id="uf">
-                </div>
-            </div><br>
-            <div class="quinta_linha" style="margin-top:1%">
-                <div>
-                    <label class="label_formulario">Complemento:</label><br>
-                    <input type="text" class="texto_complemento"><br>
-                </div>
-                <div class="numero">
-                    <label class="label_formulario">Nº:</label><br>
-                    <input type="text" class="texto_No"><br>
-                </div>
-                <div class="telefone">
-                    <label class="label_formulario">Telefone:</label><br>
-                    <input type="text" class="texto_telefone"><br>
-                </div>
-            </div><br>
-            <div style="margin-top:1%">
-                <label class="label_formulario">Descrição:</label><br>
-                <textarea class="texto_descricao"></textarea>             
-            </div>
-            <button><a href="index.html" class="link">VOLTAR</a></button>
-            <button>ADICIONAR</button>
+                <button><a href="index.html" class="link">VOLTAR</a></button>
+                <button type="submit">ADICIONAR</button>
+
+                <?php
+                    if(empty($_POST["nome"])||empty($_POST["CEP"])||empty($_POST["bairro"])||empty($_POST["logradouro"])||empty($_POST["cidade"])||empty($_POST["UF"])||empty($_POST["complemento"])||empty($_POST["numero"])||empty($_POST["telefone"])||empty($_POST["descricao"])){    
+                    //echo "<p style='color:red;'>Preencha todos os campos corretamente</p>";
+                    //echo "alert('Preencha todos os campos corretamente.')";
+                    echo "<script type='text/javascript'>alert('Preencha todos os campos corretamente.');</script>";
+                    exit;       
+                    } else {                       
+                    $nome = $_POST["nome"];                
+                    $cep = $_POST["CEP"];
+                    $bairro = $_POST["bairro"];   
+                    $logradouro = $_POST["logradouro"];                 
+                    $cidade = $_POST["cidade"];             
+                    $uf = $_POST["UF"];   
+                    $complemento = $_POST["complemento"]; 
+                    $numero = $_POST["numero"]; 
+                    $telefone = $_POST["telefone"]; 
+                    $descricao = $_POST["descricao"];            
+                    $query = "INSERT INTO local(`Cep`, `Bairro`,`Logradouro`, `Complemento`, `Telefone`, `Uf`, `Cidade`, `NomeLocal`,`Numero`, `Descricao`) VALUES ('$cep', '$bairro', '$logradouro', '$complemento', '$telefone', '$uf', '$cidade','$nome', '$numero', '$descricao')";                    
+                    if(mysqli_query($mysqli, $query)){                     
+                        //echo "<p style='color:green;'>Os dados foram inseridos corretamente. Verifique o resultado na aba Exibir.</p>"; 
+                        echo "<script type='text/javascript'>alert('Ponto de interesse cadastrado com sucesso.');</script>";  
+                    } else{                   
+                        //echo "alert('')"  .mysqli_error($mysqli);
+                        echo "<script type='text/javascript'>alert('Ocorreu um erro e nenhum dado foi inserido.');</script>";  
+                        }                 
+                    }               
+                    mysqli_close($mysqli);              
+                ?>      
+            </form>
         </div>
     </div>
     <script src="../js/add_ponto.js"></script>
