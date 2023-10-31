@@ -1,3 +1,6 @@
+<?php
+  include "conecta.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -86,13 +89,20 @@
             </div><br>
             <div class="linha_combobox">
                 <label class="label_formulario">Categoria:</label>
-                <select name="bairros" id="bairros" class="combobox_filtros">
-                    <option value="argolas">Argolas</option>
-                    <option value="Ibes">Ibes</option>
-                    <option value="Jucu">Jucu</option>
-                    <option value="São Torquato">São Torquato</option>
-                    <option value="Sede">Sede</option>
-                </select>
+                <select name="categoria" id="categoia" maxlength="30" onchange="this.form.submit();">
+                    
+                    <option value=""></option>
+                    <?php
+                    //$val = $_POST['NomeCategoria']?:'';
+    
+                    //$sql = "SELECT `NomeCategoria` FROM `categoria` ORDER BY `NomeCategoria`";
+                    $res = $mysqli->query("SELECT `NomeCategoria` FROM `categoria` ORDER BY `IdCategoria`"); //$mysqli->query("SELECT * FROM `clientes`"); 
+                    while ($query = $res->fetch_assoc()) {
+                        //$selected = ($val == $row1['NomeCategoria'] ? 'selected="selected"' : '');
+                        echo '<option value ="' . $query['NomeCategoria'] . '" '. $selected .'>' . $query['NomeCategoria'] . '</option>';
+                    }
+                    ?>
+                </select><br>
             </div>
             
 
