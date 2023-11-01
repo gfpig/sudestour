@@ -31,58 +31,41 @@
 
         <form action="cadastro.php" method="POST" style="height:100%">
             <label>Nome:</label><br>
-            <input type="text" name="nome" class="texto" required/>
+            <input type="text" name="nomeAnunciante" class="texto" required/>
             <label>CNPJ:</label><br>
-            <input type="text" name="cnpj" class="texto" required/>
+            <input type="text" name="cnpjAnunciante" class="texto" required/>
             <label>Senha:</label><br>
-            <input type="text" name="senha" class="texto" required/>
+            <input type="text" name="senhaAnunciante" class="texto" required/>
             <label>E-mail:</label><br>
-            <input type="email" name="email" class="texto" required/>
+            <input type="email" name="emailAnunciante" class="texto" required/>
             <button type="submit" name="btnAnunciante" class="cadastrar">CADASTRAR</button>
 
             <!-- Código para cadastrar um usuário do tipo ANUNCIANTE -->
             <?php
-            //echo "<script>
-           //     var form = document.getElementById('myForm');
-           //         function handleForm(event) { event.preventDefault(); } 
-            //        form.addEventListener('submit', handleForm);
-           //     </script>";
                 //echo "<script type='text/javascript'>alert('O php foi ativado');</script>";
                 //require_once 'cadastro.php';
-                if (isset($_POST['btnAnunciante'])) { //EM TEORIA ativa a função apenas quando o botão for clicado
-                    echo "<script type='text/javascript'>alert('O botão foi apertado!');</script>";
-                   /* if(empty($_POST["nome"])||empty($_POST["cnpj"])||empty($_POST["senha"])||empty($_POST["email"])){
-                        echo "<script type='text/javascript'>alert('Preencha todos os campos corretamente.');</script>";
-                        return;      
-                    } ^ ELA VERIFICA OS SÓ DE ENTRAR NA PÁGINA SUCUMBA */ 
-                    //else {
-                    //function cadastrarAnunciante() {   
-                        $mysqli = new mysqli("localhost", "root", "", "sudestour");                    
-                        $nome = $_POST["nome"];                
-                        $cnpj = $_POST["cnpj"];
-                        $senha = $_POST["senha"];   
-                        $email = $_POST["email"];           
-                        $query = "INSERT INTO anunciante(`Cnpj`, `SenhaAnunciante`,`EmailAnunciante`, `NomeAnunciante`) VALUES ('$cnpj', '$senha', '$email', '$nome')";    
-                                        
-                        if(mysqli_query($mysqli, $query)){ //se a query for bem sucedida, exiba um pop-up
-                            echo "<script>document.getElementByName('cnpj').value=(''); </script>";
-                            echo "<script>document.getElementByName('nome').value=(''); </script>";
-                            echo "<script>document.getElementByName('senha').value=(''); </script>";
-                            echo "<script>document.getElementByName('email').value=(''); </script>";
-                            echo "<script type='text/javascript'>alert('Seu cadastrado foi realizado com sucesso :)');</script>";
-                            header("location: {$_SERVER['PHP_SELF']}");
-                            //exit; 
-                        } 
-                        else{ //se a query for mal sucedida, exiba outro pop-up
-                            echo "<script type='text/javascript'>alert('Ocorreu um erro e nenhum dado foi inserido.');</script>";  
-                        }                 
+                if (isset($_POST['btnAnunciante'])) { //envia o formulário apenas quando o botão for clicado               
+                    $nomeAnunciante = $_POST["nomeAnunciante"];                
+                    $cnpjAnunciante = $_POST["cnpjAnunciante"];
+                    $senhaAnunciante = $_POST["senhaAnunciante"];   
+                    $emailAnunciante = $_POST["emailAnunciante"];           
+                    $queryAnunciante = "INSERT INTO anunciante(`Cnpj`, `SenhaAnunciante`,`EmailAnunciante`, `NomeAnunciante`, `statusPremium`) VALUES ('$cnpjAnunciante', '$senhaAnunciante', '$emailAnunciante', '$nomeAnunciante', 0)";    
+                                    
+                    if(mysqli_query($mysqli, $queryAnunciante)){ //se a query for bem sucedida, exiba um pop-up
+                        echo "<script>document.getElementByName('cnpjAnunciante').value=(''); </script>";
+                        echo "<script>document.getElementByName('nomeAnunciante').value=(''); </script>";
+                        echo "<script>document.getElementByName('senhaAnunciante').value=(''); </script>";
+                        echo "<script>document.getElementByName('emailAnunciante').value=(''); </script>";
+                        echo "<script type='text/javascript'>alert('Seu cadastrado foi realizado com sucesso :)');</script>";
+                        header("location: {$_SERVER['PHP_SELF']}");
+                        exit; 
+                    } 
+                    else{ //se a query for mal sucedida, exiba outro pop-up
+                        echo "<script type='text/javascript'>alert('Ocorreu um erro e nenhum dado foi inserido.');</script>";  
+                    }                 
                    // }               
                         mysqli_close($mysqli);  
                     //}
-
-                    /*if(array_key_exists('submit',$_POST)){
-                        cadastrarAnunciante();
-                     }*/
                 } 
             ?>
         </form>
@@ -92,15 +75,44 @@
             <p class="tipo_conta">CADASTRO DO TURISTA</p>
             <img src="../images/icones/ajuda.png" width="20px" title="O usuário turista poderá consultar e avaliar pontos de interesse" style="margin-left:5px;"><br>
         </div>
-        <label>Nome:</label><br>
-        <input type="text" class="texto"><br>
-        <label>CNPJ:</label><br>
-        <input type="text" class="texto"><br>
-        <label>Senha:</label><br>
-        <input type="text" class="texto"><br>
-        <label>E-mail:</label><br>
-        <input type="text" class="texto"><br>
-        <button class="cadastrar">CADASTRAR</button>
+        <form action="cadastro.php" method="POST" style="height:100%">
+            <label>Nome:</label><br>
+            <input type="text" name="nomeTurista" class="texto" required/>
+            <label>CPF:</label><br>
+            <input type="text" name="cpfTurista" class="texto" required/>
+            <label>Senha:</label><br>
+            <input type="text" name="senhaTurista" class="texto" required/>
+            <label>E-mail:</label><br>
+            <input type="email" name="emailTurista" class="texto" required/>
+            <button type="submit" name="btnTurista" class="cadastrar">CADASTRAR</button>
+
+            <!-- Código para cadastrar um usuário do tipo TURISTA -->
+            <?php
+                if (isset($_POST['btnTurista'])) { //envia o formulário apenas quando o botão for clicado               
+                    $nomeTurista = $_POST["nomeTurista"];                
+                    $cpfTurista = $_POST["cpfTurista"];
+                    $senhaTurista = $_POST["senhaTurista"];   
+                    $emailTurista = $_POST["emailTurista"];           
+                    $queryTurista = "INSERT INTO turista(`cpf`, `NomeTurista`,`EmailTurista`, `SenhaTurista`) VALUES ('$cpfTurista', '$nomeTurista', '$emailTurista', '$senhaTurista')";    
+                                    
+                    if(mysqli_query($mysqli, $queryTurista)){ //se a query for bem sucedida, exiba um pop-up
+                        echo "<script>document.getElementByName('cpfTurista').value=(''); </script>";
+                        echo "<script>document.getElementByName('nomeTurista').value=(''); </script>";
+                        echo "<script>document.getElementByName('senhaTurista').value=(''); </script>";
+                        echo "<script>document.getElementByName('emailTurista').value=(''); </script>";
+                        echo "<script type='text/javascript'>alert('Seu cadastrado foi realizado com sucesso :)');</script>";
+                        header("location: {$_SERVER['PHP_SELF']}");
+                        exit; 
+                    } 
+                    else{ //se a query for mal sucedida, exiba outro pop-up
+                        echo "<script type='text/javascript'>alert('Ocorreu um erro e nenhum dado foi inserido.');</script>";  
+                    }                 
+                   // }               
+                        mysqli_close($mysqli);  
+                    //}
+                } 
+            ?>
+        </form>
     </div>
     
 </body>
