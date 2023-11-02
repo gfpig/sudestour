@@ -24,14 +24,14 @@
         </div>
         <?php
         if (isset($_SESSION["nao_autenticado"])) {
-        echo "<script type='text/javascript'>alert('Usuário ou senha incorretos');</script>";
+            echo "<script type='text/javascript'>alert('Usuário ou senha incorretos');</script>";
         }
         unset($_SESSION["nao_autenticado"]);
         ?>
         <form action="valida_login.php" method="POST">
             <div class="c-inputs">
-                <input class="text" name="usuario" placeholder="E-MAIL"><br>
-                <input class="text" name="senha" placeholder="SENHA"><br>
+                <input class="text" name="usuario" placeholder="E-MAIL" required/><br>
+                <input class="text" name="senha" placeholder="SENHA" required/><br>
                 <button class="esqueci" onclick="esqueciSenha();">Esqueci a senha</button>
             </div>
             <div class="c-buttons">

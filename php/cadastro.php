@@ -1,5 +1,6 @@
 <?php
   include "conecta.php";
+  session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,8 +29,13 @@
             <p class="tipo_conta">CADASTRO DO ANUNCIANTE</p>
             <img src="../images/icones/ajuda.png" width="15px" title="O usuário anunciante poderá sugerir locais de interesse para serem adicionados ao site" style="margin-left:5px;"><br>
         </div>
-
-        <form action="cadastro.php" method="POST" style="height:100%">
+        <?php
+        if(isset($_SESSION["usuario_cadastrado"])) {
+            echo "<script type='text/javascript'>alert('Você foi cadastrado com sucesso!');</script>";
+        }
+        unset($_SESSION["usuario_cadastrado"]);
+        ?>
+        <form action="efetuar_cadastro.php" method="POST" style="height:100%">
             <label>Nome:</label><br>
             <input type="text" name="nomeAnunciante" class="texto" required/>
             <label>CNPJ:</label><br>
@@ -44,7 +50,7 @@
             <?php
                 //echo "<script type='text/javascript'>alert('O php foi ativado');</script>";
                 //require_once 'cadastro.php';
-                if (isset($_POST['btnAnunciante'])) { //envia o formulário apenas quando o botão for clicado               
+                /*if (isset($_POST['btnAnunciante'])) { //envia o formulário apenas quando o botão for clicado               
                     $nomeAnunciante = $_POST["nomeAnunciante"];                
                     $cnpjAnunciante = $_POST["cnpjAnunciante"];
                     $senhaAnunciante = $_POST["senhaAnunciante"];   
@@ -66,7 +72,8 @@
                    // }               
                         mysqli_close($mysqli);  
                     //}
-                } 
+                }*/
+
             ?>
         </form>
     </div>
