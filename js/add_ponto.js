@@ -1,11 +1,9 @@
-const status = document.getElementById('status');
 const output = document.getElementById('img_ponto');
 if (window.FileList && window.File && window.FileReader) {
     document.getElementById('input').addEventListener('change', event => {
         output.src = '';
         const file = event.target.files[0];
         if (!file.type) {
-        
         return;
         }
         if (!file.type.match('image.*')) {
@@ -19,6 +17,13 @@ if (window.FileList && window.File && window.FileReader) {
     }); 
 }
 
+function getSrc() {
+  var img = document.getElementById('img_ponto'); 
+  img.getAttribute("src");
+  return img;
+}
+
+//API ViaCEP
 function limpa_formulário_cep() {
   //Limpa valores do formulário de cep.
   document.getElementById('rua').value=("");

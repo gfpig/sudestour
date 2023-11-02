@@ -17,7 +17,7 @@
     <div class="cabecalho">
         
         <div class="div_titulo">
-            <a href="index.html"><img src="../images/logos/sudestour_logo.png" width="70" height="62"></a>
+            <a href="index.php"><img src="../images/logos/sudestour_logo.png" width="70" height="62"></a>
             <p class="titulo"><b>BEM-VINDO AO SUDESTOUR!<br>
             QUE TIPO DE USUÁRIO VOCÊ É?</b></p>
         </div>

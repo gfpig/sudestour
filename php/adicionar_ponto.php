@@ -21,7 +21,7 @@
     <nav>
         <ul class="menu">
             <div style="display:inline-block;">
-                <li class="dropdown"><a href="../paginas/index.html"><img src="../images/logos/sudestour_logo_claro.png" width="50" height="50" ></a></li>
+                <li class="dropdown"><a href="../paginas/index.php"><img src="../images/logos/sudestour_logo_claro.png" width="50" height="50" ></a></li>
             </div>
             <div class="opcoes_menu">
                 <li class="dropdown"><a class="categorias-menu" href="espiritosanto.html">Premium</a></li>
@@ -152,16 +152,22 @@
                     <textarea class="texto_descricao" name="descricao"></textarea>             
                 </div>
                 <button><a href="index.html" class="link">VOLTAR</a></button>
-                <button type="submit">ADICIONAR</button>
+                <button type="submit" name='btnAdicionar'>ADICIONAR</button>
 
                 <!-- Código para adicionar o ponto de interesse ao banco de dados -->
+                <p id="teste"></p>
+                <script>
+                    var imagem = getSrc();
+                    document.getElementById("teste").innerHTML = imagem.src;
+                </script>
                 <?php
-                    if(empty($_POST["nome"])||empty($_POST["CEP"])||empty($_POST["bairro"])||empty($_POST["logradouro"])||empty($_POST["cidade"])||empty($_POST["UF"])||empty($_POST["complemento"])||empty($_POST["numero"])||empty($_POST["telefone"])||empty($_POST["descricao"])){    
+                    if (isset($_POST['btnAdicionar'])) {
+                    /*if(empty($_POST["nome"])||empty($_POST["CEP"])||empty($_POST["bairro"])||empty($_POST["logradouro"])||empty($_POST["cidade"])||empty($_POST["UF"])||empty($_POST["complemento"])||empty($_POST["numero"])||empty($_POST["telefone"])||empty($_POST["descricao"])){    
                     //echo "<p style='color:red;'>Preencha todos os campos corretamente</p>";
                     //echo "alert('Preencha todos os campos corretamente.')";
                     echo "<script type='text/javascript'>alert('Preencha todos os campos corretamente.');</script>";
-                    exit;       
-                    } else {                       
+                    exit;     */  
+                    //} else {                       
                     $nome = $_POST["nome"];                
                     $cep = $_POST["CEP"];
                     $bairro = $_POST["bairro"];   
@@ -171,7 +177,8 @@
                     $complemento = $_POST["complemento"]; 
                     $numero = $_POST["numero"]; 
                     $telefone = $_POST["telefone"]; 
-                    $descricao = $_POST["descricao"];            
+                    $descricao = $_POST["descricao"];
+                     
                     $query = "INSERT INTO local(`Cep`, `Bairro`,`Logradouro`, `Complemento`, `Telefone`, `Uf`, `Cidade`, `NomeLocal`,`Numero`, `Descricao`) VALUES ('$cep', '$bairro', '$logradouro', '$complemento', '$telefone', '$uf', '$cidade','$nome', '$numero', '$descricao')";                    
                     if(mysqli_query($mysqli, $query)){                     
                         //echo "<p style='color:green;'>Os dados foram inseridos corretamente. Verifique o resultado na aba Exibir.</p>"; 
@@ -180,8 +187,9 @@
                         //echo "alert('')"  .mysqli_error($mysqli);
                         echo "<script type='text/javascript'>alert('Ocorreu um erro e nenhum dado foi inserido.');</script>";  
                         }                 
-                    }               
-                    mysqli_close($mysqli);              
+                   // }               
+                    mysqli_close($mysqli); 
+                    }             
                 ?>      
             </form>
         </div>
