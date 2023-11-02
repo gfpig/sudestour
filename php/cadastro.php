@@ -42,7 +42,7 @@
             }
             unset($_SESSION["nao_cadastrado"]);
         ?>
-        <form action="efetuar_cadastro.php" method="POST" style="height:100%">
+        <form action="efetuar_cadastroAnunciante.php" method="POST" style="height:100%">
             <label>Nome:</label><br>
             <input type="text" name="nomeAnunciante" class="texto" required/>
             <label>CNPJ:</label><br>
@@ -59,7 +59,23 @@
             <p class="tipo_conta">CADASTRO DO TURISTA</p>
             <img src="../images/icones/ajuda.png" width="20px" title="O usuário turista poderá consultar e avaliar pontos de interesse" style="margin-left:5px;"><br>
         </div>
-        <form action="cadastro.php" method="POST" style="height:100%">
+
+        <!-- Exibirá um pop-up caso o usuário tenha sido cadastrado com sucesso ou não -->
+        <?php
+            if(isset($_SESSION["usuario_cadastrado"])) {
+                //echo $_SESSION["usuario_cadastrado"];
+                echo "<script type='text/javascript'>alert('Você foi cadastrado com sucesso!');</script>";
+            }
+            unset($_SESSION['usuario_cadastrado']);
+
+            if(isset($_SESSION['nao_cadastrado'])) {
+                echo "<script type='text/javascript'>alert('Ocorreu um erro em seu cadastro.');</script>";
+                //echo "<p class='text-danger'>Houve um erro.</p><p>Nenhum dado foi inserido.</p>".mysqli_error($mysqli);   
+            }
+            unset($_SESSION["nao_cadastrado"]);
+        ?>
+
+        <form action="efetuar_cadastroTurista.php" method="POST" style="height:100%">
             <label>Nome:</label><br>
             <input type="text" name="nomeTurista" class="texto" required/>
             <label>CPF:</label><br>
@@ -72,7 +88,8 @@
 
             <!-- Código para cadastrar um usuário do tipo TURISTA -->
             <?php
-                if (isset($_POST['btnTurista'])) { //envia o formulário apenas quando o botão for clicado               
+
+                /*if (isset($_POST['btnTurista'])) { //envia o formulário apenas quando o botão for clicado               
                     $nomeTurista = $_POST["nomeTurista"];                
                     $cpfTurista = $_POST["cpfTurista"];
                     $senhaTurista = $_POST["senhaTurista"];   
@@ -94,7 +111,7 @@
                    // }               
                         mysqli_close($mysqli);  
                     //}
-                } 
+                } */
             ?>
         </form>
     </div>
