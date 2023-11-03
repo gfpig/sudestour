@@ -10,15 +10,29 @@
     $senha = mysqli_real_escape_string($mysqli, $_POST['senha']);
     $tipo_usuario = $_POST['tipousr'];
     if ($tipo_usuario == "anunciante") {
-        $query = "SELECT EmailAnunciante, SenhaAnunciante from anunciante WHERE EmailAnunciante = '{$usuario}' AND SenhaAnunciante = '{$senha}'";
+        $query = "SELECT EmailAnunciante, SenhaAnunciante, NomeAnunciante from anunciante WHERE EmailAnunciante = '{$usuario}' AND SenhaAnunciante = '{$senha}'";
+        $result = mysqli_query($mysqli, $query);
+        //$result = $mysqli -> query($query);
+        $coluna = $result->fetch_assoc();	
+        $nome = $coluna["NomeAnunciante"];
+        //echo $nome;
+        //exit();
     } else {
-        $query = "SELECT EmailTurista, SenhaTurista from turista WHERE EmailTurista = '{$usuario}' AND SenhaTurista = '{$senha}'";
+        $query = "SELECT EmailTurista, SenhaTurista, NomeTurista from turista WHERE EmailTurista = '{$usuario}' AND SenhaTurista = '{$senha}'";
+        $result = mysqli_query($mysqli, $query);
+        //$result = $mysqli -> query($query);
+        $coluna = $result->fetch_assoc();	
+        $nome = $coluna["NomeTurista"];
     }
     //echo $usuario;
     //echo $senha;
     //exit();
     //$query = "SELECT turista.EmailTurista, turista.SenhaTurista, anunciante.EmailAnunciante, anunciante.SenhaAnunciante from turista CROSS JOIN anunciante WHERE anunciante.EmailAnunciante = '{$usuario}' AND anunciante.SenhaAnunciante = '{$senha}'";
-    $result = mysqli_query($mysqli, $query);
+    /*$result = mysqli_query($mysqli, $query);
+    $coluna = $result->fetch_assoc();	
+    $nome = $coluna["NomeAnunciante"];*/
+    //echo $nome;
+    //exit();
 
     $row = mysqli_num_rows($result);
     //echo $row;exit;
@@ -27,7 +41,7 @@
         //$result = mysqli_query($mysqli, $query);
         //$nomeUsuario = 
         //echo $result;
-        $_SESSION['usuario'] = $usuario;
+        $_SESSION['usuario'] = $nome;
         header('Location: index.php');
         exit();
     } else { //se não, volta para a tela de login
