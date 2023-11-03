@@ -45,7 +45,7 @@ button.esqueci {
 .botao {
     width: 250px;
     height: 50px;
-    margin-top: 15%;
+    margin-top: 10%;
     background-color: #535353;
     font-size: large;
     color: white;
@@ -80,9 +80,9 @@ button.esqueci {
 }
 
 .c-buttons {
-    margin-top: 8%;
+    margin-top: 3%;
     margin-left: 23%;
-    width: 30%;
+    width: 70%;
     float:center;
 }
 

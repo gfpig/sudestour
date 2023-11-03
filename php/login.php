@@ -35,6 +35,10 @@
                 <button class="esqueci" onclick="esqueciSenha();">Esqueci a senha</button>
             </div>
             <div class="c-buttons">
+                <input type="radio" name="tipousr" class="radiobutton" value="anunciante">
+                <label for="html">Anuciante</label>
+                <input type="radio" name="tipousr" class="radiobutton" value="turista" style="margin-left:25%">
+                <label for="css">Turista</label>
                 <button class="botao">LOGIN</button><br>
                 <button class="botao"><a href="cadastro.php" class="botao">CADASTRE-SE</a></button>
             </div>
