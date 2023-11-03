@@ -21,7 +21,7 @@
     <nav>
         <ul class="menu">
             <div style="display:inline-block;">
-                <li class="dropdown"><a href="../paginas/index.php"><img src="../images/logos/sudestour_logo_claro.png" width="50" height="50" ></a></li>
+                <li class="dropdown"><a href="index.php"><img src="../images/logos/sudestour_logo_claro.png" width="50" height="50" ></a></li>
             </div>
             <div class="opcoes_menu">
                 <li class="dropdown"><a class="categorias-menu" href="espiritosanto.html">Premium</a></li>
@@ -39,7 +39,12 @@
             É IMPORTANTE COLOCAR NO FORM DEPOIS PARA FAZER O BACKEND (EU ACHO)-->
             <label id="lbl_img" class="escolher_img">
                 <img src="../images/icones/add_imagem1.png" id="img_ponto">
-                <input type="file" id="input">
+                <input type="file" id="input" name="input_imagem">
+                <?php 
+                /*if(isset($_POST['input_imagem'])) {
+                    echo '<script>alteraImg();</script>';
+                }*/
+                ?>
             </label>
             <div class="hora_funcionamento">
                 <p>HORÁRIO DE FUNCIONAMENTO</p>
@@ -157,8 +162,9 @@
                 <!-- Código para adicionar o ponto de interesse ao banco de dados -->
                 <p id="teste"></p>
                 <script>
-                    var imagem = getSrc();
-                    document.getElementById("teste").innerHTML = imagem.src;
+                    /*var imagem = getSrc();
+                    var diretorio = imagem.src;
+                    document.getElementById("teste").innerHTML = imagem.src;*/
                 </script>
                 <?php
                     if (isset($_POST['btnAdicionar'])) {
@@ -167,7 +173,13 @@
                     //echo "alert('Preencha todos os campos corretamente.')";
                     echo "<script type='text/javascript'>alert('Preencha todos os campos corretamente.');</script>";
                     exit;     */  
-                    //} else {                       
+                    //} else { 
+                    echo "<script>
+                    var imagem = getSrc();
+                    var diretorioJS = imagem.src;
+                     </script>";
+                    $diretorio = "<script>document.writeln(diretorioJS);</script>";
+
                     $nome = $_POST["nome"];                
                     $cep = $_POST["CEP"];
                     $bairro = $_POST["bairro"];   
@@ -178,8 +190,9 @@
                     $numero = $_POST["numero"]; 
                     $telefone = $_POST["telefone"]; 
                     $descricao = $_POST["descricao"];
+                    $imagem = $_POST["LOAD_FILE('$diretorio')"];
                      
-                    $query = "INSERT INTO local(`Cep`, `Bairro`,`Logradouro`, `Complemento`, `Telefone`, `Uf`, `Cidade`, `NomeLocal`,`Numero`, `Descricao`) VALUES ('$cep', '$bairro', '$logradouro', '$complemento', '$telefone', '$uf', '$cidade','$nome', '$numero', '$descricao')";                    
+                    $query = "INSERT INTO local(`Cep`, `Bairro`,`Logradouro`, `Complemento`, `Telefone`, `Imagem`, `Uf`, `Cidade`, `NomeLocal`,`Numero`, `Descricao`) VALUES ('$cep', '$bairro', '$logradouro', '$complemento', '$telefone', '$imagem', '$uf', '$cidade','$nome', '$numero', '$descricao')";                    
                     if(mysqli_query($mysqli, $query)){                     
                         //echo "<p style='color:green;'>Os dados foram inseridos corretamente. Verifique o resultado na aba Exibir.</p>"; 
                         echo "<script type='text/javascript'>alert('Ponto de interesse cadastrado com sucesso.');</script>";  
@@ -194,5 +207,8 @@
             </form>
         </div>
     </div>
+    <script>
+    console.log(imagem.src);
+    </script>
     <script src="../js/add_ponto.js"></script>
 </body>

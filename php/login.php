@@ -31,12 +31,12 @@
         <form action="valida_login.php" method="POST">
             <div class="c-inputs">
                 <input class="text" name="usuario" placeholder="E-MAIL" required/><br>
-                <input class="text" name="senha" placeholder="SENHA" required/><br>
+                <input class="text" type="password" name="senha" placeholder="SENHA" required/><br>
                 <button class="esqueci" onclick="esqueciSenha();">Esqueci a senha</button>
             </div>
             <div class="c-buttons">
                 <button class="botao">LOGIN</button><br>
-                <button class="botao"><a href="cadastro.html" class="botao">CADASTRE-SE</a></button>
+                <button class="botao"><a href="cadastro.php" class="botao">CADASTRE-SE</a></button>
             </div>
         </form>
         <a href="index.php" class="voltar">Voltar à página inicial</a>

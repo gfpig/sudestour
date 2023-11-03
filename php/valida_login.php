@@ -8,15 +8,22 @@
 
     $usuario = mysqli_real_escape_string($mysqli, $_POST['usuario']);
     $senha = mysqli_real_escape_string($mysqli, $_POST['senha']);
-
+    //echo $usuario;
+    //echo $senha;
+    //exit();
     $query = "SELECT turista.EmailTurista, turista.SenhaTurista, anunciante.EmailAnunciante, anunciante.SenhaAnunciante from turista CROSS JOIN anunciante WHERE anunciante.EmailAnunciante = '{$usuario}' AND anunciante.SenhaAnunciante = '{$senha}'";
     $result = mysqli_query($mysqli, $query);
 
     $row = mysqli_num_rows($result);
     //echo $row;exit;
     if ($row == 1) { //se o login for validado, redireciona para home
+        //$query = "SELECT turista.NomeTurista, anunciante.NomeAnuciante from turista CROSS JOIN anunciante WHERE turista.EmailTurista = '{$usuario}' OR anunciante.EmailAnunciante = '{$usuario}'";
+        //$result = mysqli_query($mysqli, $query);
+        //$nomeUsuario = 
+        echo $result;
         $_SESSION['usuario'] = $usuario;
-        header('Location: index.php');
+        //header('Location: index.php');
+        exit();
     } else { //se não, volta para a tela de login
         header('Location: login.php');   
         $_SESSION['nao_autenticado'] = true;    

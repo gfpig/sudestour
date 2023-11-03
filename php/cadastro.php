@@ -29,6 +29,8 @@
             <p class="tipo_conta">CADASTRO DO ANUNCIANTE</p>
             <img src="../images/icones/ajuda.png" width="15px" title="O usuário anunciante poderá sugerir locais de interesse para serem adicionados ao site" style="margin-left:5px;"><br>
         </div>
+
+        <!-- Exibirá um pop-up caso o usuário tenha sido cadastrado com sucesso ou não -->
         <?php
             if(isset($_SESSION["usuario_cadastrado"])) {
                 //echo $_SESSION["usuario_cadastrado"];
@@ -46,9 +48,9 @@
             <label>Nome:</label><br>
             <input type="text" name="nomeAnunciante" class="texto" required/>
             <label>CNPJ:</label><br>
-            <input type="text" name="cnpjAnunciante" class="texto" required/>
+            <input type="text" name="cnpjAnunciante" class="texto" onblur="validarCNPJ(this.value)" required/>
             <label>Senha:</label><br>
-            <input type="text" name="senhaAnunciante" class="texto" required/>
+            <input type="text" name="senhaAnunciante" id="senha" class="texto" pattern="(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Sua senha deve conter uma letra maiúscula, uma minúscula e pelo menos 8 caracteres" required/>
             <label>E-mail:</label><br>
             <input type="email" name="emailAnunciante" class="texto" required/>
             <button type="submit" name="btnAnunciante" class="cadastrar">CADASTRAR</button>
@@ -74,46 +76,17 @@
             }
             unset($_SESSION["nao_cadastrado"]);
         ?>
-
         <form action="efetuar_cadastroTurista.php" method="POST" style="height:100%">
             <label>Nome:</label><br>
             <input type="text" name="nomeTurista" class="texto" required/>
             <label>CPF:</label><br>
-            <input type="text" name="cpfTurista" class="texto" required/>
+            <input type="text" name="cpfTurista" class="texto" onblur="validarCPF(this.value);" required/>
             <label>Senha:</label><br>
-            <input type="text" name="senhaTurista" class="texto" required/>
+            <input type="text" name="senhaTurista" id="senha" class="texto" pattern="(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Sua senha deve conter uma letra maiúscula, uma minúscula e pelo menos 8 caracteres" required/>
             <label>E-mail:</label><br>
             <input type="email" name="emailTurista" class="texto" required/>
             <button type="submit" name="btnTurista" class="cadastrar">CADASTRAR</button>
-
-            <!-- Código para cadastrar um usuário do tipo TURISTA -->
-            <?php
-
-                /*if (isset($_POST['btnTurista'])) { //envia o formulário apenas quando o botão for clicado               
-                    $nomeTurista = $_POST["nomeTurista"];                
-                    $cpfTurista = $_POST["cpfTurista"];
-                    $senhaTurista = $_POST["senhaTurista"];   
-                    $emailTurista = $_POST["emailTurista"];           
-                    $queryTurista = "INSERT INTO turista(`cpf`, `NomeTurista`,`EmailTurista`, `SenhaTurista`) VALUES ('$cpfTurista', '$nomeTurista', '$emailTurista', '$senhaTurista')";    
-                                    
-                    if(mysqli_query($mysqli, $queryTurista)){ //se a query for bem sucedida, exiba um pop-up
-                        echo "<script>document.getElementByName('cpfTurista').value=(''); </script>";
-                        echo "<script>document.getElementByName('nomeTurista').value=(''); </script>";
-                        echo "<script>document.getElementByName('senhaTurista').value=(''); </script>";
-                        echo "<script>document.getElementByName('emailTurista').value=(''); </script>";
-                        echo "<script type='text/javascript'>alert('Seu cadastrado foi realizado com sucesso :)');</script>";
-                        header("location: {$_SERVER['PHP_SELF']}");
-                        exit; 
-                    } 
-                    else{ //se a query for mal sucedida, exiba outro pop-up
-                        echo "<script type='text/javascript'>alert('Ocorreu um erro e nenhum dado foi inserido.');</script>";  
-                    }                 
-                   // }               
-                        mysqli_close($mysqli);  
-                    //}
-                } */
-            ?>
         </form>
     </div>
-    
+    <script src="../js/cadastro_usuario.js"></script>
 </body>
