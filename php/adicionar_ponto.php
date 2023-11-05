@@ -8,6 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=100%, initial-scale=1.0">
     <title>Adicionar um Ponto de Interesse</title>
+    <link rel="shortcut icon" 
+          href="../images/logos/sudestour_logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@800&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -32,6 +34,17 @@
     </nav>
     <div class="container-principal">
         <div class="container-esquerda">
+            <?php
+                if (isset($_SESSION["sucesso"])) {
+                    echo "<script type='text/javascript'>alert('Ponto adicionado com sucesso');</script>";
+                }
+                unset($_SESSION["sucesso"]);
+                if (isset($_SESSION["erro"])) {
+                    echo "<script type='text/javascript'>alert('Ocorreu um erro');</script>";
+                }
+                unset($_SESSION["erro"]);
+            ?>
+            <form action="insert_ponto.php" method="POST" enctype="multipart/form-data">
             <!--<form action="/action_page.php">
                 <input type="file" id="img_ponto" name="fachada_ponto">
                 <input type="submit">
@@ -89,7 +102,7 @@
         </div>
 
         <div class="container-direita">
-            <form action="adicionar_ponto.php" method="POST">
+            <!--<form action="adicionar_ponto.php" method="POST">-->
                 <div class="primeira_linha" style="margin-top:1%">
                     <label class="label_formulario">Nome do Local:</label><br>
                     <input type="text" name="nome" class="texto_nome"><br>
@@ -167,14 +180,14 @@
                     document.getElementById("teste").innerHTML = imagem.src;*/
                 </script>
                 <?php
-                    if (isset($_POST['btnAdicionar'])) {
+                    //if (isset($_POST['btnAdicionar'])) {
                     /*if(empty($_POST["nome"])||empty($_POST["CEP"])||empty($_POST["bairro"])||empty($_POST["logradouro"])||empty($_POST["cidade"])||empty($_POST["UF"])||empty($_POST["complemento"])||empty($_POST["numero"])||empty($_POST["telefone"])||empty($_POST["descricao"])){    
                     //echo "<p style='color:red;'>Preencha todos os campos corretamente</p>";
                     //echo "alert('Preencha todos os campos corretamente.')";
                     echo "<script type='text/javascript'>alert('Preencha todos os campos corretamente.');</script>";
                     exit;     */  
                     //} else { 
-                    echo "<script>
+                    /*echo "<script>
                     var imagem = getSrc();
                     var diretorioJS = imagem.src;
                      </script>";
@@ -201,8 +214,8 @@
                         echo "<script type='text/javascript'>alert('Ocorreu um erro e nenhum dado foi inserido.');</script>";  
                         }                 
                    // }               
-                    mysqli_close($mysqli); 
-                    }             
+                    mysqli_close($mysqli); */
+                    //}             
                 ?>      
             </form>
         </div>
