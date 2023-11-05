@@ -35,7 +35,7 @@ li.dropdown {
     display: inline-block;
 }
 
-.dropdown-content {
+/*.dropdown-content {
     display: none;
     position: absolute;
     background-color: #FFFFE0;
@@ -50,7 +50,7 @@ li.dropdown {
   
 .dropdown:hover .dropdown-content {
     display: block;
-}
+}*/
 
 #botao-login {
     margin-top: 3%;
