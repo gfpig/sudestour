@@ -7,7 +7,21 @@
 
     //ADICIONANDO NA TABELA LOCAIS
 
-    $nome = $_POST["nome"];                
+    $queryAnunciante = "SELECT Cnpj from anunciante WHERE NomeAnunciante = '{$_SESSION['usuario']}'";
+
+    //se não encontrar o anunciante, volte à tela de adicionar ponto
+    if(!mysqli_query($mysqli, $queryAnunciante)){
+        $_SESSION["erro"] = true; 
+        header('Location: adicionar_ponto.php');
+        exit();
+    }
+
+    $result = mysqli_query($mysqli, $queryAnunciante);
+    $coluna = $result->fetch_assoc();	
+
+    $cnpj = $coluna["Cnpj"];
+    $nome = $_POST["nome"]; 
+    $site = $_POST["site"];               
     $cep = $_POST["CEP"];
     $bairro = $_POST["bairro"];   
     $logradouro = $_POST["logradouro"];                 
@@ -19,7 +33,7 @@
     $descricao = $_POST["descricao"];
     $imagem = addslashes(file_get_contents($_FILES["input_imagem"]["tmp_name"]));
     
-    $queryLocal = "INSERT INTO local(`Cep`, `Bairro`,`Logradouro`, `Complemento`, `Telefone`, `Imagem`, `Uf`, `Cidade`, `NomeLocal`,`Numero`, `Descricao`) VALUES ('$cep', '$bairro', '$logradouro', '$complemento', '$telefone', '$imagem', '$uf', '$cidade','$nome', '$numero', '$descricao')";                    
+    $queryLocal = "INSERT INTO local(`Cep`, `Bairro`,`Logradouro`, `Complemento`, `Telefone`, `RedeSocial` , `Imagem`, `Uf`, `Cidade`, `NomeLocal`,`Numero`, `Descricao`, `CNPJ`) VALUES ('$cep', '$bairro', '$logradouro', '$complemento', '$telefone', '$site', '$imagem', '$uf', '$cidade','$nome', '$numero', '$descricao', '$cnpj')";                    
     
     //ADICIONANDO NA TABELA DE HORARIOS
     $SegAbertura = mysqli_real_escape_string($mysqli, $_POST['SegAbre']);

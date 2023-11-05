@@ -1,4 +1,5 @@
 <?php
+  session_start();
   include "conecta.php";
 ?>
 <!DOCTYPE html>
@@ -123,7 +124,9 @@
                             echo '<option value ="' . $query['NomeCategoria'] . '">' . $query['NomeCategoria'] . '</option>';
                         }
                         ?>
-                    </select><br>
+                    </select>
+                    <label class="label_formulario">Site:</label>
+                    <input type="text" name="site" class="texto_site"><br>
                 </div>
             
                 <div class="segunda_linha" style="margin-top:1%">

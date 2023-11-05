@@ -151,6 +151,11 @@ div.hora_funcionamento {
     width:500px;
 }
 
+.texto_site {
+    background-color: #D2D2D3;
+    width:195x;
+}
+
 .texto_CEP {
     background-color: #D2D2D3;
     width: 200px;
