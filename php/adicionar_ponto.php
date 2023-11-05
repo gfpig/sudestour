@@ -64,38 +64,38 @@
                 <table>
                     <tr>
                       <td><label>Segunda-feira</label></td>
-                      <td><input type="text" class="hora"></td>
-                      <td><input type="text" class="hora"></td>
+                      <td><input type="text" name="SegAbre" class="hora"></td>
+                      <td><input type="text" name="SegFecha" class="hora"></td>
                     </tr>
                     <tr>
                       <td>Terça-feira</td>
-                      <td><input type="text" class="hora"></td>
-                      <td><input type="text" class="hora"></td>
+                      <td><input type="text" name="TerAbre" class="hora"></td>
+                      <td><input type="text" name="TerFecha" class="hora"></td>
                     </tr>
                     <tr>
                       <td>Quarta-feira</td>
-                      <td><input type="text" class="hora"></td>
-                      <td><input type="text" class="hora"></td>
+                      <td><input type="text" name="QuaAbre" class="hora"></td>
+                      <td><input type="text" name="QuaFecha" class="hora"></td>
                     </tr>
                     <tr>
                         <td>Quinta-feira</td>
-                        <td><input type="text" class="hora"></td>
-                        <td><input type="text" class="hora"></td>
+                        <td><input type="text" name="QuiAbre" class="hora"></td>
+                        <td><input type="text" name="QuiFecha" class="hora"></td>
                     </tr>
                     <tr>
                         <td>Sexta-feira</td>
-                        <td><input type="text" class="hora"></td>
-                        <td><input type="text" class="hora"></td>
+                        <td><input type="text" name="SextaAbre" class="hora"></td>
+                        <td><input type="text" name="SextaFecha" class="hora"></td>
                     </tr>
                     <tr>
                         <td>Sábado</td>
-                        <td><input type="text" class="hora"></td>
-                        <td><input type="text" class="hora"></td>
+                        <td><input type="text" name="SabAbre" class="hora"></td>
+                        <td><input type="text" name="SabFecha" class="hora"></td>
                     </tr>
                     <tr>
                         <td>Domingo</td>
-                        <td><input type="text" class="hora"></td>
-                        <td><input type="text" class="hora"></td>
+                        <td><input type="text" name="DomAbre" class="hora"></td>
+                        <td><input type="text" name="DomFecha" class="hora"></td>
                     </tr>
                   </table> 
             </div>        
