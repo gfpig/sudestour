@@ -51,55 +51,55 @@
                 <input type="submit">
             </form>
             É IMPORTANTE COLOCAR NO FORM DEPOIS PARA FAZER O BACKEND (EU ACHO)-->
-            <label id="lbl_img" class="escolher_img">
-                <img src="../images/icones/add_imagem1.png" id="img_ponto">
-                <input type="file" id="input" name="input_imagem">
-                <?php 
-                /*if(isset($_POST['input_imagem'])) {
-                    echo '<script>alteraImg();</script>';
-                }*/
-                ?>
-            </label>
-            <div class="hora_funcionamento">
-                <p>HORÁRIO DE FUNCIONAMENTO</p>
-                <table>
-                    <tr>
-                      <td><label>Segunda-feira</label></td>
-                      <td><input type="text" name="SegAbre" class="hora"></td>
-                      <td><input type="text" name="SegFecha" class="hora"></td>
-                    </tr>
-                    <tr>
-                      <td>Terça-feira</td>
-                      <td><input type="text" name="TerAbre" class="hora"></td>
-                      <td><input type="text" name="TerFecha" class="hora"></td>
-                    </tr>
-                    <tr>
-                      <td>Quarta-feira</td>
-                      <td><input type="text" name="QuaAbre" class="hora"></td>
-                      <td><input type="text" name="QuaFecha" class="hora"></td>
-                    </tr>
-                    <tr>
-                        <td>Quinta-feira</td>
-                        <td><input type="text" name="QuiAbre" class="hora"></td>
-                        <td><input type="text" name="QuiFecha" class="hora"></td>
-                    </tr>
-                    <tr>
-                        <td>Sexta-feira</td>
-                        <td><input type="text" name="SextaAbre" class="hora"></td>
-                        <td><input type="text" name="SextaFecha" class="hora"></td>
-                    </tr>
-                    <tr>
-                        <td>Sábado</td>
-                        <td><input type="text" name="SabAbre" class="hora"></td>
-                        <td><input type="text" name="SabFecha" class="hora"></td>
-                    </tr>
-                    <tr>
-                        <td>Domingo</td>
-                        <td><input type="text" name="DomAbre" class="hora"></td>
-                        <td><input type="text" name="DomFecha" class="hora"></td>
-                    </tr>
-                  </table> 
-            </div>        
+                <label id="lbl_img" class="escolher_img">
+                    <img src="../images/icones/add_imagem1.png" id="img_ponto">
+                    <input type="file" id="input" name="input_imagem">
+                    <?php 
+                    /*if(isset($_POST['input_imagem'])) {
+                        echo '<script>alteraImg();</script>';
+                    }*/
+                    ?>
+                </label>
+                <div class="hora_funcionamento">
+                    <p>HORÁRIO DE FUNCIONAMENTO</p>
+                    <table>
+                        <tr>
+                        <td><label>Segunda-feira</label></td>
+                        <td><input type="text" name="SegAbre" class="hora"></td>
+                        <td><input type="text" name="SegFecha" class="hora"></td>
+                        </tr>
+                        <tr>
+                        <td>Terça-feira</td>
+                        <td><input type="text" name="TerAbre" class="hora"></td>
+                        <td><input type="text" name="TerFecha" class="hora"></td>
+                        </tr>
+                        <tr>
+                        <td>Quarta-feira</td>
+                        <td><input type="text" name="QuaAbre" class="hora"></td>
+                        <td><input type="text" name="QuaFecha" class="hora"></td>
+                        </tr>
+                        <tr>
+                            <td>Quinta-feira</td>
+                            <td><input type="text" name="QuiAbre" class="hora"></td>
+                            <td><input type="text" name="QuiFecha" class="hora"></td>
+                        </tr>
+                        <tr>
+                            <td>Sexta-feira</td>
+                            <td><input type="text" name="SextaAbre" class="hora"></td>
+                            <td><input type="text" name="SextaFecha" class="hora"></td>
+                        </tr>
+                        <tr>
+                            <td>Sábado</td>
+                            <td><input type="text" name="SabAbre" class="hora"></td>
+                            <td><input type="text" name="SabFecha" class="hora"></td>
+                        </tr>
+                        <tr>
+                            <td>Domingo</td>
+                            <td><input type="text" name="DomAbre" class="hora"></td>
+                            <td><input type="text" name="DomFecha" class="hora"></td>
+                        </tr>
+                    </table> 
+                </div>        
         </div>
 
         <div class="container-direita">
@@ -115,14 +115,10 @@
                         
                         <option value=""></option>
                         <?php
-                        //$val = $_POST['NomeCategoria']?:'';
-        
-                        //$sql = "SELECT `NomeCategoria` FROM `categoria` ORDER BY `NomeCategoria`";
-                        $res = $mysqli->query("SELECT `NomeCategoria` FROM `categoria` ORDER BY `IdCategoria`"); //$mysqli->query("SELECT * FROM `clientes`"); 
-                        while ($query = $res->fetch_assoc()) {
-                            //$selected = ($val == $row1['NomeCategoria'] ? 'selected="selected"' : '');
-                            echo '<option value ="' . $query['NomeCategoria'] . '">' . $query['NomeCategoria'] . '</option>';
-                        }
+                            $res = $mysqli->query("SELECT `NomeCategoria` FROM `categoria` ORDER BY `IdCategoria`"); 
+                            while ($query = $res->fetch_assoc()) {
+                                echo '<option value ="' . $query['NomeCategoria'] . '">' . $query['NomeCategoria'] . '</option>';
+                            }
                         ?>
                     </select>
                     <label class="label_formulario">Site:</label>
@@ -174,57 +170,8 @@
                 </div>
                 <button><a href="index.html" class="link">VOLTAR</a></button>
                 <button type="submit" name='btnAdicionar'>ADICIONAR</button>
-
-                <!-- Código para adicionar o ponto de interesse ao banco de dados -->
-                <p id="teste"></p>
-                <script>
-                    /*var imagem = getSrc();
-                    var diretorio = imagem.src;
-                    document.getElementById("teste").innerHTML = imagem.src;*/
-                </script>
-                <?php
-                    //if (isset($_POST['btnAdicionar'])) {
-                    /*if(empty($_POST["nome"])||empty($_POST["CEP"])||empty($_POST["bairro"])||empty($_POST["logradouro"])||empty($_POST["cidade"])||empty($_POST["UF"])||empty($_POST["complemento"])||empty($_POST["numero"])||empty($_POST["telefone"])||empty($_POST["descricao"])){    
-                    //echo "<p style='color:red;'>Preencha todos os campos corretamente</p>";
-                    //echo "alert('Preencha todos os campos corretamente.')";
-                    echo "<script type='text/javascript'>alert('Preencha todos os campos corretamente.');</script>";
-                    exit;     */  
-                    //} else { 
-                    /*echo "<script>
-                    var imagem = getSrc();
-                    var diretorioJS = imagem.src;
-                     </script>";
-                    $diretorio = "<script>document.writeln(diretorioJS);</script>";
-
-                    $nome = $_POST["nome"];                
-                    $cep = $_POST["CEP"];
-                    $bairro = $_POST["bairro"];   
-                    $logradouro = $_POST["logradouro"];                 
-                    $cidade = $_POST["cidade"];             
-                    $uf = $_POST["UF"];   
-                    $complemento = $_POST["complemento"]; 
-                    $numero = $_POST["numero"]; 
-                    $telefone = $_POST["telefone"]; 
-                    $descricao = $_POST["descricao"];
-                    $imagem = $_POST["LOAD_FILE('$diretorio')"];
-                     
-                    $query = "INSERT INTO local(`Cep`, `Bairro`,`Logradouro`, `Complemento`, `Telefone`, `Imagem`, `Uf`, `Cidade`, `NomeLocal`,`Numero`, `Descricao`) VALUES ('$cep', '$bairro', '$logradouro', '$complemento', '$telefone', '$imagem', '$uf', '$cidade','$nome', '$numero', '$descricao')";                    
-                    if(mysqli_query($mysqli, $query)){                     
-                        //echo "<p style='color:green;'>Os dados foram inseridos corretamente. Verifique o resultado na aba Exibir.</p>"; 
-                        echo "<script type='text/javascript'>alert('Ponto de interesse cadastrado com sucesso.');</script>";  
-                    } else{                   
-                        //echo "alert('')"  .mysqli_error($mysqli);
-                        echo "<script type='text/javascript'>alert('Ocorreu um erro e nenhum dado foi inserido.');</script>";  
-                        }                 
-                   // }               
-                    mysqli_close($mysqli); */
-                    //}             
-                ?>      
             </form>
         </div>
     </div>
-    <script>
-    console.log(imagem.src);
-    </script>
     <script src="../js/add_ponto.js"></script>
 </body>
