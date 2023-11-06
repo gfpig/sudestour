@@ -9,6 +9,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=, initial-scale=1.0">
     <title>Pontos Turisticos do Espírito Santo</title>
+    <link rel="shortcut icon" 
+          href="../images/logos/sudestour_logo.png">
     <link rel="stylesheet" href="../css/style_filtro.css">  
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -1,0 +1,133 @@
+html {
+    height: 80%;
+}
+html, body {
+    height: 100%;
+}
+.menu {
+    font-family: 'Roboto', sans-serif;
+    list-style-type: none;
+    margin: 0;
+    margin-left: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #545454;
+}
+li a.categorias-menu:hover, .dropdown:hover .dropbtn {
+    color: black;
+    background-color: #CDCDCD;
+}
+
+li a.categorias-menu, .dropbtn {
+    margin-left: 30px;
+    display: inline-flexbox;
+    color: #CDCDCD;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+  
+li.dropdown {
+    padding: 0px;
+    display: inline-block;
+    margin-left: 8%;
+}
+
+.logo {
+    display: flex;
+    float: left;
+}
+
+.opcoes_menu {
+    width: 87%;
+    margin-top: 0.7%;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+nav {
+    position: sticky;
+    top: 0;
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+    display: inline-block;
+    color: #545454;
+}
+
+body {   
+    font-family: 'Roboto', sans-serif;   
+    background-color: #EAE8E8;
+    height: 100%;
+
+}
+
+p {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 30px;
+    color: #545454;
+}
+.c-pacote_premium {
+    /*margin-top: 5%;*/
+    margin-left: 30%;
+    
+}
+
+.txt_premium {
+    
+    font-family: 'DM Sans', sans-serif;
+    margin-top: 5%;
+    margin-left: 7%;
+    justify-self: center;
+    text-align: justify;
+    max-width: 450px;
+}
+
+.container {
+    background-color: #CECECE;
+    max-width:40%;
+    height:100%;
+    margin-top: 1.5%;
+    margin-left: 30%;
+}
+.txt_preco{
+    font-family: 'League Spartan', sans-serif;
+    font-size: 50px;
+    color: #545454;
+    margin-left: 27%;
+    margin-top: 8%;
+}
+.txt_mes{
+    font-family: 'DM Sans', sans-serif;
+    margin-top: 5%;
+    font-size: 30px; 
+    justify-self: center;
+    text-align: justify;
+    max-width: 450px;
+}
+.txt_upqrcode {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 14px;
+    color: #545454;
+    margin-left: 14%;
+    margin-top: 5%;
+    max-height: 300px;
+}
+.imagem-qrcode {
+    margin-left: 28%;
+    margin-top: 4%;
+    max-height: 300px;
+}
+
+.text {
+    margin-left: 500px;
+    height: 30px;
+    width: 250px;
+    margin: 5px;
+    background-color: #ECECEC;
+    color: #545454;
+}
