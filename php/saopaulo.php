@@ -42,6 +42,15 @@
             </div>
         </ul>
     </nav>
+    <?php
+        $result = $mysqli->query("SELECT * FROM `local` WHERE Uf = 'SP'"); 
+        while($row = $result->fetch_assoc()) {
+            //echo '<script>addNormais($row["NomeLocal"], $row["Logradouro"], $row["Imagem"]);</script>';
+            $NomeLocal = $row["nome"];
+            $Logradouro = $row["Logradouro"];
+            $Imagem = $row["Imagem"];
+        }
+    ?>
         <div class="container-principal">
             <div class="container-esquerda">
                 <div class="container-filtros">
