@@ -1,5 +1,11 @@
 <?php
   session_start();
+
+  //se um usuário anunciante não estiver logado, voltar para a home
+  if (!isset($_SESSION["Anunciante"])) {
+    header("Location: index.php");
+  }
+
   include "conecta.php";
 ?>
 <!DOCTYPE html>
@@ -33,20 +39,35 @@
             </div>
         </ul>
     </nav>
+    
+    <?php
+        if (isset($_SESSION["sucesso"])) {
+            echo "<script type='text/javascript'>alert('Ponto adicionado com sucesso');</script>";
+        }
+        unset($_SESSION["sucesso"]);
+        if (isset($_SESSION["erro"])) {
+            echo "<script type='text/javascript'>alert('Ocorreu um erro');</script>";
+        }
+        unset($_SESSION["erro"]);
+    ?>
+    <form action="insert_ponto.php" method="POST" enctype="multipart/form-data">
     <div class="container-principal">
-        <div class="container-esquerda">
+        
+        
+            <div class="container-esquerda">
+            
             <?php
-                if (isset($_SESSION["sucesso"])) {
-                    echo "<script type='text/javascript'>alert('Ponto adicionado com sucesso');</script>";
-                }
-                unset($_SESSION["sucesso"]);
-                if (isset($_SESSION["erro"])) {
-                    echo "<script type='text/javascript'>alert('Ocorreu um erro');</script>";
-                }
-                unset($_SESSION["erro"]);
+            /*if (isset($_SESSION["sucesso"])) {
+                echo "<script type='text/javascript'>alert('Ponto adicionado com sucesso');</script>";
+            }
+            unset($_SESSION["sucesso"]);
+            if (isset($_SESSION["erro"])) {
+                echo "<script type='text/javascript'>alert('Ocorreu um erro');</script>";
+            }
+            unset($_SESSION["erro"]);*/
             ?>
-            <form action="insert_ponto.php" method="POST" enctype="multipart/form-data">
-            <!--<form action="/action_page.php">
+           <!--<form action="insert_ponto.php" method="POST" enctype="multipart/form-data">-->
+                 <!--<form action="/action_page.php">
                 <input type="file" id="img_ponto" name="fachada_ponto">
                 <input type="submit">
             </form>
@@ -61,7 +82,7 @@
                     ?>
                 </label>
                 <div class="hora_funcionamento">
-                    <p>HORÁRIO DE FUNCIONAMENTO</p>
+                    <p>HORÁRIO DE FUNCIONAMENTO</p><img src="../images/icones/ajuda.png" width="20px" title="Insira os dados no formato 00:00" style="margin-left:5px;">
                     <table>
                         <tr>
                         <td><label>Segunda-feira</label></td>
@@ -100,78 +121,78 @@
                         </tr>
                     </table> 
                 </div>        
-        </div>
+            </div>
 
-        <div class="container-direita">
-            <!--<form action="adicionar_ponto.php" method="POST">-->
-                <div class="primeira_linha" style="margin-top:1%">
-                    <label class="label_formulario">Nome do Local:</label><br>
-                    <input type="text" name="nome" class="texto_nome"><br>
-                </div><br>
+            <div class="container-direita">
+                <!--<form action="adicionar_ponto.php" method="POST">-->
+                    <div class="primeira_linha" style="margin-top:1%">
+                        <label class="label_formulario">Nome do Local:</label><br>
+                        <input type="text" name="nome" class="texto_nome"><br>
+                    </div><br>
 
-                <div class="linha_combobox">
-                    <label class="label_formulario">Categoria:</label>
-                    <select name="categoria" id="categoria" maxlength="30">
-                        
-                        <option value=""></option>
-                        <?php
-                            $res = $mysqli->query("SELECT `NomeCategoria` FROM `categoria` ORDER BY `IdCategoria`"); 
-                            while ($query = $res->fetch_assoc()) {
-                                echo '<option value ="' . $query['NomeCategoria'] . '">' . $query['NomeCategoria'] . '</option>';
-                            }
-                        ?>
-                    </select>
-                    <label class="label_formulario">Site:</label>
-                    <input type="text" name="site" class="texto_site"><br>
-                </div>
+                    <div class="linha_combobox">
+                        <label class="label_formulario">Categoria:</label>
+                        <select name="categoria" id="categoria" maxlength="30">
+                            
+                            <option value=""></option>
+                            <?php
+                                $res = $mysqli->query("SELECT `NomeCategoria` FROM `categoria` ORDER BY `IdCategoria`"); 
+                                while ($query = $res->fetch_assoc()) {
+                                    echo '<option value ="' . $query['NomeCategoria'] . '">' . $query['NomeCategoria'] . '</option>';
+                                }
+                            ?>
+                        </select>
+                        <label class="label_formulario">Site:</label>
+                        <input type="text" name="site" class="texto_site"><br>
+                    </div>
             
-                <div class="segunda_linha" style="margin-top:1%">
-                    <div>
-                        <label class="label_formulario">CEP:</label><br>
-                        <input type="text" name="CEP" class="texto_CEP" value="" id="cep" onblur="pesquisacep(this.value);" >
-                        <script src="../js/add_ponto.js"></script>
+                    <div class="segunda_linha" style="margin-top:1%">
+                        <div>
+                            <label class="label_formulario">CEP:</label><br>
+                            <input type="text" name="CEP" class="texto_CEP" value="" id="cep" onblur="pesquisacep(this.value);" >
+                            <script src="../js/add_ponto.js"></script>
+                        </div>
+                        <div class="bairro">
+                            <label class="label_formulario">Bairro:</label><br>
+                            <input type="text" name="bairro" class="texto_bairro" id="bairro"><br>
+                        </div>
+                    </div><br>
+                    <div class="terceira-linha">
+                        <label class="label_formulario">Logradouro:</label><br>
+                        <input type="text" name="logradouro" class="texto_logradouro" id="rua"><br>
+                    </div><br>
+                    <div class="quarta_linha" style="margin-top:1%">
+                        <div>
+                            <label class="label_formulario">Cidade:</label><br>
+                            <input type="text" name="cidade" class="texto_cidade" id="cidade">
+                        </div>
+                        <div class="UF">
+                            <label class="label_formulario">UF:</label><br>
+                            <input type="text" name="UF" class="texto_UF" id="uf">
+                        </div>
+                    </div><br>
+                    <div class="quinta_linha" style="margin-top:1%">
+                        <div>
+                            <label class="label_formulario">Complemento:</label><br>
+                            <input type="text" name="complemento" class="texto_complemento"><br>
+                        </div>
+                        <div class="numero">
+                            <label class="label_formulario">Nº:</label><br>
+                            <input type="text" name="numero" class="texto_No"><br>
+                        </div>
+                        <div class="telefone">
+                            <label class="label_formulario">Telefone:</label><br>
+                            <input type="text" name="telefone" class="texto_telefone"><br>
+                        </div>
+                    </div><br>
+                    <div style="margin-top:1%">
+                        <label class="label_formulario">Descrição:</label><br>
+                        <textarea class="texto_descricao" name="descricao"></textarea>             
                     </div>
-                    <div class="bairro">
-                        <label class="label_formulario">Bairro:</label><br>
-                        <input type="text" name="bairro" class="texto_bairro" id="bairro"><br>
-                    </div>
-                </div><br>
-                <div class="terceira-linha">
-                    <label class="label_formulario">Logradouro:</label><br>
-                    <input type="text" name="logradouro" class="texto_logradouro" id="rua"><br>
-                </div><br>
-                <div class="quarta_linha" style="margin-top:1%">
-                    <div>
-                        <label class="label_formulario">Cidade:</label><br>
-                        <input type="text" name="cidade" class="texto_cidade" id="cidade">
-                    </div>
-                    <div class="UF">
-                        <label class="label_formulario">UF:</label><br>
-                        <input type="text" name="UF" class="texto_UF" id="uf">
-                    </div>
-                </div><br>
-                <div class="quinta_linha" style="margin-top:1%">
-                    <div>
-                        <label class="label_formulario">Complemento:</label><br>
-                        <input type="text" name="complemento" class="texto_complemento"><br>
-                    </div>
-                    <div class="numero">
-                        <label class="label_formulario">Nº:</label><br>
-                        <input type="text" name="numero" class="texto_No"><br>
-                    </div>
-                    <div class="telefone">
-                        <label class="label_formulario">Telefone:</label><br>
-                        <input type="text" name="telefone" class="texto_telefone"><br>
-                    </div>
-                </div><br>
-                <div style="margin-top:1%">
-                    <label class="label_formulario">Descrição:</label><br>
-                    <textarea class="texto_descricao" name="descricao"></textarea>             
-                </div>
-                <button><a href="index.html" class="link">VOLTAR</a></button>
-                <button type="submit" name='btnAdicionar'>ADICIONAR</button>
-            </form>
-        </div>
-    </div>
+                    <button><a href="index.html" class="link">VOLTAR</a></button>
+                    <button type="submit" name='btnAdicionar'>ADICIONAR</button>
+            </div> 
+         </div>
+    </form>
     <script src="../js/add_ponto.js"></script>
 </body>

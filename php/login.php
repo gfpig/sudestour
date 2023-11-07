@@ -1,5 +1,10 @@
 <?php
     session_start();
+
+    //se um usuário já estiver logado, impedimos ele de acessar a página
+    if (isset($_SESSION["Anunciante"]) || isset($_SESSION["Turista"])) { 
+        header("Location: index.php");
+    }
 ?>
 
 <!DOCTYPE html>

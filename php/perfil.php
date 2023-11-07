@@ -18,12 +18,12 @@
     <nav>
         <ul class="menu">
             <div style="display:inline-block;">
-                <li class="dropdown"><a href="index.html"><img src="../images/logos/sudestour_logo_claro.png" width="50" height="50" ></a></li>
+                <li class="dropdown"><a href="index.php"><img src="../images/logos/sudestour_logo_claro.png" width="50" height="50" ></a></li>
             </div>
             <div class="opcoes_menu">
-                <li class="dropdown"><a class="categorias-menu" href="espiritosanto.html">Premium</a></li>
-                <li class="dropdown"><a class="categorias-menu" href="adicionar_ponto.html">Adicionar Local</a></li>
-                <li class="dropdown"><a class="categorias-menu" href="riodejaneiro.html">Perfil</a></li>
+                <li class="dropdown"><a class="categorias-menu" href="pagamento.php">Premium</a></li>
+                <li class="dropdown"><a class="categorias-menu" href="adicionar_ponto.php">Adicionar Local</a></li>
+                <!--<li class="dropdown"><a class="categorias-menu" href="riodejaneiro.html">Perfil</a></li>-->
             </div>
         </ul>
     </nav>
