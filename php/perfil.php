@@ -30,23 +30,23 @@
     <div class="container">
         <div class="container-cabecalho">
             <div class="c-carteira_anunciante">
-                <p>CARTEIRA DO ANUNCIANTE</p>
+                <p><i>CARTEIRA DO ANUNCIANTE</i></p>
             </div>
         </div>
-        <div class="container-direita">
+        <div class="container-esquerda">
             <div>
                 <div class="c-inputs">
-                    Nome<br>
-                    <input class="text" name="email" placeholder="Digite o nome"><br>
+                    <label>Nome</label><br>
+                    <input class="text" name="nome" placeholder="Digite o nome"><br>
                 </div>
                 
                 <div class="c-inputs">
-                    CPF/CNPJ<br>
-                    <input class="text" name="senha" placeholder="Digite o CPF/CNPJ"><br>
+                <label>CPF/CNPJ</label><br>
+                    <input class="text" name="documento" placeholder="Digite o CPF/CNPJ"><br>
                 </div>
                 <div class="c-inputs">
-                    Email<br>
-                    <input class="text" name="senha" placeholder="Digite o seu EMAIL"><br>
+                <label>Email</label><br>
+                    <input class="text" name="email" placeholder="Digite o seu EMAIL"><br>
                 </div>  
             </div>
         </div>
@@ -55,11 +55,11 @@
             <div class="container-imagem">
                 <img src="../images/adicionar-usuario.jpg" class="imagem-usuario">
             </div>
-            <div style="width:50%;">
-                <button class="botao" style="float: left; margin-left: 10%;"> <a href="favoritos.html" class="botao">FAVORITOS</a></button>
-                <button class="botao" style="float: right; margin-left: 10%;">EDITAR PERFIL</button>
-            </div>
-           
+            <div>
+                <button class="botao"><a href="favoritos.html">FAVORITOS</a></button>
+                <button class="botao"><a href="#">EDITAR PERFIL</a></button>
+                <button class="botao" style="background-color: red;"><a href="favoritos.html">SAIR</a></button>
+            </div>           
         </div>  
             
     </div>

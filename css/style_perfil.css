@@ -53,12 +53,6 @@ nav {
     top: 0;
 }
 
-p {
-    font-family: 'Roboto', sans-serif;
-    display: inline-block;
-    color: #545454;
-}
-
 body {   
     font-family: 'Roboto', sans-serif;   
     background-color: #EAE8E8;
@@ -69,35 +63,36 @@ body {
 p {
     font-family: 'League Spartan', sans-serif;
     font-size: 30px;
+    display: inline-block;
     color: #EAE8E8; ;
 }
+
 .c-carteira_anunciante {
     /*margin-top: 5%;*/
-    margin-left: 33%;
-    
+    text-align: center;   
 }
 
 .c-inputs {
     font-family: 'DM Sans', sans-serif;
     margin-top: 13%;
-    margin-left: 45%;
+    margin-left: 30%;
     max-width: 450px;
     color: #EAE8E8;
 }
 
 .container {
     background-color: #545454;
-    max-width:94%;
+    max-width:90%;
     height:84%;
-    margin-top: 1.5%;
-    margin-left: 3%;
+    margin-top: 3%;
+    margin-left: 5%;
     border-radius: 15px;
 }
 
 .imagem-usuario {
-    margin-left: 20%;
+    margin-left: 40%;
     /*margin-top: 8%;*/
-    max-height: 230px;
+    max-height: 350px;
 }
 
 .text {
@@ -107,31 +102,42 @@ p {
     background-color: #ECECEC;
     color: #545454;
 }
-.container-direita {
+
+.container-esquerda {
     align-items: center;
     display: flex;
     float: left;
-    width: 40%;
+    width: 30%;
     height:50%;
 }
+
 .container-descricao {
     float: right;
     /*margin-left: %;*/
-    width: 40%;
+    width: 70%;
     height: 400px;
     border-radius: 15px;
 }
+
 .container-imagem{
     height: 80%;
     min-width: 25% !important;
     border-radius: 10px;
-    margin-right: 10%;
-    margin-top: 15%;
+    /*margin-right: 10%;
+    /*margin-top: 15%;*/
 }
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
 .botao {
-    width: 115px;
-    height: 40px;
+    font-size: 20px;
+    width: 130px;
+    height: 50px;
     margin-top: 15%;
+    margin-left: 10%;
     background-color: #8d8787;
     color: white;
     border-radius: 4px;
