@@ -2,6 +2,9 @@
     session_start();
     include("conecta.php");
 ?>
+<style>
+    <?php include '../css/style_filtro.css'; ?>
+</style>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +15,7 @@
     <title>Pontos Turisticos do Rio de Janeiro</title>
     <link rel="shortcut icon" 
           href="../images/logos/sudestour_logo.png">
-    <link rel="stylesheet" href="../css/style_filtro.css">
+    <!--<link rel="stylesheet" href="../css/style_filtro.css">-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300&display=swap" rel="stylesheet">
@@ -85,7 +88,17 @@
                 </div>
             </div>
             <div class="direita-pontos">
-                <div id="listaPontos" class="divisaoItensNormais"></div>
+                <!--<div id="listaPontos" class="divisaoItensNormais"></div>-->
+                <?php
+                    $result = $mysqli->query("SELECT * FROM `local` WHERE Uf = 'RJ'"); 
+                        while($row = $result->fetch_assoc()) {
+                        echo '<figure>
+                        <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($row["Imagem"]). '"></img>
+                        <p class = legenda>'.$row["NomeLocal"].'</p>
+                        <p class = legenda>'.$row["Logradouro"].'</p>
+                        </figure>';
+                    }
+                ?>
             </div>
         </div>
     </div>

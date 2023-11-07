@@ -37,7 +37,7 @@ var listaEnderecosDestaques = ["Av. Paulista",
 for (var i = 0; i < listaDeDestaques.length; ++i) {
     elementoListaDestaques.innerHTML += `
     <figure style="margin-top: 2%;">
-      <img src = ${listaDeDestaques[i]} title = ${listaDeNomesDestaques[i]}></img>
+      <img class=img_ponto src = ${listaDeDestaques[i]} title = ${listaDeNomesDestaques[i]}></img>
       <p class = legenda><b>${listaDeNomesDestaques[i]}</b></p>
       <p class = legenda>${listaEnderecosDestaques[i]}</p>
     </figure>`
@@ -70,7 +70,7 @@ for (var i = 0; i < listaDeDestaques.length; ++i) {
     }
 });*/
 
-  elementoListaPontos.innerHTML += `
+  /*elementoListaPontos.innerHTML += `
     <figure style="margin-top: 2%;">
       <img src = ${mySrc} title = ${nome}></img>
       <p class = legenda>${nome}</p>

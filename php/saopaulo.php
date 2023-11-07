@@ -15,7 +15,7 @@
     <title>Pontos Turisticos de São Paulo</title>
     <link rel="shortcut icon" 
           href="../images/logos/sudestour_logo.png">
-    <!--<link rel="stylesheet" type="text/css" href="../css/style_filtro.css">-->
+    <link rel="stylesheet" type="text/css" href="../css/style_filtro.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300&display=swap" rel="stylesheet">
@@ -65,25 +65,43 @@
                 <div class="container-filtros">
                     <label for="cidades"><b>Selecione a cidade:</b></label><br>
                     <select name="cidades" id="cidades" class="combobox_filtros">
-                        <option value="Vitória">Vitória</option>
+                        <!--<option value="Vitória">Vitória</option>
                         <option value="Vila Velha">Vila Velha</option>
-                        <option value="Cariacica">Cariacica</option>
+                        <option value="Cariacica">Cariacica</option>-->
+                        <?php
+                            $result = $mysqli->query("SELECT DISTINCT `Cidade` FROM `local` WHERE Uf = 'SP' ORDER BY `Cidade` DESC");
+                            while($row = $result->fetch_assoc()) {
+                                echo '<option value ="' . $row['Cidade'] . '">' . $row['Cidade'] . '</option>';
+                            }
+                        ?>
                     </select><br>
                     <label for="bairros"><b>Selecione o bairro:</b></label><br>
                     <select name="bairros" id="bairros" class="combobox_filtros">
-                    <option value="argolas">Argolas</option>
+                    <!--<option value="argolas">Argolas</option>
                     <option value="Ibes">Ibes</option>
                     <option value="Jucu">Jucu</option>
                     <option value="São Torquato">São Torquato</option>
-                    <option value="Sede">Sede</option>
+                    <option value="Sede">Sede</option>-->
+                    <?php
+                        $result = $mysqli->query("SELECT DISTINCT `Bairro` FROM `local` WHERE Uf = 'SP' ORDER BY `Cidade` DESC");
+                        while($row = $result->fetch_assoc()) {
+                            echo '<option value ="' . $row['Bairro'] . '">' . $row['Bairro'] . '</option>';
+                        }
+                    ?>
                     </select><br>
                     <label for="categorias"><b>Selecione a categoria:</b></label><br>
                     <select name="categorias" id="categorias" class="combobox_filtros">
-                    <option value="restaurante">Restaurante</option>
+                    <!--<option value="restaurante">Restaurante</option>
                     <option value="praia">Praia</option>
                     <option value="bar">Bar</option>
                     <option value="balada">Balada</option>
-                    <option value="roupas">Roupas</option>
+                    <option value="roupas">Roupas</option>-->
+                    <?php
+                        $result = $mysqli->query("SELECT DISTINCT `Bairro` FROM `local` WHERE Uf = 'SP' ORDER BY `Cidade` DESC");
+                        while($row = $result->fetch_assoc()) {
+                            echo '<option value ="' . $row['Bairro'] . '">' . $row['Bairro'] . '</option>';
+                        }
+                    ?>
                     </select><br>
                     <button class="botaoBuscar">BUSCAR</button>
                 </div>
@@ -137,5 +155,5 @@
                 </div>
             </div>
         </div>
-       <!-- <script src="../js/filtro.js"></script>-->
+       <script src="../js/filtro.js"></script>
     </body>
