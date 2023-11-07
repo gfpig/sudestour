@@ -140,11 +140,10 @@ label {
     background-color: white;
     margin-bottom: 5%;
     width: 50%;
-    height: 50%;
 }
 
 /* ÁREA DOS PONTO DE INTERESSE DESTACADOS */
-#listaDestaques img {
+/*#listaDestaques img {
     margin: 10px;
     max-height: 150px;
 }
@@ -153,6 +152,11 @@ label {
     margin: 10px;
     max-height: 150px;
 }
+
+img {
+    margin: 10px;
+    max-height: 150px;
+}*/
 
 .direita-destaques {
     margin-top: -1%;
@@ -182,6 +186,11 @@ figure {
     text-align: center;
     display: inline-table;
     position: static;
+}
+
+.img_ponto {
+    margin: 10px;
+    max-height: 150px; 
 }
 
 .legenda {

@@ -53,10 +53,22 @@ for (var i = 0; i < listaDeDestaques.length; ++i) {
     mySrc = reader.result;     
   }
 
-  var elementoListaPontos = document.getElementById('listaPontos');
+  /*var elementoListaPontos = document.getElementById('listaPontos');
   var nome = json_encode($NomeLocal, JSON_UNESCAPED_UNICODE);
   var endereco= json_encode($Logradouro, JSON_UNESCAPED_UNICODE);
-  var imagem = json_encode($Imagem, JSON_UNESCAPED_UNICODE);
+  var imagem = json_encode($Imagem, JSON_UNESCAPED_UNICODE);*/
+
+ /* $.ajax({
+    url: 'saopaulo.php',
+    type: 'get',
+    result: {
+        'yearFilter': yearFilter
+    },
+    dataType: 'json',
+    success: function(data){
+        $("#dummy").html(data.dummyvariable)
+    }
+});*/
 
   elementoListaPontos.innerHTML += `
     <figure style="margin-top: 2%;">

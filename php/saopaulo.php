@@ -2,6 +2,9 @@
     session_start();
     include("conecta.php");
 ?>
+<style>
+    <?php include '../css/style_filtro.css'; ?>
+</style>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +15,7 @@
     <title>Pontos Turisticos de São Paulo</title>
     <link rel="shortcut icon" 
           href="../images/logos/sudestour_logo.png">
-    <link rel="stylesheet" href="../css/style_filtro.css">
+    <!--<link rel="stylesheet" type="text/css" href="../css/style_filtro.css">-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300&display=swap" rel="stylesheet">
@@ -43,13 +46,19 @@
         </ul>
     </nav>
     <?php
-        $result = $mysqli->query("SELECT * FROM `local` WHERE Uf = 'SP'"); 
+        /*$result = $mysqli->query("SELECT * FROM `local` WHERE Uf = 'SP'"); 
         while($row = $result->fetch_assoc()) {
             //echo '<script>addNormais($row["NomeLocal"], $row["Logradouro"], $row["Imagem"]);</script>';
-            $NomeLocal = $row["nome"];
+            /*$NomeLocal = $row["nome"];
             $Logradouro = $row["Logradouro"];
-            $Imagem = $row["Imagem"];
-        }
+            $Imagem = $row["Imagem"];//
+            //echo json_encode($result);
+            echo '<figure style="margin-top: 2%;text-align: center; display: inline-table; position: static;">
+            <img src = "data:image/png;base64,' .base64_encode($row["Imagem"]). '"></img>
+            <p style="font-family: "Roboto", sans-serif; font-size: 17px; margin: -10px; color: #545454;">'.$row["NomeLocal"].'</p>
+            <p class = legenda>'.$row["Logradouro"].'</p>
+            </figure>';
+        }*/
     ?>
         <div class="container-principal">
             <div class="container-esquerda">
@@ -94,9 +103,39 @@
                     </div>
                 </div>
                 <div class="direita-pontos">
+ 
                     <div id="listaPontos" class="divisaoItensNormais"></div>
+                    <!--<style>
+                        #listaPontos img {
+                            margin: 10px;
+                            max-height: 150px;
+                        }
+
+                        figure {
+                            text-align: center;
+                            display: inline-table;
+                            position: static;
+                        }
+
+                        .legenda {
+                            font-family: 'Roboto', sans-serif;
+                            font-size: 17px;
+                            margin: -10px;
+                            color: #545454;
+                        }
+                    </style>-->
+                    <?php
+                        $result = $mysqli->query("SELECT * FROM `local` WHERE Uf = 'SP'"); 
+                            while($row = $result->fetch_assoc()) {
+                            echo '<figure>
+                            <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($row["Imagem"]). '"></img>
+                            <p class = legenda>'.$row["NomeLocal"].'</p>
+                            <p class = legenda>'.$row["Logradouro"].'</p>
+                            </figure>';
+                        }
+                    ?>
                 </div>
             </div>
         </div>
-        <script src="../js/filtro.js"></script>
+       <!-- <script src="../js/filtro.js"></script>-->
     </body>
