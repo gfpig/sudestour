@@ -82,10 +82,10 @@ p {
 
 .container {
     background-color: #545454;
-    max-width:90%;
+    max-width:80%;
     height:84%;
     margin-top: 3%;
-    margin-left: 5%;
+    margin-left: 10%;
     border-radius: 15px;
 }
 
@@ -95,10 +95,15 @@ p {
     max-height: 350px;
 }
 
+label {
+    font-size: 20px;
+}
+
 .text {
-    height: 30px;
-    width: 300px;
-    margin: 5px;
+    font-size: 20px;
+    height: 40px;
+    width: 400px;
+    margin-top: 5px;
     background-color: #ECECEC;
     color: #545454;
 }
@@ -113,7 +118,8 @@ p {
 
 .container-descricao {
     float: right;
-    /*margin-left: %;*/
+    margin-top: 5%;
+    /*margin-left: 5%;*/
     width: 70%;
     height: 400px;
     border-radius: 15px;
@@ -123,6 +129,7 @@ p {
     height: 80%;
     min-width: 25% !important;
     border-radius: 10px;
+    margin-left: 7%;
     /*margin-right: 10%;
     /*margin-top: 15%;*/
 }
@@ -132,13 +139,19 @@ a {
     color: white;
 }
 
+.botoes {
+    margin-top: 5%;
+    margin-left: 20%;
+}
+
 .botao {
     font-size: 20px;
-    width: 130px;
+    width: 200px;
     height: 50px;
     margin-top: 15%;
-    margin-left: 10%;
+    margin-left: 5%;
     background-color: #8d8787;
     color: white;
     border-radius: 4px;
 }
+

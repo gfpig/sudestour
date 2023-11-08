@@ -55,13 +55,12 @@
             <div class="container-imagem">
                 <img src="../images/adicionar-usuario.jpg" class="imagem-usuario">
             </div>
-            <div>
+            <div class="botoes">
                 <button class="botao"><a href="favoritos.html">FAVORITOS</a></button>
                 <button class="botao"><a href="#">EDITAR PERFIL</a></button>
                 <button class="botao" style="background-color: red;"><a href="favoritos.html">SAIR</a></button>
             </div>           
-        </div>  
-            
+        </div>
     </div>
 
     <script src="../js/login.js"></script>
