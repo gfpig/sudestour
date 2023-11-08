@@ -87,3 +87,27 @@ for (var i = 0; i < listaDeDestaques.length; ++i) {
       <p class = legenda>${listaEnderecosDestaques[i]}</p>
     </figure>`
 }*/
+
+//<script type="text/javascript">
+/*
+       $(document).on('change','#cidades',function(){
+             var val = $(this).val();
+             $.ajax({
+                   url: 'saopaulo.php',
+                   data: {cidades:val},
+                   type: 'GET',
+                   dataType: 'html',
+                   success: function(result){
+                        $('#localidade').html();  
+                        $('#localidade').html(result); 
+                   }
+              });
+       });*/
+  //</script>
+//let selecionarCidade = document.getElementById("cidades");
+
+
+/*selecionarCidade.onchange = () => {
+  let selecionarBairro = document.getElementById("bairros");
+  selecionarBairro.innerHTML = 
+}*/

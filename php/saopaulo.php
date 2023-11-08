@@ -68,8 +68,9 @@
                         <!--<option value="Vitória">Vitória</option>
                         <option value="Vila Velha">Vila Velha</option>
                         <option value="Cariacica">Cariacica</option>-->
+                        <option value=""></option>
                         <?php
-                            $result = $mysqli->query("SELECT DISTINCT `Cidade` FROM `local` WHERE Uf = 'SP' ORDER BY `Cidade` DESC");
+                            $result = $mysqli->query("SELECT DISTINCT `Cidade` FROM `local` WHERE Uf = 'SP' ORDER BY `Cidade` ASC");
                             while($row = $result->fetch_assoc()) {
                                 echo '<option value ="' . $row['Cidade'] . '">' . $row['Cidade'] . '</option>';
                             }
@@ -82,11 +83,12 @@
                     <option value="Jucu">Jucu</option>
                     <option value="São Torquato">São Torquato</option>
                     <option value="Sede">Sede</option>-->
+                    <option value=""></option>
                     <?php
-                        $result = $mysqli->query("SELECT DISTINCT `Bairro` FROM `local` WHERE Uf = 'SP' ORDER BY `Cidade` DESC");
+                        /*$result = $mysqli->query("SELECT DISTINCT `Bairro` FROM `local` WHERE Uf = 'SP' ORDER BY `Bairro` ASC");
                         while($row = $result->fetch_assoc()) {
                             echo '<option value ="' . $row['Bairro'] . '">' . $row['Bairro'] . '</option>';
-                        }
+                        }*/
                     ?>
                     </select><br>
                     <label for="categorias"><b>Selecione a categoria:</b></label><br>
@@ -96,10 +98,13 @@
                     <option value="bar">Bar</option>
                     <option value="balada">Balada</option>
                     <option value="roupas">Roupas</option>-->
+                    <option value=""></option>
                     <?php
-                        $result = $mysqli->query("SELECT DISTINCT `Bairro` FROM `local` WHERE Uf = 'SP' ORDER BY `Cidade` DESC");
+                        //$result = $mysqli->query("SELECT DISTINCT `IdCategoria` FROM `local` WHERE Uf = 'SP'");
+                        $result = $mysqli->query("SELECT DISTINCT categoria.NomeCategoria, categoria.IdCategoria from categoria INNER JOIN local ON categoria.IdCategoria = local.IdCategoria WHERE Uf = 'SP'");
                         while($row = $result->fetch_assoc()) {
-                            echo '<option value ="' . $row['Bairro'] . '">' . $row['Bairro'] . '</option>';
+                            //$nomeCategoria = $mysqli->query("SELECT DISTINCT `categoria.NomeCategoria` from categoria INNER JOIN local ON categoria.IdCategoria = local.IdCategoria WHERE Uf = 'SP'")
+                            echo '<option value ="' . $row['IdCategoria'] . '">' . $row['NomeCategoria'] . '</option>';
                         }
                     ?>
                     </select><br>
