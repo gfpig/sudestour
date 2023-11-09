@@ -45,7 +45,7 @@ for (var i = 0; i < listaDeDestaques.length; ++i) {
 
 //ADICIONANDO OS PONTOS NORMAIS POR FUNÇÃO
 //function addNormais(nome, endereco, img) {
-  let mySrc;
+  /*let mySrc;
   const reader = new FileReader();
   reader.readAsDataURL(blob); 
   reader.onloadend = function() {

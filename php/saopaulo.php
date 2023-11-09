@@ -63,6 +63,7 @@
         <div class="container-principal">
             <div class="container-esquerda">
                 <div class="container-filtros">
+                    <form action="aplicar_filtro.php" method="POST">
                     <label for="cidades"><b>Selecione a cidade:</b></label><br>
                     <select name="cidades" id="cidades" class="combobox_filtros">
                         <!--<option value="Vitória">Vitória</option>
@@ -109,7 +110,28 @@
                     ?>
                     </select><br>
                     <button class="botaoBuscar">BUSCAR</button>
+                    </form>
                 </div>
+                <!--<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+                <script type="text/javascript">
+                    google.load("jquery", "1.4.2");
+                </script>-->
+                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+                 <script type="text/javascript">
+                    $(function() {
+                        $('#cidades').change(function() {
+                            if( $(this).val()) {
+                                $.getJSON('teste_saopaulo.php?search=', {cidades: $(this).val(), ajax: 'true'}, function(j) {
+                                    var options = '<option value="">aaa</option>';
+                                    for (var i = 0; i < j.lenght; i++) {
+                                        options += '<option value="' + j[i].bairro + '">' + j[i].bairro + '</option>';
+                                    }
+                                });
+                            }      
+                        });
+                    });
+                </script>
             </div>
             <div class="container-direita">
                 <div class="direita-radiobuttons">
