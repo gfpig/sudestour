@@ -1,34 +1,55 @@
 <?php
-include("conecta.php");
+    session_start();
+    include("conecta.php");
 
-$bairro = mysqli_real_escape_string($mysqli, $_POST['bairros']);
-$cidade = mysqli_real_escape_string($mysqli, $_POST['cidades']);
-
-$result = $mysqli->execute("SELECT * FROM local WHERE Bairro = '{$bairro}' AND Cidade = '{$cidade}'  ORDER BY `Bairro` ASC");
+    //COLOCAR UMA CONDIÇÃO SE NÃO TIVER VALOR RECEBIDO
 
 
-/*$cidade = $_GET['cidadeSelecionada'];
 
-$result = $mysqli->prepare("SELECT DISTINCT `Bairro` FROM `local` WHERE IdCategoria =':cidadeSelecionada'  ORDER BY `Bairro` ASC");
 
-$dado = ['cidadeSelecionada' => $cidade];
-$result -> execute($dado);
 
-while($row = $result->fetch_assoc()) {
-    echo '<option value ="' . $row['Bairro'] . '">' . $row['Bairro'] . '</option>';
-}*/
+    $bairro = mysqli_real_escape_string($mysqli, $_POST['bairros']);
+    $cidade = mysqli_real_escape_string($mysqli, $_POST['cidades']);
+    $categoria = mysqli_real_escape_string($mysqli, $_POST['categorias']);
 
-/*$categoria = $_GET['categoria'];
+    //$result = $mysqli->execute("SELECT * FROM local WHERE Bairro = '{$bairro}' AND Cidade = '{$cidade}'  ORDER BY `Bairro` ASC");
+    $query = "SELECT * FROM local WHERE Bairro = '{$bairro}' AND Cidade = '{$cidade}' AND Uf = 'SP'  ORDER BY `Bairro` ASC";
+    $result = mysqli_query($mysqli, $query);
+    $qtde_row = mysqli_num_rows($result);
+    $i = 0;
 
-$query = $mysqli -> prepare("SELECT DISTINCT Bairro FROM local WHERE IdCategoria =':categoria'  ORDER BY `Bairro` ASC");
-
-$data = ['categoria' => $categoria];
-$query -> execute($data);
-
-$registros = $query -> fetchAll(PDO::FETCH_ASSOC);
-foreach ($registros as $option) {
-?>
-    <option value ="<?php echo $option['Bairro']?>"><?php echo $option['Bairro']?></option>
-<?php
-}*/
+    if (mysqli_num_rows($result) > 0) {
+        while($row = $result->fetch_assoc()) {
+            /*$cnpj = $coluna["Cnpj"];
+            $nome = $_POST["nome"]; 
+            $site = $_POST["site"];               
+            $cep = $_POST["CEP"];
+            $bairro = $_POST["bairro"];   
+            $logradouro = $_POST["logradouro"];                 
+            $cidade = $_POST["cidade"];             
+            $uf = $_POST["UF"];   
+            $complemento = $_POST["complemento"]; 
+            $numero = $_POST["numero"]; 
+            $telefone = $_POST["telefone"]; 
+            $descricao = $_POST["descricao"];
+            $categoria = $_POST['categoria'];
+            $imagem = addslashes(file_get_contents($_FILES["input_imagem"]["tmp_name"]));*/
+            $_SESSION['resultados_busca']['cnpj'][$i] = $row['Cnpj'];
+            $_SESSION['resultados_busca']['nome'][$i] = $row['NomeLocal'];
+            $_SESSION['resultados_busca']['site'][$i] = $row['RedeSocial'];
+            $_SESSION['resultados_busca']['cep'][$i] = $row['Cep'];
+            $_SESSION['resultados_busca']['bairro'][$i] = $row['Bairro'];
+            $_SESSION['resultados_busca']['logradouro'][$i] = $row['Logradouro'];
+            $_SESSION['resultados_busca']['cidade'][$i] = $row['Cidade'];
+            $_SESSION['resultados_busca']['uf'][$i] = $row['Uf'];
+            $_SESSION['resultados_busca']['complemento'][$i] = $row['Complemento'];
+            $_SESSION['resultados_busca']['numero'][$i] = $row['Numero'];
+            $_SESSION['resultados_busca']['telefone'][$i] = $row['Telefone'];
+            $_SESSION['resultados_busca']['descricao'][$i] = $row['Descricao'];
+            $_SESSION['resultados_busca']['categoria'][$i] = $row['Categoria'];
+            $_SESSION['resultados_busca']['imagem'][$i] = $row['Imagem'];
+            $i++;
+        }
+    }
+    
 ?>

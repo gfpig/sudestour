@@ -110,8 +110,39 @@
                     ?>
                     </select><br>
                     <p id="oi"></p>
-                    <button class="botaoBuscar">BUSCAR</button>
+                    <button name="submit_filtros" class="botaoBuscar">BUSCAR</button>
                     </form>
+
+                    <?php 
+                        /*if(isset($_POST['submit_filtros'])) {
+                            $cidade = $_POST['cidades'];
+                            $bairro = $_POST['bairros'];
+                            $categoria = $_POST['categorias'];
+
+                            // $result = $mysqli->query("SELECT * FROM `local` WHERE Uf = 'SP'"); 
+                            //$query = "SELECT * FROM local WHERE Bairro = '{$bairro}' AND Cidade = '{$cidade}' AND Categoria = '{$categoria}' AND Uf = 'SP'  ORDER BY `Bairro` ASC";
+                            $result = $mysqli->query("SELECT * FROM local WHERE Bairro = '{$bairro}' AND Cidade = '{$cidade}' AND IdCategoria = '{$categoria}' AND Uf = 'SP'  ORDER BY `Bairro` ASC");
+
+                            /*if(mysqli_num_rows($result) > 0) {
+                                foreach($result as $value) {
+                                    echo '<figure>
+                                    <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($row["Imagem"]). '"></img>
+                                    <p class = legenda>'.$row["NomeLocal"].'</p>
+                                    <p class = legenda>'.$row["Logradouro"].'</p>
+                                    </figure>';
+                                }
+                            }
+                            $html = preg_replace('#<div id="listaPontos">(.*?)</div>#', '', $html);
+                            while($row = $result->fetch_assoc()) {
+
+                                    echo '<figure>
+                                    <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($row["Imagem"]). '"></img>
+                                    <p class = legenda>'.$row["NomeLocal"].'</p>
+                                    <p class = legenda>'.$row["Logradouro"].'</p>
+                                    </figure>';
+                            }
+                        }*/
+                    ?>
                 </div>
                 
                 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -154,30 +185,12 @@
                     </div>
                 </div>
                 <div class="direita-pontos">
- 
                     <div id="listaPontos" class="divisaoItensNormais"></div>
-                    <!--<style>
-                        #listaPontos img {
-                            margin: 10px;
-                            max-height: 150px;
-                        }
-
-                        figure {
-                            text-align: center;
-                            display: inline-table;
-                            position: static;
-                        }
-
-                        .legenda {
-                            font-family: 'Roboto', sans-serif;
-                            font-size: 17px;
-                            margin: -10px;
-                            color: #545454;
-                        }
-                    </style>-->
-                    <?php
+                <?php
+                     //$html = '<div id="listaPontos" class="divisaoItensNormais"></div>';
+                   
                         $result = $mysqli->query("SELECT * FROM `local` WHERE Uf = 'SP'"); 
-                            while($row = $result->fetch_assoc()) {
+                        while($row = $result->fetch_assoc()) {
                             echo '<figure>
                             <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($row["Imagem"]). '"></img>
                             <p class = legenda>'.$row["NomeLocal"].'</p>
@@ -185,8 +198,46 @@
                             </figure>';
                         }
                     ?>
+
+                    <script type="text/javascript">
+                        /*$(document).ready(function() {
+                            $("#cidades").on('change', function() {
+                                var value = $(this).val();
+                            })
+                        })*/
+                    </script>
                 </div>
             </div>
         </div>
+        <?php 
+                        /*if(isset($_POST['submit_filtros'])) {
+                            $cidade = $_POST['cidades'];
+                            $bairro = $_POST['bairros'];
+                            $categoria = $_POST['categorias'];
+
+                            // $result = $mysqli->query("SELECT * FROM `local` WHERE Uf = 'SP'"); 
+                            //$query = "SELECT * FROM local WHERE Bairro = '{$bairro}' AND Cidade = '{$cidade}' AND Categoria = '{$categoria}' AND Uf = 'SP'  ORDER BY `Bairro` ASC";
+                            $result = $mysqli->query("SELECT * FROM local WHERE Bairro = '{$bairro}' AND Cidade = '{$cidade}' AND IdCategoria = '{$categoria}' AND Uf = 'SP'  ORDER BY `Bairro` ASC");
+
+                            /*if(mysqli_num_rows($result) > 0) {
+                                foreach($result as $value) {
+                                    echo '<figure>
+                                    <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($row["Imagem"]). '"></img>
+                                    <p class = legenda>'.$row["NomeLocal"].'</p>
+                                    <p class = legenda>'.$row["Logradouro"].'</p>
+                                    </figure>';
+                                }
+                            }
+                            $html = preg_replace('#<div id="listaPontos">(.*?)</div>#', '', $html);
+                            while($row = $result->fetch_assoc()) {
+
+                                    echo '<figure>
+                                    <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($row["Imagem"]). '"></img>
+                                    <p class = legenda>'.$row["NomeLocal"].'</p>
+                                    <p class = legenda>'.$row["Logradouro"].'</p>
+                                    </figure>';
+                            }
+                        }*/
+                    ?>
        <script src="../js/filtro.js"></script>
     </body>
