@@ -14,7 +14,7 @@ while($row = $result->fetch_assoc()) {
 
 $categoria = $_GET['categoria'];
 
-$query = $mysqli -> prepare("SELECT DISTINCT `Bairro` FROM `local` WHERE IdCategoria =':categoria'  ORDER BY `Bairro` ASC");
+$query = $mysqli -> prepare("SELECT DISTINCT Bairro FROM local WHERE IdCategoria =':categoria'  ORDER BY `Bairro` ASC");
 
 $data = ['categoria' => $categoria];
 $query -> execute($data);

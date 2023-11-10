@@ -64,7 +64,7 @@
             <div class="container-esquerda">
                 <div class="container-filtros">
                     <form action="aplicar_filtro.php" method="POST">
-                    <label for="cidades"><b>Selecione a cidade:</b></label><br>
+                    <label><b>Selecione a cidade:</b></label><br>
                     <select name="cidades" id="cidades" class="combobox_filtros">
                         <!--<option value="Vitória">Vitória</option>
                         <option value="Vila Velha">Vila Velha</option>
@@ -109,24 +109,30 @@
                         }
                     ?>
                     </select><br>
+                    <p id="oi"></p>
                     <button class="botaoBuscar">BUSCAR</button>
                     </form>
                 </div>
-                <!--<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-                <script type="text/javascript">
-                    google.load("jquery", "1.4.2");
-                </script>-->
+                
                 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
                  <script type="text/javascript">
                     $(function() {
                         $('#cidades').change(function() {
+                            //document.getElementById("oi").innerHTML = "Olá";
                             if( $(this).val()) {
+                                //document.getElementById("oi").innerHTML = "Olá";
                                 $.getJSON('teste_saopaulo.php?search=', {cidades: $(this).val(), ajax: 'true'}, function(j) {
-                                    var options = '<option value="">aaa</option>';
-                                    for (var i = 0; i < j.lenght; i++) {
-                                        options += '<option value="' + j[i].bairro + '">' + j[i].bairro + '</option>';
+                                    //document.getElementById("oi").innerHTML = "Olá";
+                                    //var options = '<option value="">aaa</option>';
+                                    var options = '<option value=""></option>';
+                                    //var tamanho;
+                                    //tamanho = j.lenght;
+                                    //document.getElementById("oi").innerHTML = tamanho;
+                                    for (var i = 0; i < j.length; i++) {
+                                        options += '<option value="' + j[i].bairros + '">' + j[i].bairros + '</option>';
                                     }
+                                    $('#bairros').html(options).show();
                                 });
                             }      
                         });
