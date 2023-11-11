@@ -13,13 +13,17 @@
     $categoria = mysqli_real_escape_string($mysqli, $_POST['categorias']);
 
     //$result = $mysqli->execute("SELECT * FROM local WHERE Bairro = '{$bairro}' AND Cidade = '{$cidade}'  ORDER BY `Bairro` ASC");
-    $query = "SELECT * FROM local WHERE Bairro = '{$bairro}' AND Cidade = '{$cidade}' AND Uf = 'SP'  ORDER BY `Bairro` ASC";
+    $query = "SELECT * FROM local WHERE Bairro = '{$bairro}' AND Cidade = '{$cidade}' AND IdCategoria = '{$categoria}' AND Uf = 'SP'  ORDER BY Bairro ASC";
     $result = mysqli_query($mysqli, $query);
     $qtde_row = mysqli_num_rows($result);
     $i = 0;
 
+    //echo $qtde_row;
+    //exit();
+
     if (mysqli_num_rows($result) > 0) {
         while($row = $result->fetch_assoc()) {
+            //echo $i;
             /*$cnpj = $coluna["Cnpj"];
             $nome = $_POST["nome"]; 
             $site = $_POST["site"];               
@@ -34,7 +38,8 @@
             $descricao = $_POST["descricao"];
             $categoria = $_POST['categoria'];
             $imagem = addslashes(file_get_contents($_FILES["input_imagem"]["tmp_name"]));*/
-            $_SESSION['resultados_busca']['cnpj'][$i] = $row['Cnpj'];
+            
+            $_SESSION['resultados_busca']['cnpj'][$i] = $row['CNPJ'];
             $_SESSION['resultados_busca']['nome'][$i] = $row['NomeLocal'];
             $_SESSION['resultados_busca']['site'][$i] = $row['RedeSocial'];
             $_SESSION['resultados_busca']['cep'][$i] = $row['Cep'];
@@ -46,10 +51,16 @@
             $_SESSION['resultados_busca']['numero'][$i] = $row['Numero'];
             $_SESSION['resultados_busca']['telefone'][$i] = $row['Telefone'];
             $_SESSION['resultados_busca']['descricao'][$i] = $row['Descricao'];
-            $_SESSION['resultados_busca']['categoria'][$i] = $row['Categoria'];
+            $_SESSION['resultados_busca']['categoria'][$i] = $row['IdCategoria'];
             $_SESSION['resultados_busca']['imagem'][$i] = $row['Imagem'];
             $i++;
         }
+        $_SESSION['busca_completa'] = true;
+    } else {
+        $_SESSION['busca_fracasso'] = true;
     }
+    //exit();
+    
+    header('Location: saopaulo.php');
     
 ?>

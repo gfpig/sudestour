@@ -63,12 +63,16 @@
         <div class="container-principal">
             <div class="container-esquerda">
                 <div class="container-filtros">
+
+                <?php
+                    if(isset($_SESSION['busca_fracasso'])) {
+                        echo "Nenhum ponto satisfaz sua busca :(";
+                    }
+                    ?>
                     <form action="aplicar_filtro.php" method="POST">
+
                     <label><b>Selecione a cidade:</b></label><br>
                     <select name="cidades" id="cidades" class="combobox_filtros">
-                        <!--<option value="Vitória">Vitória</option>
-                        <option value="Vila Velha">Vila Velha</option>
-                        <option value="Cariacica">Cariacica</option>-->
                         <option value=""></option>
                         <?php
                             $result = $mysqli->query("SELECT DISTINCT `Cidade` FROM `local` WHERE Uf = 'SP' ORDER BY `Cidade` ASC");
@@ -77,40 +81,33 @@
                             }
                         ?>
                     </select><br>
+
                     <label for="bairros"><b>Selecione o bairro:</b></label><br>
                     <select name="bairros" id="bairros" class="combobox_filtros">
-                    <!--<option value="argolas">Argolas</option>
-                    <option value="Ibes">Ibes</option>
-                    <option value="Jucu">Jucu</option>
-                    <option value="São Torquato">São Torquato</option>
-                    <option value="Sede">Sede</option>-->
-                    <option value=""></option>
-                    <?php
-                        /*$result = $mysqli->query("SELECT DISTINCT `Bairro` FROM `local` WHERE Uf = 'SP' ORDER BY `Bairro` ASC");
-                        while($row = $result->fetch_assoc()) {
-                            echo '<option value ="' . $row['Bairro'] . '">' . $row['Bairro'] . '</option>';
-                        }*/
-                    ?>
+                        <option value=""></option>
+                        <?php
+                            /*$result = $mysqli->query("SELECT DISTINCT `Bairro` FROM `local` WHERE Uf = 'SP' ORDER BY `Bairro` ASC");
+                            while($row = $result->fetch_assoc()) {
+                                echo '<option value ="' . $row['Bairro'] . '">' . $row['Bairro'] . '</option>';
+                            }*/
+                        ?>
                     </select><br>
+
                     <label for="categorias"><b>Selecione a categoria:</b></label><br>
                     <select name="categorias" id="categorias" class="combobox_filtros">
-                    <!--<option value="restaurante">Restaurante</option>
-                    <option value="praia">Praia</option>
-                    <option value="bar">Bar</option>
-                    <option value="balada">Balada</option>
-                    <option value="roupas">Roupas</option>-->
-                    <option value=""></option>
-                    <?php
-                        //$result = $mysqli->query("SELECT DISTINCT `IdCategoria` FROM `local` WHERE Uf = 'SP'");
-                        $result = $mysqli->query("SELECT DISTINCT categoria.NomeCategoria, categoria.IdCategoria from categoria INNER JOIN local ON categoria.IdCategoria = local.IdCategoria WHERE Uf = 'SP'");
-                        while($row = $result->fetch_assoc()) {
-                            //$nomeCategoria = $mysqli->query("SELECT DISTINCT `categoria.NomeCategoria` from categoria INNER JOIN local ON categoria.IdCategoria = local.IdCategoria WHERE Uf = 'SP'")
-                            echo '<option value ="' . $row['IdCategoria'] . '">' . $row['NomeCategoria'] . '</option>';
-                        }
-                    ?>
+                        <option value=""></option>
+                        <?php
+                            //$result = $mysqli->query("SELECT DISTINCT `IdCategoria` FROM `local` WHERE Uf = 'SP'");
+                            $result = $mysqli->query("SELECT DISTINCT categoria.NomeCategoria, categoria.IdCategoria from categoria INNER JOIN local ON categoria.IdCategoria = local.IdCategoria WHERE Uf = 'SP'");
+                            while($row = $result->fetch_assoc()) {
+                                //$nomeCategoria = $mysqli->query("SELECT DISTINCT `categoria.NomeCategoria` from categoria INNER JOIN local ON categoria.IdCategoria = local.IdCategoria WHERE Uf = 'SP'")
+                                echo '<option value ="' . $row['IdCategoria'] . '">' . $row['NomeCategoria'] . '</option>';
+                            }
+                        ?>
                     </select><br>
-                    <p id="oi"></p>
+
                     <button name="submit_filtros" class="botaoBuscar">BUSCAR</button>
+
                     </form>
 
                     <?php 
@@ -153,13 +150,9 @@
                             //document.getElementById("oi").innerHTML = "Olá";
                             if( $(this).val()) {
                                 //document.getElementById("oi").innerHTML = "Olá";
-                                $.getJSON('teste_saopaulo.php?search=', {cidades: $(this).val(), ajax: 'true'}, function(j) {
+                                $.getJSON('select_saopaulo.php?search=', {cidades: $(this).val(), ajax: 'true'}, function(j) {
                                     //document.getElementById("oi").innerHTML = "Olá";
-                                    //var options = '<option value="">aaa</option>';
                                     var options = '<option value=""></option>';
-                                    //var tamanho;
-                                    //tamanho = j.lenght;
-                                    //document.getElementById("oi").innerHTML = tamanho;
                                     for (var i = 0; i < j.length; i++) {
                                         options += '<option value="' + j[i].bairros + '">' + j[i].bairros + '</option>';
                                     }
@@ -186,16 +179,31 @@
                 </div>
                 <div class="direita-pontos">
                     <div id="listaPontos" class="divisaoItensNormais"></div>
-                <?php
-                     //$html = '<div id="listaPontos" class="divisaoItensNormais"></div>';
-                   
-                        $result = $mysqli->query("SELECT * FROM `local` WHERE Uf = 'SP'"); 
-                        while($row = $result->fetch_assoc()) {
-                            echo '<figure>
-                            <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($row["Imagem"]). '"></img>
-                            <p class = legenda>'.$row["NomeLocal"].'</p>
-                            <p class = legenda>'.$row["Logradouro"].'</p>
-                            </figure>';
+                    <?php
+                        //$html = '<div id="listaPontos" class="divisaoItensNormais"></div>';
+                        if (isset($_SESSION["busca_completa"])) {
+                            //echo '<p>Oie</p>'; <-- TÁ RECEBENDO
+                            for($i=0; $i<count($_SESSION['resultados_busca']['cep']); $i++ ){
+                                //echo '<p>Oie</p>';
+                                echo '<figure>
+                                <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($_SESSION['resultados_busca']['imagem'][$i]). '"></img>
+                                <p class = legenda>'.$_SESSION['resultados_busca']["nome"][$i].'</p>
+                                <p class = legenda>'.$_SESSION['resultados_busca']["logradouro"][$i].'</p>
+                                </figure>';
+                                unset($_SESSION['resultados_busca']['imagem'][$i]);
+                                unset($_SESSION['resultados_busca']['nome'][$i]);
+                                unset($_SESSION['resultados_busca']['logradouro'][$i]);
+                            }
+                            unset($_SESSION['busca_completa']);
+                        } else {
+                            $result = $mysqli->query("SELECT * FROM `local` WHERE Uf = 'SP'"); 
+                            while($row = $result->fetch_assoc()) {
+                                echo '<figure>
+                                <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($row["Imagem"]). '"></img>
+                                <p class = legenda>'.$row["NomeLocal"].'</p>
+                                <p class = legenda>'.$row["Logradouro"].'</p>
+                                </figure>';
+                            }
                         }
                     ?>
 
@@ -209,35 +217,6 @@
                 </div>
             </div>
         </div>
-        <?php 
-                        /*if(isset($_POST['submit_filtros'])) {
-                            $cidade = $_POST['cidades'];
-                            $bairro = $_POST['bairros'];
-                            $categoria = $_POST['categorias'];
 
-                            // $result = $mysqli->query("SELECT * FROM `local` WHERE Uf = 'SP'"); 
-                            //$query = "SELECT * FROM local WHERE Bairro = '{$bairro}' AND Cidade = '{$cidade}' AND Categoria = '{$categoria}' AND Uf = 'SP'  ORDER BY `Bairro` ASC";
-                            $result = $mysqli->query("SELECT * FROM local WHERE Bairro = '{$bairro}' AND Cidade = '{$cidade}' AND IdCategoria = '{$categoria}' AND Uf = 'SP'  ORDER BY `Bairro` ASC");
-
-                            /*if(mysqli_num_rows($result) > 0) {
-                                foreach($result as $value) {
-                                    echo '<figure>
-                                    <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($row["Imagem"]). '"></img>
-                                    <p class = legenda>'.$row["NomeLocal"].'</p>
-                                    <p class = legenda>'.$row["Logradouro"].'</p>
-                                    </figure>';
-                                }
-                            }
-                            $html = preg_replace('#<div id="listaPontos">(.*?)</div>#', '', $html);
-                            while($row = $result->fetch_assoc()) {
-
-                                    echo '<figure>
-                                    <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($row["Imagem"]). '"></img>
-                                    <p class = legenda>'.$row["NomeLocal"].'</p>
-                                    <p class = legenda>'.$row["Logradouro"].'</p>
-                                    </figure>';
-                            }
-                        }*/
-                    ?>
        <script src="../js/filtro.js"></script>
     </body>
