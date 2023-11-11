@@ -119,31 +119,32 @@
                 </div>
             </div>
             <div class="direita-pontos">
-                <!--<div id="listaPontos" class="divisaoItensNormais"></div>-->
-                <?php
-                    if (isset($_SESSION["busca_completa"])) {
-                        for($i=0; $i<count($_SESSION['resultados_busca']['cep']); $i++ ){
-                            echo '<figure>
-                            <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($_SESSION['resultados_busca']['imagem'][$i]). '"></img>
-                            <p class = legenda>'.$_SESSION['resultados_busca']["nome"][$i].'</p>
-                            <p class = legenda>'.$_SESSION['resultados_busca']["logradouro"][$i].'</p>
-                            </figure>';
-                            unset($_SESSION['resultados_busca']['imagem'][$i]);
-                            unset($_SESSION['resultados_busca']['nome'][$i]);
-                            unset($_SESSION['resultados_busca']['logradouro'][$i]);
+                <div id="listaPontos" class="divisaoItensNormais">
+                    <?php
+                        if (isset($_SESSION["busca_completa"])) {
+                            for($i=0; $i<count($_SESSION['resultados_busca']['cep']); $i++ ){
+                                echo '<figure>
+                                <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($_SESSION['resultados_busca']['imagem'][$i]). '"></img>
+                                <p class = legenda>'.$_SESSION['resultados_busca']["nome"][$i].'</p>
+                                <p class = legenda>'.$_SESSION['resultados_busca']["logradouro"][$i].'</p>
+                                </figure>';
+                                unset($_SESSION['resultados_busca']['imagem'][$i]);
+                                unset($_SESSION['resultados_busca']['nome'][$i]);
+                                unset($_SESSION['resultados_busca']['logradouro'][$i]);
+                            }
+                            unset($_SESSION['busca_completa']);
+                        } else {
+                            $result = $mysqli->query("SELECT * FROM `local` WHERE Uf = 'RJ'"); 
+                                while($row = $result->fetch_assoc()) {
+                                echo '<figure>
+                                <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($row["Imagem"]). '"></img>
+                                <p class = legenda>'.$row["NomeLocal"].'</p>
+                                <p class = legenda>'.$row["Logradouro"].'</p>
+                                </figure>';
+                            }
                         }
-                        unset($_SESSION['busca_completa']);
-                    } else {
-                        $result = $mysqli->query("SELECT * FROM `local` WHERE Uf = 'RJ'"); 
-                            while($row = $result->fetch_assoc()) {
-                            echo '<figure>
-                            <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($row["Imagem"]). '"></img>
-                            <p class = legenda>'.$row["NomeLocal"].'</p>
-                            <p class = legenda>'.$row["Logradouro"].'</p>
-                            </figure>';
-                        }
-                    }
-                ?>
+                    ?>
+                </div>
             </div>
         </div>
     </div>

@@ -73,8 +73,8 @@
                     ?>
                     
                     <form action="aplicar_filtro.php" method="POST">
-                    
                     <input type='hidden' name='uf' value='SP'/>
+                    
                     <label><b>Selecione a cidade:</b></label><br>
                     <select name="cidades" id="cidades" class="combobox_filtros">
                         <option value=""></option>
@@ -151,11 +151,8 @@
                  <script type="text/javascript">
                     $(function() {
                         $('#cidades').change(function() {
-                            //document.getElementById("oi").innerHTML = "Olá";
                             if( $(this).val()) {
-                                //document.getElementById("oi").innerHTML = "Olá";
                                 $.getJSON('preencher_bairros.php?search=', {cidades: $(this).val(), ajax: 'true'}, function(j) {
-                                    //document.getElementById("oi").innerHTML = "Olá";
                                     var options = '<option value=""></option>';
                                     for (var i = 0; i < j.length; i++) {
                                         options += '<option value="' + j[i].bairros + '">' + j[i].bairros + '</option>';
@@ -182,13 +179,37 @@
                     </div>
                 </div>
                 <div class="direita-pontos">
-                    <div id="listaPontos" class="divisaoItensNormais"></div>
+                    <div id="listaPontos" class="divisaoItensNormais">
+                        <?php
+                            //$html = '<div id="listaPontos" class="divisaoItensNormais"></div>';
+                            if (isset($_SESSION["busca_completa"])) {
+                                for($i=0; $i<count($_SESSION['resultados_busca']['cep']); $i++ ){
+                                    echo '<figure>
+                                    <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($_SESSION['resultados_busca']['imagem'][$i]). '"></img>
+                                    <p class = legenda>'.$_SESSION['resultados_busca']["nome"][$i].'</p>
+                                    <p class = legenda>'.$_SESSION['resultados_busca']["logradouro"][$i].'</p>
+                                    </figure>';
+                                    unset($_SESSION['resultados_busca']['imagem'][$i]);
+                                    unset($_SESSION['resultados_busca']['nome'][$i]);
+                                    unset($_SESSION['resultados_busca']['logradouro'][$i]);
+                                }
+                                unset($_SESSION['busca_completa']);
+                            } else {
+                                $result = $mysqli->query("SELECT * FROM `local` WHERE Uf = 'SP'"); 
+                                while($row = $result->fetch_assoc()) {
+                                    echo '<figure>
+                                    <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($row["Imagem"]). '"></img>
+                                    <p class = legenda>'.$row["NomeLocal"].'</p>
+                                    <p class = legenda>'.$row["Logradouro"].'</p>
+                                    </figure>';
+                                }
+                            }
+                        ?>
+                    </div>
                     <?php
                         //$html = '<div id="listaPontos" class="divisaoItensNormais"></div>';
-                        if (isset($_SESSION["busca_completa"])) {
-                            //echo '<p>Oie</p>'; <-- TÁ RECEBENDO
+                        /*if (isset($_SESSION["busca_completa"])) {
                             for($i=0; $i<count($_SESSION['resultados_busca']['cep']); $i++ ){
-                                //echo '<p>Oie</p>';
                                 echo '<figure>
                                 <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($_SESSION['resultados_busca']['imagem'][$i]). '"></img>
                                 <p class = legenda>'.$_SESSION['resultados_busca']["nome"][$i].'</p>
@@ -208,7 +229,7 @@
                                 <p class = legenda>'.$row["Logradouro"].'</p>
                                 </figure>';
                             }
-                        }
+                        }*/
                     ?>
 
                     <script type="text/javascript">
