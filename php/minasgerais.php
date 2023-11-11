@@ -2,6 +2,10 @@
     session_start();
     include("conecta.php");
 ?>
+<style>
+    <?php include '../css/style_filtro.css'; ?>
+</style>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -15,7 +15,6 @@
     <title>Pontos Turisticos do Rio de Janeiro</title>
     <link rel="shortcut icon" 
           href="../images/logos/sudestour_logo.png">
-    <!--<link rel="stylesheet" href="../css/style_filtro.css">-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300&display=swap" rel="stylesheet">
