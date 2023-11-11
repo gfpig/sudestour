@@ -2,47 +2,23 @@
     session_start();
     include("conecta.php");
 
-    //COLOCAR UMA CONDIÇÃO SE NÃO TIVER VALOR RECEBIDO
-
-
-
-
+    //SE NÃO TIVER VALOR RECEBIDO, REDIRECIONAR PARA A TELA INDEX
+    if (empty($_POST['bairros']) || empty($_POST['cidades']) || empty($_POST['categorias'])) {
+        header('Location: index.php');
+    }
 
     $bairro = mysqli_real_escape_string($mysqli, $_POST['bairros']);
     $cidade = mysqli_real_escape_string($mysqli, $_POST['cidades']);
     $categoria = mysqli_real_escape_string($mysqli, $_POST['categorias']);
     $uf = mysqli_real_escape_string($mysqli, $_POST['uf']);
 
-    //echo $uf;
-    //exit();
-
-    //$result = $mysqli->execute("SELECT * FROM local WHERE Bairro = '{$bairro}' AND Cidade = '{$cidade}'  ORDER BY `Bairro` ASC");
     $query = "SELECT * FROM local WHERE Bairro = '{$bairro}' AND Cidade = '{$cidade}' AND IdCategoria = '{$categoria}' AND Uf = '{$uf}'  ORDER BY Bairro ASC";
     $result = mysqli_query($mysqli, $query);
     $qtde_row = mysqli_num_rows($result);
     $i = 0;
 
-    //echo $qtde_row;
-    //exit();
-
     if (mysqli_num_rows($result) > 0) {
-        while($row = $result->fetch_assoc()) {
-            //echo $i;
-            /*$cnpj = $coluna["Cnpj"];
-            $nome = $_POST["nome"]; 
-            $site = $_POST["site"];               
-            $cep = $_POST["CEP"];
-            $bairro = $_POST["bairro"];   
-            $logradouro = $_POST["logradouro"];                 
-            $cidade = $_POST["cidade"];             
-            $uf = $_POST["UF"];   
-            $complemento = $_POST["complemento"]; 
-            $numero = $_POST["numero"]; 
-            $telefone = $_POST["telefone"]; 
-            $descricao = $_POST["descricao"];
-            $categoria = $_POST['categoria'];
-            $imagem = addslashes(file_get_contents($_FILES["input_imagem"]["tmp_name"]));*/
-            
+        while($row = $result->fetch_assoc()) {            
             $_SESSION['resultados_busca']['cnpj'][$i] = $row['CNPJ'];
             $_SESSION['resultados_busca']['nome'][$i] = $row['NomeLocal'];
             $_SESSION['resultados_busca']['site'][$i] = $row['RedeSocial'];
@@ -63,8 +39,6 @@
     } else {
         $_SESSION['busca_fracasso'] = true;
     }
-    //exit();
-    
+
     header('Location: saopaulo.php');
-    
 ?>

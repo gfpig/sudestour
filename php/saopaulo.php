@@ -183,6 +183,7 @@
                         <?php
                             //$html = '<div id="listaPontos" class="divisaoItensNormais"></div>';
                             if (isset($_SESSION["busca_completa"])) {
+                                echo '<form>';
                                 for($i=0; $i<count($_SESSION['resultados_busca']['cep']); $i++ ){
                                     echo '<figure>
                                     <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($_SESSION['resultados_busca']['imagem'][$i]). '"></img>
@@ -193,18 +194,36 @@
                                     unset($_SESSION['resultados_busca']['nome'][$i]);
                                     unset($_SESSION['resultados_busca']['logradouro'][$i]);
                                 }
+                                echo '</form>';
                                 unset($_SESSION['busca_completa']);
                             } else {
-                                $result = $mysqli->query("SELECT * FROM `local` WHERE Uf = 'SP'"); 
+                                $result = $mysqli->query("SELECT * FROM `local` WHERE Uf = 'SP'");
                                 while($row = $result->fetch_assoc()) {
-                                    echo '<figure>
+                                    echo '<a href=detalhes_ponto.php?Cep='.$row["Cep"].'>
+                                    <figure id='.$row["Cep"].'>
                                     <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($row["Imagem"]). '"></img>
                                     <p class = legenda>'.$row["NomeLocal"].'</p>
                                     <p class = legenda>'.$row["Logradouro"].'</p>
-                                    </figure>';
+                                    </figure>
+                                    </a>';
                                 }
                             }
                         ?>
+                        <script type="text/javascript">
+                            /*(function() {
+                                $('#cidades').change(function() {
+                                    if( $(this).val()) {
+                                        $.getJSON('preencher_bairros.php?search=', {cidades: $(this).val(), ajax: 'true'}, function(j) {
+                                            var options = '<option value=""></option>';
+                                            for (var i = 0; i < j.length; i++) {
+                                                options += '<option value="' + j[i].bairros + '">' + j[i].bairros + '</option>';
+                                            }
+                                            $('#bairros').html(options).show();
+                                        });
+                                    }      
+                                });
+                            });*/
+                        </script>
                     </div>
                     <?php
                         //$html = '<div id="listaPontos" class="divisaoItensNormais"></div>';

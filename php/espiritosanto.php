@@ -75,10 +75,8 @@
                 <select name="categorias" id="categorias" class="combobox_filtros">
                     <option value=""></option>
                     <?php
-                        //$result = $mysqli->query("SELECT DISTINCT `IdCategoria` FROM `local` WHERE Uf = 'SP'");
                         $result = $mysqli->query("SELECT DISTINCT categoria.NomeCategoria, categoria.IdCategoria from categoria INNER JOIN local ON categoria.IdCategoria = local.IdCategoria WHERE Uf = 'ES'");
                         while($row = $result->fetch_assoc()) {
-                            //$nomeCategoria = $mysqli->query("SELECT DISTINCT `categoria.NomeCategoria` from categoria INNER JOIN local ON categoria.IdCategoria = local.IdCategoria WHERE Uf = 'SP'")
                             echo '<option value ="' . $row['IdCategoria'] . '">' . $row['NomeCategoria'] . '</option>';
                         }
                     ?>
