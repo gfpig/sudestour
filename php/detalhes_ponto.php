@@ -39,7 +39,7 @@
     <title>Detalhes Ponto</title>
     <link rel="shortcut icon" 
           href="../images/logos/sudestour_logo.png">
-    <link rel="stylesheet" href="../css/style_detalhes.css">  
+    <link rel="stylesheet" href="../css/style_detalhes.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300&display=swap" rel="stylesheet">
@@ -56,7 +56,15 @@
             <li class="dropdown"><a class="categorias-menu" href="minasgerais.php"><b>Minas Gerais</b></a></li>
             <li class="dropdown"><a class="categorias-menu" href="riodejaneiro.php"><b>Rio de Janeiro</b></a></li>
             <li class="dropdown"><a class="categorias-menu" href="saopaulo.php"><b>São Paulo</b></a></li>
-            <li class="dropdown" id="botao"><button id="botao-login" class="botaoLogin"><a href="login.php"><img src="../images/icones/usuario-login.png" width="40" height="40"></a>Login</button></li>
+            <?php
+                if(isset($_SESSION['usuario'])): //caso o usuário esteja logado, o botão ficará com o nome dele
+            ?>
+            <div style="float:right;">
+                <li class="dropdown" id="botao"><button id="botao-login" class="botaoLogin"><a href="perfil.php" class="link_botao"><img src="../images/icones/usuario-login.png" width="40" height="40"><?php echo $_SESSION['usuario'];else:?></a></button></li>
+            </div>
+            <div style="float:right;">
+                <li class="dropdown" id="botao"><button id="botao-login" class="botaoLogin"><a href="login.php" class="link_botao"><img src="../images/icones/usuario-login.png" width="40" height="40">Login<?php endif; ?></a></button></li>
+            </div>
         </ul>
     </nav>
     <div class="container-principal">
@@ -108,27 +116,42 @@
                 </div>
                 <div class="container-infos">
                     <img src="../images/icones/icon_local.png"><label class="endereco_ponto"><?php echo $row['Logradouro'].', '. $row['Numero'] . ' - '. $row['Cidade'].', '.$row['Uf'].', '.$row['Cep']; ?></label><br>
-                    <!-- Av. Paulista, 1578 - Bela Vista, São Paulo - SP, 01310-200 -->
                     <img src="../images/icones/icon_redes.png"><label class="redes_sociais"><?php echo $row['RedeSocial']; ?></label><br>
-                    <img src="../images/icones/icon_abertura.png"><label class="horario_abertura">Aberto • Abre Ter. às 12:00</label>
-                    <table>
-                <tr>
-                    <th></th>
-                    <th>Aberura</th>
-                    <th>Fechamento</th>
-                </tr>
-                <?php
-                    while ($rowHoras = $resultHoras ->fetch_assoc()){
-                ?>
-                    <tr>
-                        <td><?php $rowHoras['diaSemana'] ?></td>
-                        <td><?php $rowHoras['horaAbertura']  ?><</td>
-                        <td><?php $rowHoras['horaFechamento'] ?><</td>
-                    </tr>
-                <?php } ?>
-                </table> 
+                    <!--<img src="../images/icones/icon_abertura.png"><label class="horario_abertura">Horários ↓</label>-->
+                        <img src="../images/icones/icon_abertura.png"><button onclick="mostrarTabela()" class="horario_abertura">Horários ↓</button>
+                </div>
+                <div class="tabela_horas" id="tabela_horas" style="width: 100%; margin: 0 auto;">
+                        <!--<h5 class="titulo_tb_horas">Horários</h5>-->
+                        <table style="margin-left: auto; margin-right: auto;">
+                            <tr>
+                                <th>Dia Semana</th>
+                                <th>Abertura</th>
+                                <th>Fechamento</th>
+                            </tr>
+                            <?php
+                                while ($rowHoras = $resultHoras ->fetch_assoc()){
+                            ?>
+                                <tr style="border: 2px solid #737373;">
+                                    <td><?php echo $rowHoras['diaSemana'] ?></td>
+                                    <td><?php echo $rowHoras['HoraAbertura']  ?></td>
+                                    <td><?php echo $rowHoras['HoraFechamento'] ?></td>
+                                </tr>
+                            <?php } ?>
+                        </table><br>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        function mostrarTabela() {
+            tb = document.getElementById("tabela_horas");
+            if(tb.style.display = "none") {
+                tb.style.display = "block";
+            } 
+            
+            if (tb.style.display = "block") {
+                tb.style.display = "none";
+            }
+        }
+    </script>
 </body>

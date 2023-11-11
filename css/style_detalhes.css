@@ -33,7 +33,6 @@ li a.categorias-menu, .dropbtn {
 li.dropdown {
     padding: 0px;
     display: inline-block;
-    margin-left: 8%;
 }
 
 .container-principal {
@@ -47,6 +46,18 @@ li.dropdown {
     color: white;
     background-color: #737373;
     margin-top: 3%;
+}
+
+#botao-login {
+    margin-top: 3%;
+    background-color: #737373;
+    color: #ECECEC;
+    text-decoration: none;
+}
+
+.link_botao {
+    color: #ECECEC;
+    text-decoration: none;
 }
 
 .container-esquerda {
@@ -153,9 +164,7 @@ button.opcao {
 }
 
 .container-infos {
-    position: fixed;
-    margin-top: 5%;
-    margin-left: 1%;
+    margin-left: 3%;
 }
 
 .container-infos img {
@@ -177,5 +186,36 @@ label.descricao_ponto {
 
 div.descricao {
     width: 550px;
-    height: auto;
+    height: 200px;
+}
+
+/*table {
+    border-collapse: collapse;
+    border: 3px solid purple;
+}
+
+tr {
+    margin: 5px;
+    text-align: center;
+    border: 1px solid black;
+}*/
+
+.horario_abertura {
+    background: none;
+    border: none;
+}
+
+.tabela_horas {
+    text-align: center;
+    background-color: #CECECE;
+    border-radius: 15px;
+    display:none;
+}
+
+th {
+    width: 120px;
+}
+
+tr {
+    text-align: center;
 }
