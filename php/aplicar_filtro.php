@@ -11,9 +11,13 @@
     $bairro = mysqli_real_escape_string($mysqli, $_POST['bairros']);
     $cidade = mysqli_real_escape_string($mysqli, $_POST['cidades']);
     $categoria = mysqli_real_escape_string($mysqli, $_POST['categorias']);
+    $uf = mysqli_real_escape_string($mysqli, $_POST['uf']);
+
+    //echo $uf;
+    //exit();
 
     //$result = $mysqli->execute("SELECT * FROM local WHERE Bairro = '{$bairro}' AND Cidade = '{$cidade}'  ORDER BY `Bairro` ASC");
-    $query = "SELECT * FROM local WHERE Bairro = '{$bairro}' AND Cidade = '{$cidade}' AND IdCategoria = '{$categoria}' AND Uf = 'SP'  ORDER BY Bairro ASC";
+    $query = "SELECT * FROM local WHERE Bairro = '{$bairro}' AND Cidade = '{$cidade}' AND IdCategoria = '{$categoria}' AND Uf = '{$uf}'  ORDER BY Bairro ASC";
     $result = mysqli_query($mysqli, $query);
     $qtde_row = mysqli_num_rows($result);
     $i = 0;

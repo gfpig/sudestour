@@ -48,30 +48,61 @@
     <div class="container-principal">
         <div class="container-esquerda">
             <div class="container-filtros">
-                <label for="cidades"><b>Selecione a cidade:</b></label><br>
-                <select name="cidades" id="cidades" class="combobox_filtros">
-                    <option value="Vitória">Vitória</option>
-                    <option value="Vila Velha">Vila Velha</option>
-                    <option value="Cariacica">Cariacica</option>
-                </select><br>
-                <label for="bairros"><b>Selecione o bairro:</b></label><br>
-                <select name="bairros" id="bairros" class="combobox_filtros">
-                <option value="argolas">Argolas</option>
-                <option value="Ibes">Ibes</option>
-                <option value="Jucu">Jucu</option>
-                <option value="São Torquato">São Torquato</option>
-                <option value="Sede">Sede</option>
-                </select><br>
-                <label for="categorias"><b>Selecione a categoria:</b></label><br>
-                <select name="categorias" id="categorias" class="combobox_filtros">
-                <option value="restaurante">Restaurante</option>
-                <option value="praia">Praia</option>
-                <option value="bar">Bar</option>
-                <option value="balada">Balada</option>
-                <option value="roupas">Roupas</option>
-                </select><br>
-                <button class="botaoBuscar">BUSCAR</button>
+                <?php
+                    if(isset($_SESSION['busca_fracasso'])) {
+                        echo "Nenhum ponto satisfaz sua busca :(";
+                    }
+                    unset($_SESSION['busca_fracasso']);
+                ?>
+                <form action="aplicar_filtro.php" method="POST">
+                    <input type='hidden' name='uf' value='RJ'/>
+                    
+                    <label for="cidades"><b>Selecione a cidade:</b></label><br>
+                    <select name="cidades" id="cidades" class="combobox_filtros">
+                        <option value=""></option>
+                        <?php
+                            $result = $mysqli->query("SELECT DISTINCT `Cidade` FROM `local` WHERE Uf = 'RJ' ORDER BY `Cidade` ASC");
+                            while($row = $result->fetch_assoc()) {
+                                echo '<option value ="' . $row['Cidade'] . '">' . $row['Cidade'] . '</option>';
+                            }
+                        ?>
+                    </select><br>
+
+                    <label for="bairros"><b>Selecione o bairro:</b></label><br>
+                    <select name="bairros" id="bairros" class="combobox_filtros">
+                        <option value=""></option>
+                    </select><br>
+
+                    <label for="categorias"><b>Selecione a categoria:</b></label><br>
+                    <select name="categorias" id="categorias" class="combobox_filtros">
+                        <option value=""></option>
+                        <?php
+                            $result = $mysqli->query("SELECT DISTINCT categoria.NomeCategoria, categoria.IdCategoria from categoria INNER JOIN local ON categoria.IdCategoria = local.IdCategoria WHERE Uf = 'RJ'");
+                            while($row = $result->fetch_assoc()) {
+                                echo '<option value ="' . $row['IdCategoria'] . '">' . $row['NomeCategoria'] . '</option>';
+                            }
+                        ?>
+                    </select><br>
+                    <button name="submit_filtros" class="botaoBuscar">BUSCAR</button>
+                </form>
             </div>
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+            <script type="text/javascript">
+            $(function() {
+                $('#cidades').change(function() {
+                    if( $(this).val()) {
+                        $.getJSON('preencher_bairros.php?search=', {cidades: $(this).val(), ajax: 'true'}, function(j) {
+                            var options = '<option value=""></option>';
+                            for (var i = 0; i < j.length; i++) {
+                                options += '<option value="' + j[i].bairros + '">' + j[i].bairros + '</option>';
+                            }
+                            $('#bairros').html(options).show();
+                        });
+                    }      
+                });
+            });
+            </script>
         </div>
         <div class="container-direita">
             <div class="direita-radiobuttons">
@@ -90,13 +121,27 @@
             <div class="direita-pontos">
                 <!--<div id="listaPontos" class="divisaoItensNormais"></div>-->
                 <?php
-                    $result = $mysqli->query("SELECT * FROM `local` WHERE Uf = 'RJ'"); 
-                        while($row = $result->fetch_assoc()) {
-                        echo '<figure>
-                        <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($row["Imagem"]). '"></img>
-                        <p class = legenda>'.$row["NomeLocal"].'</p>
-                        <p class = legenda>'.$row["Logradouro"].'</p>
-                        </figure>';
+                    if (isset($_SESSION["busca_completa"])) {
+                        for($i=0; $i<count($_SESSION['resultados_busca']['cep']); $i++ ){
+                            echo '<figure>
+                            <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($_SESSION['resultados_busca']['imagem'][$i]). '"></img>
+                            <p class = legenda>'.$_SESSION['resultados_busca']["nome"][$i].'</p>
+                            <p class = legenda>'.$_SESSION['resultados_busca']["logradouro"][$i].'</p>
+                            </figure>';
+                            unset($_SESSION['resultados_busca']['imagem'][$i]);
+                            unset($_SESSION['resultados_busca']['nome'][$i]);
+                            unset($_SESSION['resultados_busca']['logradouro'][$i]);
+                        }
+                        unset($_SESSION['busca_completa']);
+                    } else {
+                        $result = $mysqli->query("SELECT * FROM `local` WHERE Uf = 'RJ'"); 
+                            while($row = $result->fetch_assoc()) {
+                            echo '<figure>
+                            <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($row["Imagem"]). '"></img>
+                            <p class = legenda>'.$row["NomeLocal"].'</p>
+                            <p class = legenda>'.$row["Logradouro"].'</p>
+                            </figure>';
+                        }
                     }
                 ?>
             </div>

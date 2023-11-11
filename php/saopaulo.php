@@ -1,6 +1,7 @@
 <?php
     session_start();
     include("conecta.php");
+    $uf = "SP";
 ?>
 <style>
     <?php include '../css/style_filtro.css'; ?>
@@ -64,13 +65,16 @@
             <div class="container-esquerda">
                 <div class="container-filtros">
 
-                <?php
-                    if(isset($_SESSION['busca_fracasso'])) {
-                        echo "Nenhum ponto satisfaz sua busca :(";
-                    }
+                    <?php
+                        if(isset($_SESSION['busca_fracasso'])) {
+                            echo "Nenhum ponto satisfaz sua busca :(";
+                        }
+                        unset($_SESSION['busca_fracasso']);
                     ?>
+                    
                     <form action="aplicar_filtro.php" method="POST">
-
+                    
+                    <input type='hidden' name='uf' value='SP'/>
                     <label><b>Selecione a cidade:</b></label><br>
                     <select name="cidades" id="cidades" class="combobox_filtros">
                         <option value=""></option>
@@ -150,7 +154,7 @@
                             //document.getElementById("oi").innerHTML = "Olá";
                             if( $(this).val()) {
                                 //document.getElementById("oi").innerHTML = "Olá";
-                                $.getJSON('select_saopaulo.php?search=', {cidades: $(this).val(), ajax: 'true'}, function(j) {
+                                $.getJSON('preencher_bairros.php?search=', {cidades: $(this).val(), ajax: 'true'}, function(j) {
                                     //document.getElementById("oi").innerHTML = "Olá";
                                     var options = '<option value=""></option>';
                                     for (var i = 0; i < j.length; i++) {
@@ -217,6 +221,5 @@
                 </div>
             </div>
         </div>
-
        <script src="../js/filtro.js"></script>
     </body>

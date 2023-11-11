@@ -1,3 +1,5 @@
+//<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
 var elementoListaDestaques = document.getElementById('listaDestaques');
 //var elementoListaPontos = document.getElementById('listaPontos');
 
@@ -42,6 +44,27 @@ for (var i = 0; i < listaDeDestaques.length; ++i) {
       <p class = legenda>${listaEnderecosDestaques[i]}</p>
     </figure>`
 }
+
+
+//TIRAR O COMENTÁRIO QUANDO DEIXAR A PARTE DOS PONTOS DESTACADOS ITERATIVOS
+//<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+/*$(function() {
+    $('#cidades').change(function() {
+        //document.getElementById("oi").innerHTML = "Olá";
+        if( $(this).val()) {
+            //document.getElementById("oi").innerHTML = "Olá";
+            $.getJSON('select_saopaulo.php?search=', {cidades: $(this).val(), ajax: 'true'}, function(j) {
+                //document.getElementById("oi").innerHTML = "Olá";
+                var options = '<option value=""></option>';
+                for (var i = 0; i < j.length; i++) {
+                    options += '<option value="' + j[i].bairros + '">' + j[i].bairros + '</option>';
+                }
+                $('#bairros').html(options).show();
+            });
+        }      
+    });
+});*/
 
 //ADICIONANDO OS PONTOS NORMAIS POR FUNÇÃO
 //function addNormais(nome, endereco, img) {
