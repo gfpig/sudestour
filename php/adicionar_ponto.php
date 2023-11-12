@@ -171,12 +171,45 @@
                 </div><br>
                 <div style="margin-top:1%">
                     <label class="label_formulario">Descrição:</label><br>
-                    <textarea class="texto_descricao" name="descricao" required></textarea>             
+                    <textarea class="texto_descricao" name="descricao" id="descricao" required></textarea>  <br>   
+                    Caracteres restantes: <span id="char" class="counter"></span>        
                 </div>
                 <button><a href="index.html" class="link">VOLTAR</a></button>
                 <button type="submit" name='btnAdicionar'>ADICIONAR</button>
             </div> 
          </div>
     </form>
+    <label id="teste">a</label>
     <script src="../js/add_ponto.js"></script>
+    <script>
+        const getCurrentContentLength = (content, max) => {
+            const maxLength = max;
+            if (content.length > maxLength) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        const msgInput = document.querySelector('.texto_descricao');
+        const counter = document.querySelector('.counter');
+        const max = 100;
+        var limite_atingido = false;
+        // Nope
+        // msgInput.addEventListener('keyup', (e) => {
+        //   console.log(e);
+        // });
+        msgInput.onkeyup = function() {
+            counter.innerHTML = max - this.value.length;
+            //document.getElementById("teste").innerHTML = 'oi';
+            /*if(!getCurrentContentLength(this.value, (max + 1))) {
+                //msgInput.disabled = true;
+                document.getElementById("teste").innerHTML = "oi";
+                var limite_atingido = true;
+            }*/
+            if (counter.innerHTML < 0) {
+                document.getElementById("teste").innerHTML = "oi";
+                limite_atingido = true;
+            }
+        }
+    </script>
 </body>

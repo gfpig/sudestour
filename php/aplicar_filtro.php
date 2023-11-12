@@ -40,5 +40,23 @@
         $_SESSION['busca_fracasso'] = true;
     }
 
-    header('Location: saopaulo.php');
+    if ($uf == "SP") {
+        header('Location: saopaulo.php');
+        exit();
+    }
+
+    if ($uf == "RJ") {
+        header('Location: riodejaneiro.php');
+        exit();
+    }
+
+    if ($uf == "MG") {
+        header('Location: minasgerais.php');
+        exit();
+    }
+
+    if ($uf == "ES") {
+        header('Location: espiritosanto.php');
+        exit();
+    }
 ?>

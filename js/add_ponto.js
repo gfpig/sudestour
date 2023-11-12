@@ -91,51 +91,59 @@ else {
 }
 };
 
-/*document.getElementById('input').onchange = function (e) {
-    readImage(e)
-};*/
+//CONTADOR DE CARACTERES DA DESCRIÇÃO
+/*let char = document.getElementById('char'); 
 
-//const status = document.getElementById('status');
-   /* const output = document.getElementById('output');
-      if (window.FileList && window.File && window.FileReader) {
-        document.getElementById('input').addEventListener('change', event => {
-          output.src = '';
-          //status.textContent = '';
-          const file = event.target.files[0];
-          if (!file.type) {
-            //status.textContent = 'Error: The File.type property does not appear to be supported on this browser.';
-            return;
-          }
-          if (!file.type.match('image.*')) {
-           // status.textContent = 'Error: The selected file does not appear to be an image.'
-            return;
-          }
-          const reader = new FileReader();
-          reader.addEventListener('load', event => {
-            output.src = event.target.result;
-          });
-          reader.readAsDataURL(file);
-        }); 
-    }*/
+descricao.addEventListener('input', function () { 
+  // count characters  
+  let content = this.value; 
+  char.textContent = content.length; 
 
-/*function readImage(file) {
-    // Check if the file is an image.
-    if (file.type && !file.type.startsWith('image/')) {
-      console.log('File is not an image.', file.type, file);
-      return;
-    }
-  
-    const reader = new FileReader();
-    reader.addEventListener('load', (event) => {
-      img.src = event.target.result;
-    });
-    reader.readAsDataURL(file);
+  // remove empty spaces from start and end  
+  content.trim(); 
+  console.log(content); 
+}); */
+
+/*const msgInput = document.querySelector('.texto_descricao');
+const msgCounter = document.querySelector('.counter');
+const max = 100;
+
+const ensureContentLength = (content, max) => {
+  if (content.lenth > max) {
+      return false;
+  } else {
+      return true;
+  }
 }
-  
 
-/*var elementoImg = document.getElementById('img_ponto');
-var elementoInput = document.getElementById('input');
+msgInput.onkeyup = function() {
+  counter.innerHTML = max - this.value.length;
+  if(!getCurrentContentLength(this.value, (max - 1))) {
+    msgInput.disabled = true;
+  }
+}*/
 
-elementoInput.onchange = function (e) {
-    var novaImg = elementoInput.get
+//msgCounter.innerHTML = max -this.value.length;
+
+/*const getCurrentContentLength = (content, max) => {
+  const input = document.getElementsByClassName('texto_descricao');
+  const maxLength = max;
+  if (content.length > maxLength) {
+    return false;
+  } else {
+    return true;
+  }
+}
+const msgInput = document.querySelector(input);
+const counter = document.querySelector('.counter');
+const max = 100;
+// Nope
+// msgInput.addEventListener('keyup', (e) => {
+//   console.log(e);
+// });
+msgInput.onkeyup = function() {
+  counter.innerHTML = max - this.value.length;
+  if(!getCurrentContentLength(this.value, (max - 1))) {
+    msgInput.disabled = true;
+  }
 }*/
