@@ -164,7 +164,15 @@
                     
                     <div class="comentario">
                         <img src="../images/icones/usuario-login.png" class="icone-perfil"></img>
-                        <div class = "perfil"><p>Janete</p></div>
+                        <div class = "perfil">
+                            <p>Janete</p>
+                        </div>
+                        <div class="nota_usuario">
+                            <img src="../images/icones/estrela.png" style="width:15px;">
+                            <img src="../images/icones/estrela.png" style="width:15px;">
+                            <img src="../images/icones/estrela.png" style="width:15px;">
+                            <img src="../images/icones/estrela.png" style="width:15px;">
+                        </div>
                         <div class = "texto_comentario"><p>Já havia visitado a anos atrás e tive a oportunidade de revisitar atualmente com o olhar mais maduro e com mais entendimento sobre arte. Foi uma experiência incrível, saí da visita com o coração cheio de novas e boas memórias, além disso na lojinha do museu há várias lembrancinhas com um ótimo valor, levei canecas lindas pra casa como recordação dessa visita.</p></div>
                     </div>
                 </div>
