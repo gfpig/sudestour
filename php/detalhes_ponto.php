@@ -4,6 +4,10 @@
 
     $Cep = $_REQUEST["Cep"];
 
+    if($Cep == null) {
+        header("Location: index.php");
+    }
+
     $query = "SELECT * from local where Cep='{$Cep}'";
     $result = mysqli_query($mysqli, $query);
     $row = $result->fetch_assoc();
@@ -68,7 +72,7 @@
         </ul>
     </nav>
     <div class="container-principal">
-        <div class="container-esquerda">
+        <!--<div class="container-esquerda">
             <div class="container-filtros">
                 <label for="cidades"><b>Selecione a cidade:</b></label><br>
                 <select name="cidades" id="cidades" class="combobox_filtros">
@@ -94,7 +98,7 @@
                 </select><br>
                 <button class="botaoBuscar">BUSCAR</button>
             </div>
-        </div>
+        </div>-->
         <div class="container-direita">
             <div class="container-imagem">
                 <img src="<?php echo "data:image/png;base64,". base64_encode($row["Imagem"]) ?>" class="imagem-ponto"><br>
@@ -103,7 +107,8 @@
                     <p class="legenda"><?php echo $row['NomeLocal']; ?></p><br>
                     <p class="legenda"><?php echo $row['Logradouro']; ?></p>
                 </div>
-                <img src="../images/icones/fav_desativado.png" class="icon-fav"> 
+                <a href="favoritar.php?Cep="<?php $row['Cep'] ?>><button class="btn_favorito" onclick="favoritar()"><img src="../images/icones/fav_desativado.png" class="icon-fav"></button><a>
+                <!-- <a href=detalhes_ponto.php?Cep='.$_SESSION['resultados_busca']['cep'][$i].'>-->
             </div>    
             <div class="container-descricao">
                 <!--<div class="opcoes">
@@ -125,11 +130,9 @@
                     <div id="sobre" class="container-infos">
                         <img src="../images/icones/icon_local.png"><label class="endereco_ponto"><?php echo $row['Logradouro'].', '. $row['Numero'] . ' - '. $row['Cidade'].', '.$row['Uf'].', '.$row['Cep']; ?></label><br>
                         <img src="../images/icones/icon_redes.png"><label class="redes_sociais"><?php echo $row['RedeSocial']; ?></label><br>
-                        <!--<img src="../images/icones/icon_abertura.png"><label class="horario_abertura">Horários ↓</label>-->
-                            <img src="../images/icones/icon_abertura.png"><button onclick="mostrarTabela()" class="horario_abertura">Horários ↓</button>
+                        <img src="../images/icones/icon_abertura.png"><button onclick="mostrarTabela()" class="horario_abertura">Horários ↓</button>
                     </div>
                     <div class="tabela_horas" id="tabela_horas" style="width: 100%; margin: 0 auto;">
-                        <!--<h5 class="titulo_tb_horas">Horários</h5>-->
                         <table style="margin-left: auto; margin-right: auto;">
                             <tr>
                                 <th>Dia Semana</th>

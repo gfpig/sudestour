@@ -185,11 +185,13 @@
                             if (isset($_SESSION["busca_completa"])) {
                                 echo '<form>';
                                 for($i=0; $i<count($_SESSION['resultados_busca']['cep']); $i++ ){
-                                    echo '<figure>
+                                    echo '<a href=detalhes_ponto.php?Cep='.$_SESSION['resultados_busca']['cep'][$i].'>
+                                    <figure>
                                     <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($_SESSION['resultados_busca']['imagem'][$i]). '"></img>
                                     <p class = legenda>'.$_SESSION['resultados_busca']["nome"][$i].'</p>
                                     <p class = legenda>'.$_SESSION['resultados_busca']["logradouro"][$i].'</p>
-                                    </figure>';
+                                    </figure>
+                                    </a>';
                                     unset($_SESSION['resultados_busca']['imagem'][$i]);
                                     unset($_SESSION['resultados_busca']['nome'][$i]);
                                     unset($_SESSION['resultados_busca']['logradouro'][$i]);

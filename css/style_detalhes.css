@@ -90,10 +90,11 @@ li.dropdown {
 }
 
 .container-direita {
+    margin: 0 auto;
     float: right;
     align-items: center;
     display: flex;
-    width: 80%;
+    /*width: 80%;*/
     height: 80%;
 }
 
@@ -110,6 +111,12 @@ li.dropdown {
 .container-dados {
     order: 1;
     width: 100%;
+}
+
+.btn_favorito {
+    border: none;
+    background-color:none;
+    display: contents;
 }
 
 .icon-fav {

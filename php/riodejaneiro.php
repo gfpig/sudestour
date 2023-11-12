@@ -1,6 +1,7 @@
 <?php
     session_start();
     include("conecta.php");
+    $uf= "RJ";
 ?>
 <style>
     <?php include '../css/style_filtro.css'; ?>
@@ -122,11 +123,14 @@
                     <?php
                         if (isset($_SESSION["busca_completa"])) {
                             for($i=0; $i<count($_SESSION['resultados_busca']['cep']); $i++ ){
-                                echo '<figure>
+                                echo '
+                                <a href=detalhes_ponto.php?Cep='.$_SESSION['resultados_busca']['cep'][$i].'>
+                                <figure>
                                 <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($_SESSION['resultados_busca']['imagem'][$i]). '"></img>
                                 <p class = legenda>'.$_SESSION['resultados_busca']["nome"][$i].'</p>
                                 <p class = legenda>'.$_SESSION['resultados_busca']["logradouro"][$i].'</p>
-                                </figure>';
+                                </figure>
+                                </a>';
                                 unset($_SESSION['resultados_busca']['imagem'][$i]);
                                 unset($_SESSION['resultados_busca']['nome'][$i]);
                                 unset($_SESSION['resultados_busca']['logradouro'][$i]);
@@ -135,11 +139,13 @@
                         } else {
                             $result = $mysqli->query("SELECT * FROM `local` WHERE Uf = 'RJ'"); 
                                 while($row = $result->fetch_assoc()) {
-                                echo '<figure>
+                                echo '<a href=detalhes_ponto.php?Cep='.$row["Cep"].'>
+                                <figure>
                                 <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($row["Imagem"]). '"></img>
                                 <p class = legenda>'.$row["NomeLocal"].'</p>
                                 <p class = legenda>'.$row["Logradouro"].'</p>
-                                </figure>';
+                                </figure>
+                                </a>';
                             }
                         }
                     ?>

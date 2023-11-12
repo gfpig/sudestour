@@ -1,3 +1,7 @@
+function favoritar() {
+    var img = document.getElementById("img_fav");
+}
+
 function mostrarTabela() {
     var tb = document.getElementById("tabela_horas");
     if(tb.style.display == "none") {
