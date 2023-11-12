@@ -106,51 +106,66 @@
                 <img src="../images/icones/fav_desativado.png" class="icon-fav"> 
             </div>    
             <div class="container-descricao">
-                <div class="opcoes">
+                <!--<div class="opcoes">
                     <button class="opcao" style="margin:0 auto; display: inline-block;">SOBRE</button>
                     <div class="vl"></div>
                     <button class="opcao">AVALIAÇÕES</button><br>
+                </div>-->
+                <div class="tab">
+                    <button class="opcao" onclick="trocaAba(event, 'sobre')" style="margin:0 auto; display: inline-block;">SOBRE</button>
+                    <div class="vl"></div>
+                    <button class="opcao" onclick="trocaAba(event, 'avaliacao')">AVALIAÇÕES</button>
                 </div>
-                <div class="descricao">
-                    <label class="descricao_ponto"><?php echo $row['Descricao']; ?></label><br>
-                </div>
-                <div class="container-infos">
-                    <img src="../images/icones/icon_local.png"><label class="endereco_ponto"><?php echo $row['Logradouro'].', '. $row['Numero'] . ' - '. $row['Cidade'].', '.$row['Uf'].', '.$row['Cep']; ?></label><br>
-                    <img src="../images/icones/icon_redes.png"><label class="redes_sociais"><?php echo $row['RedeSocial']; ?></label><br>
-                    <!--<img src="../images/icones/icon_abertura.png"><label class="horario_abertura">Horários ↓</label>-->
-                        <img src="../images/icones/icon_abertura.png"><button onclick="mostrarTabela()" class="horario_abertura">Horários ↓</button>
-                </div>
-                <div class="tabela_horas" id="tabela_horas" style="width: 100%; margin: 0 auto;">
-                    <!--<h5 class="titulo_tb_horas">Horários</h5>-->
-                    <table style="margin-left: auto; margin-right: auto;">
-                        <tr>
-                            <th>Dia Semana</th>
-                            <th>Abertura</th>
-                            <th>Fechamento</th>
-                        </tr>
-                        <?php
-                            while ($rowHoras = $resultHoras ->fetch_assoc()){
-                        ?>
-                            <tr style="border: 2px solid #737373;">
-                                <td><?php echo $rowHoras['diaSemana'] ?></td>
-                                <td><?php echo $rowHoras['HoraAbertura']  ?></td>
-                                <td><?php echo $rowHoras['HoraFechamento'] ?></td>
+
+                <!-- CONTEÚDO DA ABA SOBRE -->
+                <div id="sobre" class="tabcontent">
+                    <div class="descricao">
+                        <label class="descricao_ponto"><?php echo $row['Descricao']; ?></label><br>
+                    </div>
+                    <div id="sobre" class="container-infos">
+                        <img src="../images/icones/icon_local.png"><label class="endereco_ponto"><?php echo $row['Logradouro'].', '. $row['Numero'] . ' - '. $row['Cidade'].', '.$row['Uf'].', '.$row['Cep']; ?></label><br>
+                        <img src="../images/icones/icon_redes.png"><label class="redes_sociais"><?php echo $row['RedeSocial']; ?></label><br>
+                        <!--<img src="../images/icones/icon_abertura.png"><label class="horario_abertura">Horários ↓</label>-->
+                            <img src="../images/icones/icon_abertura.png"><button onclick="mostrarTabela()" class="horario_abertura">Horários ↓</button>
+                    </div>
+                    <div class="tabela_horas" id="tabela_horas" style="width: 100%; margin: 0 auto;">
+                        <!--<h5 class="titulo_tb_horas">Horários</h5>-->
+                        <table style="margin-left: auto; margin-right: auto;">
+                            <tr>
+                                <th>Dia Semana</th>
+                                <th>Abertura</th>
+                                <th>Fechamento</th>
                             </tr>
-                        <?php } ?>
-                    </table><br>
-                    <p id="teste"></p>
+                            <?php
+                                while ($rowHoras = $resultHoras ->fetch_assoc()){
+                            ?>
+                                <tr style="border: 2px solid #737373;">
+                                    <td><?php echo $rowHoras['diaSemana'] ?></td>
+                                    <td><?php echo $rowHoras['HoraAbertura']  ?></td>
+                                    <td><?php echo $rowHoras['HoraFechamento'] ?></td>
+                                </tr>
+                            <?php } ?>
+                        </table><br>
+                        <p id="teste"></p>
+                    </div>
+                </div>
+
+                <!-- CONTEÚDO DA ABA AVALIAÇÕES -->
+                <div id="avaliacao" class="tabcontent" style="display:none;">
+                    <h3>Paris</h3>
+                    <p>Paris is the capital of France.</p>
                 </div>
             </div>
         </div>
     </div>
-    <script>
-        function mostrarTabela() {
+    <script src="../js/detalhes_ponto.js">
+        /*function mostrarTabela() {
             var tb = document.getElementById("tabela_horas");
             if(tb.style.display == "none") {
                 tb.style.display = "block";
             } else{
                 tb.style.display = "none";
             }
-        }
+        }*/
     </script>
 </body>

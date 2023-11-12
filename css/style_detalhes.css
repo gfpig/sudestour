@@ -138,7 +138,15 @@ li.dropdown {
     border-radius: 15px;
 }
 
-.opcoes {
+/*.opcoes {
+    margin-top: 2%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}*/
+
+.tab {
     margin-top: 2%;
     width: 100%;
     display: flex;
