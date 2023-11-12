@@ -121,35 +121,34 @@
                         <img src="../images/icones/icon_abertura.png"><button onclick="mostrarTabela()" class="horario_abertura">Horários ↓</button>
                 </div>
                 <div class="tabela_horas" id="tabela_horas" style="width: 100%; margin: 0 auto;">
-                        <!--<h5 class="titulo_tb_horas">Horários</h5>-->
-                        <table style="margin-left: auto; margin-right: auto;">
-                            <tr>
-                                <th>Dia Semana</th>
-                                <th>Abertura</th>
-                                <th>Fechamento</th>
+                    <!--<h5 class="titulo_tb_horas">Horários</h5>-->
+                    <table style="margin-left: auto; margin-right: auto;">
+                        <tr>
+                            <th>Dia Semana</th>
+                            <th>Abertura</th>
+                            <th>Fechamento</th>
+                        </tr>
+                        <?php
+                            while ($rowHoras = $resultHoras ->fetch_assoc()){
+                        ?>
+                            <tr style="border: 2px solid #737373;">
+                                <td><?php echo $rowHoras['diaSemana'] ?></td>
+                                <td><?php echo $rowHoras['HoraAbertura']  ?></td>
+                                <td><?php echo $rowHoras['HoraFechamento'] ?></td>
                             </tr>
-                            <?php
-                                while ($rowHoras = $resultHoras ->fetch_assoc()){
-                            ?>
-                                <tr style="border: 2px solid #737373;">
-                                    <td><?php echo $rowHoras['diaSemana'] ?></td>
-                                    <td><?php echo $rowHoras['HoraAbertura']  ?></td>
-                                    <td><?php echo $rowHoras['HoraFechamento'] ?></td>
-                                </tr>
-                            <?php } ?>
-                        </table><br>
+                        <?php } ?>
+                    </table><br>
+                    <p id="teste"></p>
                 </div>
             </div>
         </div>
     </div>
     <script>
         function mostrarTabela() {
-            tb = document.getElementById("tabela_horas");
-            if(tb.style.display = "none") {
+            var tb = document.getElementById("tabela_horas");
+            if(tb.style.display == "none") {
                 tb.style.display = "block";
-            } 
-            
-            if (tb.style.display = "block") {
+            } else{
                 tb.style.display = "none";
             }
         }
