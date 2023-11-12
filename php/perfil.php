@@ -53,7 +53,7 @@
           
         <div class="container-descricao">
             <div class="container-imagem">
-                <img src="../images/adicionar-usuario.jpg" class="imagem-usuario">
+                <img src="../images/icones/adicionar-usuario.jpg" class="imagem-usuario">
             </div>
             <div class="botoes">
                 <button class="botao"><a href="favoritos.html">FAVORITOS</a></button>

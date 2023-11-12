@@ -152,8 +152,21 @@
 
                 <!-- CONTEÚDO DA ABA AVALIAÇÕES -->
                 <div id="avaliacao" class="tabcontent" style="display:none;">
-                    <h3>Paris</h3>
-                    <p>Paris is the capital of France.</p>
+                <div class="nota_avaliar">
+                    <p class="nota"><b><i>4.3</i></b></p>
+                    <img src="../images/icones/estrela.png" style="width:20px;">
+                    <img src="../images/icones/estrela.png" style="width:20px;">
+                    <img src="../images/icones/estrela.png" style="width:20px;">
+                    <img src="../images/icones/estrela.png" style="width:20px;">
+                    <img src="../images/icones/estrela.png" style="width:20px;">
+                    <button class="comentar"><img src="../images/icones/comentario.png" style="width:20px;">COMENTAR</button>
+                </div>
+                    
+                    <div class="comentario">
+                        <img src="../images/icones/usuario-login.png" class="icone-perfil"></img>
+                        <div class = "perfil"><p>Janete</p></div>
+                        <div class = "texto_comentario"><p>Já havia visitado a anos atrás e tive a oportunidade de revisitar atualmente com o olhar mais maduro e com mais entendimento sobre arte. Foi uma experiência incrível, saí da visita com o coração cheio de novas e boas memórias, além disso na lojinha do museu há várias lembrancinhas com um ótimo valor, levei canecas lindas pra casa como recordação dessa visita.</p></div>
+                    </div>
                 </div>
             </div>
         </div>
