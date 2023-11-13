@@ -175,7 +175,7 @@
                     Caracteres restantes: <span id="char" class="counter"></span>        
                 </div>
                 <button><a href="index.html" class="link">VOLTAR</a></button>
-                <button type="submit" name='btnAdicionar'>ADICIONAR</button>
+                <button type="submit" name='btnAdicionar' id="btnAdicionar">ADICIONAR</button>
             </div> 
          </div>
     </form>
@@ -207,8 +207,9 @@
                 var limite_atingido = true;
             }*/
             if (counter.innerHTML < 0) {
-                document.getElementById("teste").innerHTML = "oi";
-                limite_atingido = true;
+                document.getElementById("btnAdicionar").disabled = true;
+                //limite_atingido = true;
+
             }
         }
     </script>
