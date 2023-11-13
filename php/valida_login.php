@@ -15,11 +15,13 @@
 
         $coluna = $result->fetch_assoc();	
         $nome = $coluna["NomeAnunciante"];
+        $email = $coluna["EmailAnunciante"];
 
         $row = mysqli_num_rows($result);
         if ($row == 1) { //se o login for validado, redireciona para home
             $_SESSION['usuario'] = $nome;
             $_SESSION['Anunciante'] = true;
+            $_SESSION['email'] = $email;
             header('Location: index.php');
             exit();
         } else { //se não, volta para a tela de login
@@ -33,11 +35,13 @@
         //$result = $mysqli -> query($query);
         $coluna = $result->fetch_assoc();	
         $nome = $coluna["NomeTurista"];
+        $email = $coluna["EmailTurista"];
 
         $row = mysqli_num_rows($result);
         if ($row == 1) { //se o login for validado, redireciona para home
             $_SESSION['usuario'] = $nome;
             $_SESSION['Turista'] = true;
+            $_SESSION['email'] = $email;
             header('Location: index.php');
             exit();
         } else { //se não, volta para a tela de login
