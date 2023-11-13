@@ -1,17 +1,21 @@
 <?php
+    session_start();
     include ("conecta.php");
     //require('conecta.php');
 
     $nomeanun = $_POST["nome"];
     $cnpjanun = $_POST["documento"];
     $emailanun = $_POST["email"];
-    echo $cnpjanun;
+    //echo $cnpjanun;
     //$dado = $mysqli->prepare("UPDATE 'anunciante' SET 'NomeAnunciante' = ?, 'Cnpj' = ?, 'EmailAnunciante' = ? WHERE 'Anunciante'.'Cnpj' = ?;");
     //$dado->bind_param("ssi", $nomeanun, $cnpjanun, $emaianun, $cnpjanun);
     //$dado->execute();
     $query = "UPDATE anunciante SET NomeAnunciante='{$nomeanun}', EmailAnunciante='{$emailanun}' WHERE Cnpj='{$cnpjanun}'";
     $result = mysqli_query($mysqli, $query);
     if($result){ 
+        $_SESSION['usuario'] = $nomeanun;
+        echo $_SESSION['usuario'];
+        //exit();
         //echo "<p class='text-success'>Os dados foram alterados corretamente. Verifique o resultado na aba Exibir.</p>";
         $_SESSION["sucesso"] = true;
         header('Location: perfil.php');

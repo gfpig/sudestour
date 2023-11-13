@@ -49,9 +49,9 @@
             unset($_SESSION["sucesso"]);*/
             //echo $_SESSION['sucesso'];
             if (isset($_SESSION['sucesso'])) {
-                echo "<script type='text/javascript'>alert('Usuário ou senha incorretos');</script>";
+                echo "<script type='text/javascript'>alert('Dados atualizados com sucesso!');</script>";
             }
-            unset($_SESSION["teste"]);
+            unset($_SESSION["sucesso"]);
         ?>
         <form action="valida_edita_perfil.php" method="POST">
             <div class="container-esquerda">
@@ -81,7 +81,7 @@
                     <button type="submit" class="botao"><a href="#">EDITAR PERFIL</a></button>
                     </form>
                     <form action="logout.php" method="POST">
-                        <button class="botao" style="background-color: red;"><a href="favoritos.html">SAIR</a></button>
+                        <button class="botao" style="background-color: red;">SAIR</button>
                     </form>
                 </div>           
             </div>
