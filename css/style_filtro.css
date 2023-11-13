@@ -182,10 +182,16 @@ img {
     background-color: #CECECE; 
 }
 
+a {
+    text-decoration: none;
+    color: black
+}
+
 figure {
     text-align: center;
     display: inline-table;
     position: static;
+    width: 295px;
 }
 
 .img_ponto {

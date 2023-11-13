@@ -155,16 +155,18 @@
 
                 <!-- CONTEÚDO DA ABA AVALIAÇÕES -->
                 <div id="avaliacao" class="tabcontent" style="display:none;">
-                <div class="nota_avaliar">
-                    <p class="nota"><b><i>4.3</i></b></p>
-                    <img src="../images/icones/estrela.png" style="width:20px;">
-                    <img src="../images/icones/estrela.png" style="width:20px;">
-                    <img src="../images/icones/estrela.png" style="width:20px;">
-                    <img src="../images/icones/estrela.png" style="width:20px;">
-                    <img src="../images/icones/estrela.png" style="width:20px;">
-                    <button class="comentar"><img src="../images/icones/comentario.png" style="width:20px;">COMENTAR</button>
-                </div>
-                    
+                    <div class="nota_avaliar">
+                        <p class="nota"><b><i>4.3</i></b></p>
+                        <img src="../images/icones/estrela.png" style="width:20px;">
+                        <img src="../images/icones/estrela.png" style="width:20px;">
+                        <img src="../images/icones/estrela.png" style="width:20px;">
+                        <img src="../images/icones/estrela.png" style="width:20px;">
+                        <img src="../images/icones/estrela.png" style="width:20px;">
+                        <button class="comentar"><img src="../images/icones/comentario.png" style="width:20px;">COMENTAR</button>
+                    </div>
+                    <div class="areatext_comentario" style="margin: 0 auto;">
+                        <textarea class="area_comentario" placeholder="Avaliação"></textarea>
+                    </div>
                     <div class="comentario">
                         <img src="../images/icones/usuario-login.png" class="icone-perfil"></img>
                         <div class = "perfil">
