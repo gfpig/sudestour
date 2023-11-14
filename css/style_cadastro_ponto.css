@@ -212,7 +212,7 @@ button {
     height: 40px;
 }
 
-button[disabled=true], button:disabled {
-    background-color: pink;
+button:disabled {
+    background-color: lightgray;
     color:grey;
 }

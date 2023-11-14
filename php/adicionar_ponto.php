@@ -207,9 +207,14 @@
                 var limite_atingido = true;
             }*/
             if (counter.innerHTML < 0) {
-                document.getElementById("btnAdicionar").disabled = true;
+                var botao = document.getElementById("btnAdicionar")
+                botao.disabled = true;
+                //botao.style.backgroundColor = gray;
                 //limite_atingido = true;
 
+            } else {
+                var botao = document.getElementById("btnAdicionar")
+                botao.disabled = false;
             }
         }
     </script>
