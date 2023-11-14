@@ -1,4 +1,4 @@
-var elementoListaFavoritos = document.getElementById('listaFavoritos');
+/*var elementoListaFavoritos = document.getElementById('listaFavoritos');
 
 var listaDeFavoritos = ["../images/masp.jpg",
                       '../images/bondinho-rj.webp',
@@ -40,4 +40,4 @@ for (var i = 0; i < listaDeFavoritos.length; ++i) {
       <p class = legenda><b>${listaDeNomesFavoritos[i]}</b></p>
       <p class = legenda>${listaEnderecosFavoritos[i]}</p>
     </figure>`
-}
+}*/

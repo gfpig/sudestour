@@ -10,18 +10,19 @@
     $senha = mysqli_real_escape_string($mysqli, $_POST['senha']);
     $tipo_usuario = $_POST['tipousr'];
     if ($tipo_usuario == "anunciante") {
-        $query = "SELECT EmailAnunciante, SenhaAnunciante, NomeAnunciante from anunciante WHERE EmailAnunciante = '{$usuario}' AND SenhaAnunciante = '{$senha}'";
+        $query = "SELECT Cnpj, SenhaAnunciante, NomeAnunciante from anunciante WHERE EmailAnunciante = '{$usuario}' AND SenhaAnunciante = '{$senha}'";
         $result = mysqli_query($mysqli, $query);
 
         $coluna = $result->fetch_assoc();	
         $nome = $coluna["NomeAnunciante"];
-        $email = $coluna["EmailAnunciante"];
+        //$email = $coluna["EmailAnunciante"];
 
         $row = mysqli_num_rows($result);
         if ($row == 1) { //se o login for validado, redireciona para home
+            $cnpj = $coluna["Cnpj"];
             $_SESSION['usuario'] = $nome;
             $_SESSION['Anunciante'] = true;
-            $_SESSION['email'] = $email;
+            $_SESSION['cnpj'] = $cnpj;
             header('Location: index.php');
             exit();
         } else { //se não, volta para a tela de login
@@ -30,7 +31,7 @@
             exit();
         }
     } else {
-        $query = "SELECT EmailTurista, SenhaTurista, NomeTurista from turista WHERE EmailTurista = '{$usuario}' AND SenhaTurista = '{$senha}'";
+        $query = "SELECT Cpf, SenhaTurista, NomeTurista from turista WHERE EmailTurista = '{$usuario}' AND SenhaTurista = '{$senha}'";
         $result = mysqli_query($mysqli, $query);
         //$result = $mysqli -> query($query);
         $coluna = $result->fetch_assoc();	
@@ -39,9 +40,12 @@
 
         $row = mysqli_num_rows($result);
         if ($row == 1) { //se o login for validado, redireciona para home
+            $cnpj = $coluna["Cpf"];
             $_SESSION['usuario'] = $nome;
             $_SESSION['Turista'] = true;
-            $_SESSION['email'] = $email;
+            $_SESSION['cpf'] = $cpf;
+            //$_SESSION['email'] = $email;
+            
             header('Location: index.php');
             exit();
         } else { //se não, volta para a tela de login

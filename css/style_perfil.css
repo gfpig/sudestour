@@ -30,7 +30,6 @@ li a.categorias-menu, .dropbtn {
 li.dropdown {
     padding: 0px;
     display: inline-block;
-    margin-left: 8%;
 }
 
 .logo {
@@ -39,12 +38,16 @@ li.dropdown {
 }
 
 .opcoes_menu {
-    width: 87%;
+    /*width: 87%;*/
     margin-top: 0.7%;
     float: right;
-    display: flex;
+    /*display: flex;*/
     justify-content: center;
     align-items: center;
+    font-weight: bold;
+    margin-left:8%;
+    width:80%;
+    display:contents;
 }
 
 
@@ -134,7 +137,7 @@ label {
     /*margin-top: 15%;*/
 }
 
-a {
+.link_btn {
     text-decoration: none;
     color: white;
 }

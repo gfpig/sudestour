@@ -14,7 +14,6 @@
     $result = mysqli_query($mysqli, $query);
     if($result){ 
         $_SESSION['usuario'] = $nomeanun;
-        echo $_SESSION['usuario'];
         //exit();
         //echo "<p class='text-success'>Os dados foram alterados corretamente. Verifique o resultado na aba Exibir.</p>";
         $_SESSION["sucesso"] = true;

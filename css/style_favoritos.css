@@ -1,10 +1,12 @@
 html, body {
     height: 100%;
+    background-color: #EAE8E8;
 }
 
 nav {
     position: sticky;
     top: 0;
+    text-align: center
 }
 
 .menu {
@@ -17,7 +19,8 @@ nav {
 }
 
 li a.categorias-menu, .dropbtn {
-    margin-left: 30px;
+    /*margin-left: 30px;*/
+    margin: 0 auto;
     display: inline-flexbox;
     color: #CDCDCD;
     text-align: center;
@@ -28,10 +31,22 @@ li a.categorias-menu, .dropbtn {
 li.dropdown {
     padding: 0px;
     display: inline-block;
-    margin-left: 8%;
+}
+
+#botao-login {
+    margin-top: 3%;
+    background-color: #737373;
+    color: #ECECEC;
+    text-decoration: none;
+}
+
+.link_botao {
+    color: #ECECEC;
+    text-decoration: none;
 }
 
 div.container-principal {
+    width: 100%;
     height: 100%;
     display: inline-block;
     background-color: #EAE8E8;
@@ -56,6 +71,7 @@ figure {
     text-align: center;
     display: inline-table;
     position: static;
+    width: 295px;
 }
 
 .legenda {

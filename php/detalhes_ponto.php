@@ -72,33 +72,6 @@
         </ul>
     </nav>
     <div class="container-principal">
-        <!--<div class="container-esquerda">
-            <div class="container-filtros">
-                <label for="cidades"><b>Selecione a cidade:</b></label><br>
-                <select name="cidades" id="cidades" class="combobox_filtros">
-                    <option value="Vitória">Vitória</option>
-                    <option value="Vila Velha">Vila Velha</option>
-                    <option value="Cariacica">Cariacica</option>
-                </select><br>
-                <label for="bairros"><b>Selecione o bairro:</b></label><br>
-                <select name="bairros" id="bairros" class="combobox_filtros">
-                <option value="argolas">Argolas</option>
-                <option value="Ibes">Ibes</option>
-                <option value="Jucu">Jucu</option>
-                <option value="São Torquato">São Torquato</option>
-                <option value="Sede">Sede</option>
-                </select><br>
-                <label for="categorias"><b>Selecione a categoria:</b></label><br>
-                <select name="categorias" id="categorias" class="combobox_filtros">
-                <option value="restaurante">Restaurante</option>
-                <option value="praia">Praia</option>
-                <option value="bar">Bar</option>
-                <option value="balada">Balada</option>
-                <option value="roupas">Roupas</option>
-                </select><br>
-                <button class="botaoBuscar">BUSCAR</button>
-            </div>
-        </div>-->
         <div class="container-direita">
             <div class="container-imagem">
                 <img src="<?php echo "data:image/png;base64,". base64_encode($row["Imagem"]) ?>" class="imagem-ponto"><br>
@@ -107,8 +80,11 @@
                     <p class="legenda"><?php echo $row['NomeLocal']; ?></p><br>
                     <p class="legenda"><?php echo $row['Logradouro']; ?></p>
                 </div>
-                <a href="favoritar.php?Cep="<?php $row['Cep'] ?>><button class="btn_favorito" onclick="favoritar()"><img src="../images/icones/fav_desativado.png" class="icon-fav"></button><a>
-                <!-- <a href=detalhes_ponto.php?Cep='.$_SESSION['resultados_busca']['cep'][$i].'>-->
+                
+                <a href="favoritar.php?Cep=<?php echo $Cep; ?>"><button class="btn_favorito" onclick="favoritar()"><img src="../images/icones/fav_desativado.png" class="icon-fav"></button></a>
+                
+                <!-- <a href=detalhes_ponto.php?Cep='.$_SESSION['resultados_busca']['cep'][$i].'>
+                     <a href=detalhes_ponto.php?Cep='.$row["Cep"].'>-->
             </div>    
             <div class="container-descricao">
                 <!--<div class="opcoes">
