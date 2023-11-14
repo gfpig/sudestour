@@ -21,7 +21,7 @@ nav {
 li a.categorias-menu, .dropbtn {
     /*margin-left: 30px;*/
     margin: 0 auto;
-    display: inline-flexbox;
+    /*display: contents;*/
     color: #CDCDCD;
     text-align: center;
     padding: 14px 16px;
