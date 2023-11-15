@@ -138,6 +138,7 @@
                             unset($_SESSION['resultados_busca']['nome'][$i]);
                             unset($_SESSION['resultados_busca']['logradouro'][$i]);
                         }
+                        unset($_SESSION['resultados_busca']);
                         unset($_SESSION['busca_completa']);
                     } else {
                         $result = $mysqli->query("SELECT * FROM `local` WHERE Uf = 'MG'"); 

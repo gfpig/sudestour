@@ -3,7 +3,7 @@
     include("conecta.php");
 
     //LÓGICA PARA USUÁRIO NÃO LOGADO NÃO ACESSAR A PÁGINA
-    if(!isset($_SESSION['Anunciante']) || !isset($_SESSION['Turista'])) {
+    if(!isset($_SESSION['Anunciante']) && !isset($_SESSION['Turista'])) {
         header('Location: index.php');
     }
 
