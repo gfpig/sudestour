@@ -95,7 +95,7 @@
                     }
                     if($qtd_row > 0):
                 ?>
-                <a href="favoritar.php?Cep=<?php echo $Cep; ?>"><button class="btn_favorito" onclick="favoritar()"><img src="../images/icones/fav_ativado.png" class="icon-fav"></button></a><?php else: ?>
+                <a href="desfavoritar.php?Cep=<?php echo $Cep; ?>"><button class="btn_favorito" onclick="favoritar()"><img src="../images/icones/fav_ativado.png" class="icon-fav"></button></a><?php else: ?>
                 <a href="favoritar.php?Cep=<?php echo $Cep; ?>"><button class="btn_favorito" onclick="favoritar()"><img src="../images/icones/fav_desativado.png" class="icon-fav"></button></a><?php endif; ?>
                 
                 <!-- <a href=detalhes_ponto.php?Cep='.$_SESSION['resultados_busca']['cep'][$i].'>
