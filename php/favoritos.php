@@ -47,14 +47,23 @@
     </nav>
     <div class="container-principal">
         <div class="container-checkboxes">
-            <form action="filtrar_favoritos.php" method="POST">
-                <input type="checkbox" id="ES" name="ordenacao" class="checkbox" checked="checked">
+            <form id="filtrar_favoritos" action="" method="GET">
+                <!--<input type="checkbox" id="ES" name="ordenacao" class="checkbox" checked="checked" onchange="document.getElementById('filtrar_favoritos').submit()">
                 <label for="html">ESPÍRITO SANTO</label>
-                <input type="checkbox" id="MG" name="ordenacao" class="checkbox" checked="checked">
+                <input type="checkbox" id="MG" name="ordenacao" class="checkbox" checked="checked" onchange="document.getElementById('filtrar_favoritos').submit()">
                 <label for="css">MINAS GERAIS</label>
-                <input type="checkbox" id="RJ" name="ordenacao" class="checkbox" checked="checked">
+                <input type="checkbox" id="RJ" name="ordenacao" class="checkbox" checked="checked" onchange="document.getElementById('filtrar_favoritos').submit()">
                 <label for="html">RIO DE JANEIRO</label>
-                <input type="checkbox" id="SP" name="ordenacao" class="checkbox" checked="checked">
+                <input type="checkbox" id="SP" name="ordenacao" class="checkbox" checked="checked" onchange="document.getElementById('filtrar_favoritos').submit()">
+                <label for="css">SÃO PAULO</label>-->
+
+                <input type="checkbox" id="ES" name="ordenacao" value="ES" class="checkbox" onchange="document.getElementById('filtrar_favoritos').submit()">
+                <label for="html">ESPÍRITO SANTO</label>
+                <input type="checkbox" id="MG" name="ordenacao" value="MG" class="checkbox" onchange="document.getElementById('filtrar_favoritos').submit()">
+                <label for="css">MINAS GERAIS</label>
+                <input type="checkbox" id="RJ" name="ordenacao" value="RJ" class="checkbox" onchange="document.getElementById('filtrar_favoritos').submit()">
+                <label for="html">RIO DE JANEIRO</label>
+                <input type="checkbox" id="SP" name="ordenacao" value="SP" class="checkbox" onchange="document.getElementById('filtrar_favoritos').submit()">
                 <label for="css">SÃO PAULO</label>
             </form>
         </div>
@@ -62,6 +71,14 @@
             <div id="listaFavoritos" class="divisaoFavoritos">
             <?php
                 //if (isset($_SESSION["busca_completa"])) {
+                    $checked = [];
+
+                    if(isset($_GET['ordenacao'])) {
+                        $checked = $_GET['ordenacao'];
+                    }
+
+                    if(in_array('ES', $checked)) { echo "checked"; }
+
                     if(isset($_SESSION['Anunciante'])) {
                         $queryFavoritos = "SELECT CepPonto from favoritos WHERE CnpjAnunciante = '{$_SESSION['cnpj']}'";
                         //$resultFavoritos = mysqli_query($mysqli, $queryFavoritos);
@@ -86,12 +103,6 @@
                             </a>';
                         }
                     }
-                //}
-                //if(isset($_SESSION['Anunciante'])) {
-        //$queryFavoritos = "SELECT CepPonto from favoritos WHERE Cnpj = '{$_SESSION['cnpj']}')";
-        //$resultFavoritos = mysqli_query($mysqli, $queryFavoritos);
-        
-    //}
                 ?>
             </div>
         </div>

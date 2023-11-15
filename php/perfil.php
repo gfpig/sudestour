@@ -1,13 +1,33 @@
 <?php
     session_start();
     include("conecta.php");
-    $user = $_SESSION['cnpj'];
-    $query = "SELECT * from anunciante where Cnpj='{$user}'";
-    $result = mysqli_query($mysqli, $query);
-    $row = $result->fetch_assoc();
-    $nome = $row["NomeAnunciante"];
-    $cnpj = $row["Cnpj"];
-    $email = $row["EmailAnunciante"];
+
+    //LÓGICA PARA USUÁRIO NÃO LOGADO NÃO ACESSAR A PÁGINA
+    if(!isset($_SESSION['Anunciante']) || !isset($_SESSION['Turista'])) {
+        header('Location: index.php');
+    }
+
+    //PREENCHER OS DADOS SE FOR ANUNCIANTE
+    if(isset($_SESSION['Anunciante'])) {
+        $user = $_SESSION['cnpj'];
+        $query = "SELECT * from anunciante where Cnpj='{$user}'";
+        $result = mysqli_query($mysqli, $query);
+        $row = $result->fetch_assoc();
+        $nome = $row["NomeAnunciante"];
+        $documento = $row["Cnpj"];
+        $email = $row["EmailAnunciante"];
+    }
+
+    //PREENCHER OS DADOS SE FOR TURISTA
+    if(isset($_SESSION['Turista'])) {
+        $user = $_SESSION['cpf'];
+        $query = "SELECT * from turista where Cpf='{$user}'";
+        $result = mysqli_query($mysqli, $query);
+        $row = $result->fetch_assoc();
+        $nome = $row["NomeTurista"];
+        $documento = $row["Cpf"];
+        $email = $row["EmailTurista"];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,8 +89,8 @@
                     </div>
                     
                     <div class="c-inputs">
-                    <label>CPF/CNPJ</label><br>
-                        <input class="text" name="documento" placeholder="Digite o CPF/CNPJ" value='.$cnpj.'><br>
+                    <label>Nº DOCUMENTO</label><br>
+                        <input class="text" name="documento" placeholder="Digite o CPF/CNPJ" value='.$documento.'><br>
                     </div>
                     <div class="c-inputs">
                     <label>Email</label><br>
