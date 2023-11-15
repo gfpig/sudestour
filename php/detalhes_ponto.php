@@ -80,8 +80,23 @@
                     <p class="legenda"><?php echo $row['NomeLocal']; ?></p><br>
                     <p class="legenda"><?php echo $row['Logradouro']; ?></p>
                 </div>
-                
-                <a href="favoritar.php?Cep=<?php echo $Cep; ?>"><button class="btn_favorito" onclick="favoritar()"><img src="../images/icones/fav_desativado.png" class="icon-fav"></button></a>
+                <?php
+                    //DESCOBRINDO SE O PONTO ESTÁ FAVORITADO PELO USUARIO
+                    if(isset($_SESSION['Anunciante'])) {
+                        $queryFavoritado = "SELECT CepPonto, CnpjAnunciante from favoritos WHERE CepPonto='{$Cep}' AND CnpjAnunciante='{$_SESSION['cnpj']}'";
+                        $resultFavoritado = mysqli_query($mysqli, $queryFavoritado);
+                        $qtd_row = mysqli_num_rows($resultFavoritado);
+                    }
+
+                    if(isset($_SESSION['Turista'])) {
+                        $queryFavoritado = "SELECT CepPonto, CpfTurista from favoritos WHERE CepPonto='{$Cep}' AND CpfTurista='{$_SESSION['cpf']}'";
+                        $resultFavoritado = mysqli_query($mysqli, $queryFavoritado);
+                        $qtd_row = mysqli_num_rows($resultFavoritado);
+                    }
+                    if($qtd_row > 0):
+                ?>
+                <a href="favoritar.php?Cep=<?php echo $Cep; ?>"><button class="btn_favorito" onclick="favoritar()"><img src="../images/icones/fav_ativado.png" class="icon-fav"></button></a><?php else: ?>
+                <a href="favoritar.php?Cep=<?php echo $Cep; ?>"><button class="btn_favorito" onclick="favoritar()"><img src="../images/icones/fav_desativado.png" class="icon-fav"></button></a><?php endif; ?>
                 
                 <!-- <a href=detalhes_ponto.php?Cep='.$_SESSION['resultados_busca']['cep'][$i].'>
                      <a href=detalhes_ponto.php?Cep='.$row["Cep"].'>-->
@@ -131,18 +146,27 @@
 
                 <!-- CONTEÚDO DA ABA AVALIAÇÕES -->
                 <div id="avaliacao" class="tabcontent" style="display:none;">
-                    <div class="nota_avaliar">
-                        <p class="nota"><b><i>4.3</i></b></p>
-                        <img src="../images/icones/estrela.png" style="width:20px;">
-                        <img src="../images/icones/estrela.png" style="width:20px;">
-                        <img src="../images/icones/estrela.png" style="width:20px;">
-                        <img src="../images/icones/estrela.png" style="width:20px;">
-                        <img src="../images/icones/estrela.png" style="width:20px;">
-                        <button class="comentar"><img src="../images/icones/comentario.png" style="width:20px;">COMENTAR</button>
-                    </div>
-                    <div class="areatext_comentario" style="margin: 0 auto;">
-                        <textarea class="area_comentario" placeholder="Avaliação"></textarea>
-                    </div>
+                <?php
+                    if(isset($_SESSION["nao_logado"])) {
+                        //echo $_SESSION["usuario_cadastrado"];
+                        echo "<script type='text/javascript'>alert('Para fazer um comentário, você deve fazer o login');</script>";
+                    }
+                    unset($_SESSION['nao_logado']);
+                ?>
+                    <form action="adicionar_avaliacao.php?Cep=<?php echo $Cep; ?>" method="POST">
+                        <div class="nota_avaliar">
+                            <p class="nota"><b><i>4.3</i></b></p>
+                            <img src="../images/icones/estrela.png" style="width:20px;" name="um">
+                            <img src="../images/icones/estrela.png" style="width:20px;" name="dois">
+                            <img src="../images/icones/estrela.png" style="width:20px;" name="tres">
+                            <img src="../images/icones/estrela.png" style="width:20px;" name="quatro">
+                            <img src="../images/icones/estrela.png" style="width:20px;" name="cinco">
+                            <button type="submit" class="comentar"><img src="../images/icones/comentario.png" style="width:20px;">COMENTAR</button>
+                        </div>
+                        <div class="areatext_comentario" style="margin: 0 auto;">
+                            <textarea class="area_comentario" placeholder="Avaliação" name="comentario_usuario"></textarea>
+                        </div>
+                    </form>
                     <div class="comentario">
                         <img src="../images/icones/usuario-login.png" class="icone-perfil"></img>
                         <div class = "perfil">

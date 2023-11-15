@@ -23,7 +23,7 @@
                 exit();
             }
         } catch (Exception $ex) {
-            header("Location: detalhes_ponto.php?Cep=.$cep.");
+            header("Location: detalhes_ponto.php?Cep=$cep");
             exit();
         }
     }
@@ -38,11 +38,11 @@
         try {
             if (mysqli_query($mysqli, $queryAddFav)) {
                 //$_SESSION["usuario_cadastrado"] = true;
-                header("Location: detalhes_ponto.php?Cep=.$cep.");
+                header("Location: detalhes_ponto.php?Cep=$cep");
                 exit();
             }
         } catch (Exception $ex) {
-            header("Location: detalhes_ponto.php?Cep=.$cep.");
+            header("Location: detalhes_ponto.php?Cep=$cep");
             exit();
         }
     }

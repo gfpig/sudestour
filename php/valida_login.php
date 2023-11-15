@@ -40,7 +40,7 @@
 
         $row = mysqli_num_rows($result);
         if ($row == 1) { //se o login for validado, redireciona para home
-            $cnpj = $coluna["Cpf"];
+            $cpf = $coluna["Cpf"];
             $_SESSION['usuario'] = $nome;
             $_SESSION['Turista'] = true;
             $_SESSION['cpf'] = $cpf;
