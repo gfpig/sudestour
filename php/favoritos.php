@@ -47,14 +47,16 @@
     </nav>
     <div class="container-principal">
         <div class="container-checkboxes">
-            <input type="checkbox" id="ES" name="ordenacao" class="checkbox" checked="checked">
-            <label for="html">ESPÍRITO SANTO</label>
-            <input type="checkbox" id="MG" name="ordenacao" class="checkbox" checked="checked">
-            <label for="css">MINAS GERAIS</label>
-            <input type="checkbox" id="RJ" name="ordenacao" class="checkbox" checked="checked">
-            <label for="html">RIO DE JANEIRO</label>
-            <input type="checkbox" id="SP" name="ordenacao" class="checkbox" checked="checked">
-            <label for="css">SÃO PAULO</label>
+            <form action="filtrar_favoritos.php" method="POST">
+                <input type="checkbox" id="ES" name="ordenacao" class="checkbox" checked="checked">
+                <label for="html">ESPÍRITO SANTO</label>
+                <input type="checkbox" id="MG" name="ordenacao" class="checkbox" checked="checked">
+                <label for="css">MINAS GERAIS</label>
+                <input type="checkbox" id="RJ" name="ordenacao" class="checkbox" checked="checked">
+                <label for="html">RIO DE JANEIRO</label>
+                <input type="checkbox" id="SP" name="ordenacao" class="checkbox" checked="checked">
+                <label for="css">SÃO PAULO</label>
+            </form>
         </div>
         <div class="container-favoritos">
             <div id="listaFavoritos" class="divisaoFavoritos">
