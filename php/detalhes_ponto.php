@@ -164,7 +164,7 @@
                             <button type="submit" class="comentar"><img src="../images/icones/comentario.png" style="width:20px;">COMENTAR</button>
                         </div>
                         <div class="areatext_comentario" style="margin: 0 auto;">
-                            <textarea class="area_comentario" placeholder="Avaliação" name="comentario_usuario"></textarea>
+                            <textarea class="area_comentario" placeholder="Avaliação" name="comentario_usuario" required></textarea>
                         </div>
                     </form>
                     <div class="comentario">

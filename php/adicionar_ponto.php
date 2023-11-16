@@ -53,20 +53,16 @@
     <form action="insert_ponto.php" method="POST" enctype="multipart/form-data">
     <div class="container-principal">
         <div class="container-esquerda">
-            <!--<form action="/action_page.php">
-            <input type="file" id="img_ponto" name="fachada_ponto">
-            <input type="submit">
-            </form>
-            É IMPORTANTE COLOCAR NO FORM DEPOIS PARA FAZER O BACKEND (EU ACHO)-->
             <label id="lbl_img" class="escolher_img">
                 <img src="../images/icones/add_imagem1.png" id="img_ponto">
                 <input type="file" id="input" name="input_imagem">
-                <?php 
-                /*if(isset($_POST['input_imagem'])) {
-                    echo '<script>alteraImg();</script>';
-                }*/
-                ?>
             </label>
+            <!-- 
+                <label id="lbl_img" class="escolher_img" style="margin-left: 40%;">
+                    <img src="../images/icones/adicionar-usuario.jpg" class="imagem-usuario">
+                    <input type="file" id="input" name="input_imagem" style="display: none;">
+                </label>
+            -->
             <div class="hora_funcionamento">
                 <p>HORÁRIO DE FUNCIONAMENTO</p><img src="../images/icones/ajuda.png" width="20px" title="Insira os dados no formato 00:00" style="margin-left:5px;">
                 <table>
@@ -115,6 +111,7 @@
                     <label class="label_formulario">Nome do Local:</label><br>
                     <input type="text" name="nome" class="texto_nome" required/><br>
                 </div><br>
+                
 
                 <div class="linha_combobox">
                     <label class="label_formulario">Categoria:</label>

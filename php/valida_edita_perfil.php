@@ -1,10 +1,6 @@
 <?php
     session_start();
     include ("conecta.php");
-    //require('conecta.php');
-
-    //echo $_POST['favoritos'];
-    //exit();
 
     if(empty($_POST["nome"]) || empty($_POST["documento"]) || empty($_POST["email"])) {
         header('Location: index.php');
@@ -15,27 +11,20 @@
         header('Location: perfil.php');
         exit();
     }
-    
-    //echo $cnpjanun;
-    //$dado = $mysqli->prepare("UPDATE 'anunciante' SET 'NomeAnunciante' = ?, 'Cnpj' = ?, 'EmailAnunciante' = ? WHERE 'Anunciante'.'Cnpj' = ?;");
-    //$dado->bind_param("ssi", $nomeanun, $cnpjanun, $emaianun, $cnpjanun);
-    //$dado->execute();
 
     if(isset($_SESSION['Anunciante'])) {
         $nomeanun = $_POST["nome"];
         $cnpjanun = $_POST["documento"];
         $emailanun = $_POST["email"];
+        $imagem = addslashes(file_get_contents($_FILES["input_imagem"]["tmp_name"]));
 
-        $query = "UPDATE anunciante SET NomeAnunciante='{$nomeanun}', EmailAnunciante='{$emailanun}' WHERE Cnpj='{$cnpjanun}'";
+        $query = "UPDATE anunciante SET NomeAnunciante='{$nomeanun}', EmailAnunciante='{$emailanun}', FotoAnunciante='{$imagem}' WHERE Cnpj='{$cnpjanun}'";
         $result = mysqli_query($mysqli, $query);
         if($result){ 
             $_SESSION['usuario'] = $nomeanun;
-            //exit();
-            //echo "<p class='text-success'>Os dados foram alterados corretamente. Verifique o resultado na aba Exibir.</p>";
             $_SESSION["sucesso"] = true;
             header('Location: perfil.php');
-            //echo $_SESSION["sucesso"];
-            //$_SESSION["sucesso"] = true;
+
             exit();
         }
         else if(!mysqli_query($mysqli, $query)){
@@ -49,14 +38,13 @@
         $nome = $_POST["nome"];
         $cpf = $_POST["documento"];
         $email = $_POST["email"];
+        $imagem = addslashes(file_get_contents($_FILES["input_imagem"]["tmp_name"]));
 
-        $query = "UPDATE turista SET NomeTurista='{$nome}', EmailTurista='{$email}' WHERE Cpf='{$cpf}'";
+        $query = "UPDATE turista SET NomeTurista='{$nome}', EmailTurista='{$email}', FotoTurista='{$imagem}' WHERE Cpf='{$cpf}'";
         $result = mysqli_query($mysqli, $query);
 
         if($result){ 
             $_SESSION['usuario'] = $nome;
-            //echo $_SESSION['usuario'];
-            //exit();
             $_SESSION["sucesso"] = true;
 
             header('Location: perfil.php');
@@ -68,6 +56,4 @@
         }                 
         mysqli_close($mysqli);
     }
-
-
 ?>

@@ -16,7 +16,7 @@
           });
           reader.readAsDataURL(file);
       }); 
-  }
+}
 //}
 
 function getSrc() {

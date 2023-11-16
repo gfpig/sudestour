@@ -106,10 +106,12 @@
           
             <div class="container-descricao">
                 <div class="container-imagem">
-                    <img src="../images/icones/adicionar-usuario.jpg" class="imagem-usuario">
+                    <label id="lbl_img" class="escolher_img" style="margin-left: 40%;">
+                        <img src="../images/icones/adicionar-usuario.jpg" id="foto_perfil" class="imagem-usuario">
+                        <input type="file" id="input" name="input_imagem" style="display: none;">
+                    </label>
                 </div>
                 <div class="botoes">
-                    <!--<button class="botao"><a class="link_btn" href="favoritos.php">FAVORITOS</a></button>-->
                     <button type="submit" name="editar" class="botao">EDITAR PERFIL</button>
                     </form>
                         <button class="botao" name="favoritos"><a class="link_btn" href="favoritos.php">FAVORITOS</a></button>
@@ -128,5 +130,5 @@
         
     </div>
 
-    <script src="../js/login.js"></script>
+    <script src="../js/perfil.js"></script>
 </body>

@@ -93,9 +93,13 @@ p {
 }
 
 .imagem-usuario {
-    margin-left: 40%;
+    /*margin-left: 40%;
     /*margin-top: 8%;*/
     max-height: 350px;
+}
+
+.escolher_img {
+    cursor: pointer;
 }
 
 label {

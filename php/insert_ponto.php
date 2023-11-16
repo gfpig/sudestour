@@ -32,9 +32,6 @@
     $telefone = $_POST["telefone"]; 
     $descricao = $_POST["descricao"];
     $categoria = $_POST['categoria'];
-    //$categoria = $_POST['IdCategoria'];
-    //echo $categoria;
-    //exit();
     $imagem = addslashes(file_get_contents($_FILES["input_imagem"]["tmp_name"]));
     
     $queryLocal = "INSERT INTO local(`Cep`, `Bairro`,`Logradouro`, `Complemento`, `Telefone`, `RedeSocial` , `Imagem`, `Uf`, `Cidade`, `NomeLocal`,`Numero`, `Descricao`, `CNPJ`, `IdCategoria`) VALUES ('$cep', '$bairro', '$logradouro', '$complemento', '$telefone', '$site', '$imagem', '$uf', '$cidade','$nome', '$numero', '$descricao', '$cnpj', '$categoria')";                    
