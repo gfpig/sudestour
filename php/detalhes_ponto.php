@@ -79,21 +79,24 @@
                 </div>
                 <?php
                     //DESCOBRINDO SE O PONTO ESTÁ FAVORITADO PELO USUARIO
+                    if(isset($_SESSION['usuario'])) {
                     if(isset($_SESSION['Anunciante'])) {
                         $queryFavoritado = "SELECT CepPonto, CnpjAnunciante from favoritos WHERE CepPonto='{$Cep}' AND CnpjAnunciante='{$_SESSION['cnpj']}'";
                         $resultFavoritado = mysqli_query($mysqli, $queryFavoritado);
                         $qtd_row = mysqli_num_rows($resultFavoritado);
-                    }
+                    } 
 
                     if(isset($_SESSION['Turista'])) {
                         $queryFavoritado = "SELECT CepPonto, CpfTurista from favoritos WHERE CepPonto='{$Cep}' AND CpfTurista='{$_SESSION['cpf']}'";
                         $resultFavoritado = mysqli_query($mysqli, $queryFavoritado);
                         $qtd_row = mysqli_num_rows($resultFavoritado);
                     }
-                    if($qtd_row > 0):
+                        if($qtd_row > 0):
+                    
                 ?>
                 <a href="desfavoritar.php?Cep=<?php echo $Cep; ?>"><button class="btn_favorito" onclick="favoritar()"><img src="../images/icones/fav_ativado.png" class="icon-fav"></button></a><?php else: ?>
-                <a href="favoritar.php?Cep=<?php echo $Cep; ?>"><button class="btn_favorito" onclick="favoritar()"><img src="../images/icones/fav_desativado.png" class="icon-fav"></button></a><?php endif; ?>
+                <a href="favoritar.php?Cep=<?php echo $Cep; ?>"><button class="btn_favorito" onclick="favoritar()"><img src="../images/icones/fav_desativado.png" class="icon-fav"></button></a><?php endif; } else{ ?>
+                    <a href="favoritar.php?Cep=<?php echo $Cep; ?>"><button class="btn_favorito" onclick="favoritar()"><img src="../images/icones/fav_desativado.png" class="icon-fav"></button></a><?php } ?>
                 
                 <!-- <a href=detalhes_ponto.php?Cep='.$_SESSION['resultados_busca']['cep'][$i].'>
                      <a href=detalhes_ponto.php?Cep='.$row["Cep"].'>-->

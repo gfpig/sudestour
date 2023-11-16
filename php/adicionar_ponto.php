@@ -183,7 +183,7 @@
         }
         const msgInput = document.querySelector('.texto_descricao');
         const counter = document.querySelector('.counter');
-        const max = 100;
+        const max = 300;
         var limite_atingido = false;
         // Nope
         // msgInput.addEventListener('keyup', (e) => {

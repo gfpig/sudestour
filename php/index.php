@@ -3,7 +3,7 @@
     include("conecta.php");
 
     if(isset($_SESSION['Anunciante'])) {
-      $query = "SELECT FotoAnunciante from anunciante where Cnpj='{$_SESSION['Cnpj']}'";
+      $query = "SELECT FotoAnunciante from anunciante where Cnpj='{$_SESSION['cnpj']}'";
       $result = mysqli_query($mysqli, $query);
       $row = $result->fetch_assoc();
       $img_src = $row["FotoAnunciante"];
