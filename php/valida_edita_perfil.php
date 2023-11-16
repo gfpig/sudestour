@@ -3,6 +3,10 @@
     include ("conecta.php");
 
     if(empty($_POST["nome"]) || empty($_POST["documento"]) || empty($_POST["email"])) {
+        echo $_POST["nome"].'<br>';
+        echo $_POST["documento"].'<br>';
+        echo $_POST["email"].'<br>';
+        exit();
         header('Location: index.php');
     }
 
@@ -27,6 +31,8 @@
             $imagem = addslashes(file_get_contents($_FILES["input_imagem"]["tmp_name"]));
             $query .= ", FotoAnunciante='{$imagem}' WHERE Cnpj='{$cnpjanun}'";
         }
+        //echo $query;
+        //exit();
         
         $result = mysqli_query($mysqli, $query);
         if($result){ 

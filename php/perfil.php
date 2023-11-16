@@ -30,6 +30,11 @@
         $email = $row["EmailTurista"];
         $img_src = $row["FotoTurista"];
     }
+
+    /*if($img_src == null) {
+        //$img_src = "../images/icones/adicionar-usuario.jpg";
+        echo 'oi';
+    }*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -91,7 +96,7 @@
                     <?php echo '
                     <div class="c-inputs">
                         <label>Nome</label><br>
-                        <input class="text" name="nome" placeholder="Digite o nome" value='.$nome.'><br>
+                        <input class="text" name="nome" placeholder="Digite o nome" value='.$nome.' required><br>
                     </div>
                     
                     <div class="c-inputs">
@@ -100,7 +105,7 @@
                     </div>
                     <div class="c-inputs">
                     <label>Email</label><br>
-                        <input class="text" name="email" placeholder="Digite o seu EMAIL" value='.$email.'><br>
+                        <input class="text" name="email" placeholder="Digite o seu EMAIL" value='.$email.' required><br>
                     </div>
                 </div>';
                 ?>
@@ -109,8 +114,12 @@
             <div class="container-descricao">
                 <div class="container-imagem">
                     <label id="lbl_img" class="escolher_img" style="margin-left: 40%;">
-                        <img src= "<?php echo 'data:image/png;base64,'.base64_encode($img_src) ?>" id="foto_perfil" class="imagem-usuario">
-                        <input type="file" id="input" name="input_imagem"  value="a">
+                        <?php if($img_src == null): ?>
+                            <img src="../images/icones/adicionar-usuario.jpg" id="foto_perfil" class="imagem-usuario">
+                        <?php else: ?>
+                            <img src= "<?php echo 'data:image/png;base64,'.base64_encode($img_src) ?>" id="foto_perfil" class="imagem-usuario">
+                        <?php endif ?>
+                        <input type="file" id="input" name="input_imagem" style="display:none;">
                     </label>
                 </div>
                 <div class="botoes">
