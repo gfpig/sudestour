@@ -20,8 +20,8 @@
     }
 
     if(isset($_SESSION['Turista'])) {
-        $Cpf = $_SESSION['Cpf'];
-        $queryDesfavorita = "DELETE from favoritos where CepPonto='{$Cep}' AND CnpjAnunciante='{$Cnpj}'";
+        $Cpf = $_SESSION['cpf'];
+        $queryDesfavorita = "DELETE from favoritos where CepPonto='{$Cep}' AND CpfTurista='{$Cpf}'";
         if(mysqli_query($mysqli, $queryDesfavorita)) {
             header("Location: detalhes_ponto.php?Cep=$Cep");
         }
