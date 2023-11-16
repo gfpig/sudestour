@@ -1,6 +1,20 @@
 <?php
     session_start();
     include("conecta.php");
+
+    if(isset($_SESSION['Anunciante'])) {
+      $query = "SELECT FotoAnunciante from anunciante where Cnpj='{$_SESSION['Cnpj']}'";
+      $result = mysqli_query($mysqli, $query);
+      $row = $result->fetch_assoc();
+      $img_src = $row["FotoAnunciante"];
+    }
+
+    if(isset($_SESSION['Turista'])) {
+      $query = "SELECT FotoTurista from turista where Cpf='{$_SESSION['cpf']}'";
+      $result = mysqli_query($mysqli, $query);
+      $row = $result->fetch_assoc();
+      $img_src = $row["FotoTurista"];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +45,7 @@
             if(isset($_SESSION['usuario'])): //caso o usuário esteja logado, o botão ficará com o nome dele
           ?>
           <div style="float:right;">
-            <li class="dropdown" id="botao"><button id="botao-login" class="botaoLogin"><a href="perfil.php" class="link_botao"><img src="../images/icones/usuario-login.png" width="40" height="40"><?php echo $_SESSION['usuario'];else:?></a></button></li>
+            <li class="dropdown" id="botao"><button id="botao-login" class="botaoLogin"><a href="perfil.php" class="link_botao"><img src="<?php echo 'data:image/png;base64,'.base64_encode($img_src) ?>" class="foto_perfil"><?php echo $_SESSION['usuario'];else:?></a></button></li>
           </div>
           <div style="float:right;">
             <li class="dropdown" id="botao"><button id="botao-login" class="botaoLogin"><a href="login.php" class="link_botao"><img src="../images/icones/usuario-login.png" width="40" height="40">Login<?php endif; ?></a></button></li>
