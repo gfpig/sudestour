@@ -32,3 +32,18 @@ function trocaAba(evt, cityName) {
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active";
 } 
+
+function darNota(i) {
+    document.getElementById(i).onclick = function() {
+        nota = i;
+        document.getElementById('input_nota').value = i;
+        for(j = 1; j <= i; j++) {
+        //this.src = "../images/icones/estrela_vazia.png";
+            document.getElementById(j).src = "../images/icones/estrela.png";
+        }
+        for(j = 5; j > i; j--) {
+        //this.src = "../images/icones/estrela_vazia.png";
+            document.getElementById(j).src = "../images/icones/estrela_vazia.png";;
+        }
+    }
+}

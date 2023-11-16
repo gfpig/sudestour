@@ -29,6 +29,14 @@
         $documento = $row["cpf"];
         $email = $row["EmailTurista"];
         $img_src = $row["FotoTurista"];
+
+        ?>
+        <style>
+            .categorias-menu {
+                display:none;
+            }
+        </style>
+        <?php
     }
 
     /*if($img_src == null) {

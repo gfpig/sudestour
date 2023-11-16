@@ -21,6 +21,15 @@
         $resultFotoPerfil = mysqli_query($mysqli, $queryFotoPerfil);
         $rowFotoPerfil = $resultFotoPerfil->fetch_assoc();
         $img_src = $rowFotoPerfil["FotoAnunciante"];
+
+        ?>
+        <style>
+
+            .areatext_comentario, .comentar, .img_nota {
+                display: none;
+            }
+        </style>
+        <?php
       }
   
       if(isset($_SESSION['Turista'])) {
@@ -72,7 +81,6 @@
         <div class="container-direita">
             <div class="container-imagem">
                 <img src="<?php echo "data:image/png;base64,". base64_encode($row["Imagem"]) ?>" class="imagem-ponto"><br>
-                <!-- src = "data:image/png;base64,' .base64_encode($_SESSION['resultados_busca']['imagem'][$i]). '" -->
                 <div class="container-dados">
                     <p class="legenda"><?php echo $row['NomeLocal']; ?></p><br>
                     <p class="legenda"><?php echo $row['Logradouro']; ?></p>
@@ -96,17 +104,9 @@
                 ?>
                 <a href="desfavoritar.php?Cep=<?php echo $Cep; ?>"><button class="btn_favorito" onclick="favoritar()"><img src="../images/icones/fav_ativado.png" class="icon-fav"></button></a><?php else: ?>
                 <a href="favoritar.php?Cep=<?php echo $Cep; ?>"><button class="btn_favorito" onclick="favoritar()"><img src="../images/icones/fav_desativado.png" class="icon-fav"></button></a><?php endif; } else{ ?>
-                    <a href="favoritar.php?Cep=<?php echo $Cep; ?>"><button class="btn_favorito" onclick="favoritar()"><img src="../images/icones/fav_desativado.png" class="icon-fav"></button></a><?php } ?>
-                
-                <!-- <a href=detalhes_ponto.php?Cep='.$_SESSION['resultados_busca']['cep'][$i].'>
-                     <a href=detalhes_ponto.php?Cep='.$row["Cep"].'>-->
+                <a href="favoritar.php?Cep=<?php echo $Cep; ?>"><button class="btn_favorito" onclick="favoritar()"><img src="../images/icones/fav_desativado.png" class="icon-fav"></button></a><?php } ?>
             </div>    
             <div class="container-descricao">
-                <!--<div class="opcoes">
-                    <button class="opcao" style="margin:0 auto; display: inline-block;">SOBRE</button>
-                    <div class="vl"></div>
-                    <button class="opcao">AVALIAÇÕES</button><br>
-                </div>-->
                 <div class="tab">
                     <button class="opcao" onclick="trocaAba(event, 'sobre')" style="margin:0 auto; display: inline-block;">SOBRE</button>
                     <div class="vl"></div>
@@ -148,10 +148,14 @@
                 <div id="avaliacao" class="tabcontent" style="display:none;">
                 <?php
                     if(isset($_SESSION["nao_logado"])) {
-                        //echo $_SESSION["usuario_cadastrado"];
-                        echo "<script type='text/javascript'>alert('Para fazer um comentário, você deve fazer o login');</script>";
+                        echo "<script type='text/javascript'>alert('Para fazer efetuar esta ação, você deve fazer o login');</script>";
                     }
                     unset($_SESSION['nao_logado']);
+
+                    /*if(isset($_SESSION["nao_logado_fav"])) {
+                        echo "<script type='text/javascript'>alert('Para fazer um comentário, você deve fazer o login');</script>";
+                    }
+                    unset($_SESSION['nao_logado']);*/
                 ?>
                     <form action="adicionar_avaliacao.php?Cep=<?php echo $Cep; ?>" method="POST">
                     <?php 
@@ -168,64 +172,42 @@
                     ?>
                         <div class="nota_avaliar">
                             <p class="nota"><b><i><?php echo round($media, 2); ?></i></b></p>
-                            <img src="../images/icones/estrela_vazia.png" style="width:20px;" name="um" id='1' onclick=darNota(1)>
-                            <img src="../images/icones/estrela_vazia.png" style="width:20px;" name="dois" id='2' onclick=darNota(2)>
-                            <img src="../images/icones/estrela_vazia.png" style="width:20px;" name="tres" id='3' onclick=darNota(3)>
-                            <img src="../images/icones/estrela_vazia.png" style="width:20px;" name="quatro" id='4' onclick=darNota(4)>
-                            <img src="../images/icones/estrela_vazia.png" style="width:20px;" name="cinco" id='5' onclick=darNota(5)>
-                            <input id="input_nota" name="input_nota" value="0" style="display:none;">
+                            <img src="../images/icones/estrela_vazia.png" class="img_nota" style="width:20px;" name="um" id='1' onclick=darNota(1)>
+                            <img src="../images/icones/estrela_vazia.png" class="img_nota" style="width:20px;" name="dois" id='2' onclick=darNota(2)>
+                            <img src="../images/icones/estrela_vazia.png" class="img_nota" style="width:20px;" name="tres" id='3' onclick=darNota(3)>
+                            <img src="../images/icones/estrela_vazia.png" class="img_nota" style="width:20px;" name="quatro" id='4' onclick=darNota(4)>
+                            <img src="../images/icones/estrela_vazia.png" class="img_nota" style="width:20px;" name="cinco" id='5' onclick=darNota(5)>
+                            <input id="input_nota" name="input_nota" value="0" style="display:none">
                             <button type="submit" class="comentar"><img src="../images/icones/comentario.png" style="width:20px;">COMENTAR</button>
                         </div>
                         <div class="areatext_comentario" style="margin: 0 auto;">
                             <textarea class="area_comentario" placeholder="Avaliação" name="comentario_usuario" required></textarea>
                         </div>
                     </form>
-                    <!--<div class="comentario">
-                        <img src="../images/icones/usuario-login.png" class="icone-perfil"></img>
-                        <div class = "perfil">
-                            <p>Janete</p>
-                        </div>
-                        <div class="nota_usuario">
-                            <img src="../images/icones/estrela.png" style="width:15px;">
-                            <img src="../images/icones/estrela.png" style="width:15px;">
-                            <img src="../images/icones/estrela.png" style="width:15px;">
-                            <img src="../images/icones/estrela.png" style="width:15px;">
-                        </div>-->
-                        <!-- PREENCHER OS COMENTÁRIOS COM PHP DE ACORDO COM O BANCO DE DADOS -->
-                        <!--<div class = "texto_comentario"><p>Já havia visitado a anos atrás e tive a oportunidade de revisitar atualmente com o olhar mais maduro e com mais entendimento sobre arte. Foi uma experiência incrível, saí da visita com o coração cheio de novas e boas memórias, além disso na lojinha do museu há várias lembrancinhas com um ótimo valor, levei canecas lindas pra casa como recordação dessa visita.</p></div>-->
-                        <div>
-                            <?php 
-                                $queryComentarios = "SELECT avaliacao.Comentario, avaliacao.nota, turista.NomeTurista, turista.FotoTurista FROM avaliacao INNER JOIN turista ON avaliacao.CpfTurista = turista.cpf AND avaliacao.CepPonto = '{$Cep}'";
-                                $resultComentarios = mysqli_query($mysqli, $queryComentarios);
-                                //echo $queryComentarios;
-                                if (mysqli_num_rows($resultComentarios) > 0) {
-                                    while($row = $resultComentarios->fetch_assoc()) {      
-                                            echo '<div class = "comentario">
-                                            <img src="data:image/png;base64,'.base64_encode($row['FotoTurista']).'" class="icone-perfil"></img>
-                                            <div class = "perfil">
-                                                <p>'.$row['NomeTurista'].'</p>
-                                            </div>
-                                            <div class="nota_usuario">';
-                                                for ($i=0; $i<$row['nota']; $i++){
-                                                    echo '<img src = "../images/icones/estrela.png" style="width:10px;"></img>';
-                                                }
-                                            echo '</div>
-                                            <div class = "texto_comentario"><p>'.$row['Comentario'].'</p></div>
-                                            </div>
-                                            ';
-                                        /*echo '<a href=detalhes_ponto.php?Cep='.$_SESSION['resultados_busca']['cep'][$i].'>
-                                    <figure>
-                                    <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($_SESSION['resultados_busca']['imagem'][$i]). '"></img>
-                                    <p class = legenda>'.$_SESSION['resultados_busca']["nome"][$i].'</p>
-                                    <p class = legenda>'.$_SESSION['resultados_busca']["logradouro"][$i].'</p>
-                                    </figure>
-                                    </a>';*/
-                                    }
-                                } else {
-                                   echo "<p style='text-align:center'>Nenhum comentário ainda.";
+                    <div>
+                        <?php 
+                            $queryComentarios = "SELECT avaliacao.Comentario, avaliacao.nota, turista.NomeTurista, turista.FotoTurista FROM avaliacao INNER JOIN turista ON avaliacao.CpfTurista = turista.cpf AND avaliacao.CepPonto = '{$Cep}'";
+                            $resultComentarios = mysqli_query($mysqli, $queryComentarios);
+                            if (mysqli_num_rows($resultComentarios) > 0) {
+                                while($row = $resultComentarios->fetch_assoc()) {      
+                                    echo '<div class = "comentario">
+                                    <img src="data:image/png;base64,'.base64_encode($row['FotoTurista']).'" class="icone-perfil"></img>
+                                    <div class = "perfil">
+                                        <p>'.$row['NomeTurista'].'</p>
+                                    </div>
+                                    <div class="nota_usuario">';
+                                        for ($i=0; $i<$row['nota']; $i++){
+                                            echo '<img src = "../images/icones/estrela.png" style="width:10px;"></img>';
+                                        }
+                                    echo '</div>
+                                    <div class = "texto_comentario"><p>'.$row['Comentario'].'</p></div>
+                                    </div>
+                                    ';
                                 }
-                            ?>
-                        </div>
+                            } else {
+                                echo "<p style='text-align:center'>Nenhum comentário ainda.";
+                            }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -242,7 +224,7 @@
         }*/
     </script>
     <script>
-        function darNota(i) {
+        /*function darNota(i) {
             document.getElementById(i).onclick = function() {
                 nota = i;
                 document.getElementById('input_nota').value = i;
@@ -255,6 +237,6 @@
                     document.getElementById(j).src = "../images/icones/estrela_vazia.png";;
                 }
             }
-        }
+        }*/
     </script>
 </body>

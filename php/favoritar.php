@@ -25,23 +25,27 @@
             header("Location: detalhes_ponto.php?Cep=$cep");
             exit();
         }
-    }
+    } else {
+        if(isset($_SESSION['Turista'])) {
+            $cpf = $_SESSION['cpf'];
+            $queryUsuario = "SELECT cpf from turista where cpf='{$cpf}'";
+            $resultUsuario = mysqli_query($mysqli, $queryUsuario);
 
-    if(isset($_SESSION['Turista'])) {
-        $cpf = $_SESSION['cpf'];
-        $queryUsuario = "SELECT cpf from turista where cpf='{$cpf}'";
-        $resultUsuario = mysqli_query($mysqli, $queryUsuario);
-
-        $queryAddFav = "INSERT into favoritos(CpfTurista, CepPonto) VALUES ('$cpf', '$cep')";
-        
-        try {
-            if (mysqli_query($mysqli, $queryAddFav)) {
+            $queryAddFav = "INSERT into favoritos(CpfTurista, CepPonto) VALUES ('$cpf', '$cep')";
+            
+            try {
+                if (mysqli_query($mysqli, $queryAddFav)) {
+                    header("Location: detalhes_ponto.php?Cep=$cep");
+                    exit();
+                }
+            } catch (Exception $ex) {
                 header("Location: detalhes_ponto.php?Cep=$cep");
                 exit();
             }
-        } catch (Exception $ex) {
+        } else {
+            $_SESSION['nao_logado'] = true;
             header("Location: detalhes_ponto.php?Cep=$cep");
             exit();
         }
-    }
+    } 
 ?>
