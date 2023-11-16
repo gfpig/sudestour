@@ -28,8 +28,8 @@
     }
 
     if(isset($_SESSION['Turista'])) {
-        $cnpj = $_SESSION['cpf'];
-        $queryUsuario = "SELECT Cpf from anunciante where Cpf='{$cpf}'";
+        $cpf = $_SESSION['cpf'];
+        $queryUsuario = "SELECT cpf from turista where cpf='{$cpf}'";
         $resultUsuario = mysqli_query($mysqli, $queryUsuario);
 
         $queryAddFav = "INSERT into favoritos(CpfTurista, CepPonto) VALUES ('$cpf', '$cep')";

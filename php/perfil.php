@@ -25,7 +25,7 @@
         $result = mysqli_query($mysqli, $query);
         $row = $result->fetch_assoc();
         $nome = $row["NomeTurista"];
-        $documento = $row["Cpf"];
+        $documento = $row["cpf"];
         $email = $row["EmailTurista"];
     }
 ?>
@@ -63,7 +63,11 @@
     <div class="container">
         <div class="container-cabecalho">
             <div class="c-carteira_anunciante">
-                <p><i>CARTEIRA DO ANUNCIANTE</i></p>
+                <?php if(isset($_SESSION['Anunciante'])): ?>
+                    <p><i>CARTEIRA DO ANUNCIANTE</i></p>
+                <?php else: ?>
+                    <p><i>CARTEIRA DO TURISTA</i></p>
+                <?php endif; ?>
             </div>
         </div>
         <?php
@@ -85,7 +89,7 @@
                     <?php echo '
                     <div class="c-inputs">
                         <label>Nome</label><br>
-                        <input class="text" name="nome" placeholder="Digite o nome" value='.$row["NomeAnunciante"].'><br>
+                        <input class="text" name="nome" placeholder="Digite o nome" value='.$nome.'><br>
                     </div>
                     
                     <div class="c-inputs">
@@ -106,14 +110,21 @@
                 </div>
                 <div class="botoes">
                     <!--<button class="botao"><a class="link_btn" href="favoritos.php">FAVORITOS</a></button>-->
-                    <button type="submit" class="botao">EDITAR PERFIL</button>
+                    <button type="submit" name="editar" class="botao">EDITAR PERFIL</button>
                     </form>
-                    <button class="botao"><a class="link_btn" href="favoritos.php">FAVORITOS</a></button>
+                        <button class="botao" name="favoritos"><a class="link_btn" href="favoritos.php">FAVORITOS</a></button>
                     <form action="logout.php" method="POST">
-                        <button class="botao" style="background-color: red;">SAIR</button>
+                        <button class="botao" name="sair" style="background-color: red;">SAIR</button>
                     </form>
                 </div>           
             </div>
+
+            <?php
+                if (isset($_POST['favoritos']) || isset($_POST['sair'])) {
+                    header('Location: perfil.php');
+                    exit();
+                }
+            ?>
         
     </div>
 

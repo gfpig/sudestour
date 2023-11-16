@@ -3,10 +3,18 @@
     include ("conecta.php");
     //require('conecta.php');
 
+    //echo $_POST['favoritos'];
+    //exit();
+
     if(empty($_POST["nome"]) || empty($_POST["documento"]) || empty($_POST["email"])) {
         header('Location: index.php');
     }
 
+    //Impedindo a edição caso o form seja ativado pelo botão
+    if (isset($_POST['favoritos']) || isset($_POST['sair'])) {
+        header('Location: perfil.php');
+        exit();
+    }
     
     //echo $cnpjanun;
     //$dado = $mysqli->prepare("UPDATE 'anunciante' SET 'NomeAnunciante' = ?, 'Cnpj' = ?, 'EmailAnunciante' = ? WHERE 'Anunciante'.'Cnpj' = ?;");
@@ -47,6 +55,8 @@
 
         if($result){ 
             $_SESSION['usuario'] = $nome;
+            //echo $_SESSION['usuario'];
+            //exit();
             $_SESSION["sucesso"] = true;
 
             header('Location: perfil.php');

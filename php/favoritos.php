@@ -74,7 +74,7 @@
             if (isset($_SESSION["busca_completa"])) {
                 //echo $_SESSION['resultados_busca']['Cep'][0];
                 //exit();
-                echo count($_SESSION['resultados_busca']['Cep']);
+                //echo count($_SESSION['resultados_busca']['Cep']);
                 //exit();
                 echo '<form>';
                 for($i=0; $i<count($_SESSION['resultados_busca']['Cep']); $i++ ){
@@ -89,7 +89,7 @@
                     unset($_SESSION['resultados_busca']['Imagem'][$i]);
                     unset($_SESSION['resultados_busca']['NomeLocal'][$i]);
                     unset($_SESSION['resultados_busca']['Logradouro'][$i]);
-                    echo $i;
+                    //echo $i;
 
                     /*
                     $_SESSION['resultados_busca']['NomeLocal'][$i] = $row['NomeLocal'];
@@ -104,6 +104,10 @@
                 echo '</form>';
                 unset($_SESSION['busca_completa']);
             } else {
+                if (isset( $_SESSION['busca_fracasso'])) {
+                    echo "<p style='text-align:center'>Você não possui nenhum ponto favorito nesse estado.</p>";
+                    exit();
+                }
                 if(isset($_SESSION['Anunciante'])) {
                     $queryFavoritos = "SELECT CepPonto from favoritos WHERE CnpjAnunciante = '{$_SESSION['cnpj']}'";
                     //$resultFavoritos = mysqli_query($mysqli, $queryFavoritos);
