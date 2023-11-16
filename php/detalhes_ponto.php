@@ -154,8 +154,20 @@
                     unset($_SESSION['nao_logado']);
                 ?>
                     <form action="adicionar_avaliacao.php?Cep=<?php echo $Cep; ?>" method="POST">
+                    <?php 
+                        $media = 0;
+                        $queryMedia = "SELECT nota FROM avaliacao WHERE CepPonto = '{$Cep}'";
+                        $resultMedia = mysqli_query($mysqli, $queryMedia);
+                        $rows = mysqli_num_rows($resultMedia);
+                        if (mysqli_num_rows($resultMedia) > 0) {
+                            while($rowMedia = $resultMedia->fetch_assoc()) { 
+                                $media += $rowMedia['nota'];
+                            }
+                            $media = $media / $rows;
+                        }   
+                    ?>
                         <div class="nota_avaliar">
-                            <p class="nota"><b><i>4.3</i></b></p>
+                            <p class="nota"><b><i><?php echo round($media, 2); ?></i></b></p>
                             <img src="../images/icones/estrela_vazia.png" style="width:20px;" name="um" id='1' onclick=darNota(1)>
                             <img src="../images/icones/estrela_vazia.png" style="width:20px;" name="dois" id='2' onclick=darNota(2)>
                             <img src="../images/icones/estrela_vazia.png" style="width:20px;" name="tres" id='3' onclick=darNota(3)>
@@ -193,6 +205,11 @@
                                             <div class = "perfil">
                                                 <p>'.$row['NomeTurista'].'</p>
                                             </div>
+                                            <div class="nota_usuario">';
+                                                for ($i=0; $i<$row['nota']; $i++){
+                                                    echo '<img src = "../images/icones/estrela.png" style="width:10px;"></img>';
+                                                }
+                                            echo '</div>
                                             <div class = "texto_comentario"><p>'.$row['Comentario'].'</p></div>
                                             </div>
                                             ';
@@ -231,7 +248,7 @@
                 document.getElementById('input_nota').value = i;
                 for(j = 1; j <= i; j++) {
                 //this.src = "../images/icones/estrela_vazia.png";
-                    document.getElementById(j).src = "../images/icones/estrela.png";;
+                    document.getElementById(j).src = "../images/icones/estrela.png";
                 }
                 for(j = 5; j > i; j--) {
                 //this.src = "../images/icones/estrela_vazia.png";
