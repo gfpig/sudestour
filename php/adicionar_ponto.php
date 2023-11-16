@@ -57,12 +57,6 @@
                 <img src="../images/icones/add_imagem1.png" id="img_ponto">
                 <input type="file" id="input" name="input_imagem">
             </label>
-            <!-- 
-                <label id="lbl_img" class="escolher_img" style="margin-left: 40%;">
-                    <img src="../images/icones/adicionar-usuario.jpg" class="imagem-usuario">
-                    <input type="file" id="input" name="input_imagem" style="display: none;">
-                </label>
-            -->
             <div class="hora_funcionamento">
                 <p>HORÁRIO DE FUNCIONAMENTO</p><img src="../images/icones/ajuda.png" width="20px" title="Insira os dados no formato 00:00" style="margin-left:5px;">
                 <table>

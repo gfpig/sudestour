@@ -16,6 +16,7 @@
         $nomeanun = $_POST["nome"];
         $cnpjanun = $_POST["documento"];
         $emailanun = $_POST["email"];
+        
         $imagem = addslashes(file_get_contents($_FILES["input_imagem"]["tmp_name"]));
 
         $query = "UPDATE anunciante SET NomeAnunciante='{$nomeanun}', EmailAnunciante='{$emailanun}', FotoAnunciante='{$imagem}' WHERE Cnpj='{$cnpjanun}'";

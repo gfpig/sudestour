@@ -16,6 +16,7 @@
         $nome = $row["NomeAnunciante"];
         $documento = $row["Cnpj"];
         $email = $row["EmailAnunciante"];
+        $img_src = $row["FotoAnunciante"];
     }
 
     //PREENCHER OS DADOS SE FOR TURISTA
@@ -27,6 +28,7 @@
         $nome = $row["NomeTurista"];
         $documento = $row["cpf"];
         $email = $row["EmailTurista"];
+        $img_src = $row["FotoTurista"];
     }
 ?>
 <!DOCTYPE html>
@@ -83,7 +85,7 @@
             }
             unset($_SESSION["sucesso"]);
         ?>
-        <form action="valida_edita_perfil.php" method="POST">
+        <form action="valida_edita_perfil.php" method="POST" enctype="multipart/form-data">
             <div class="container-esquerda">
                 <div>
                     <?php echo '
@@ -107,7 +109,7 @@
             <div class="container-descricao">
                 <div class="container-imagem">
                     <label id="lbl_img" class="escolher_img" style="margin-left: 40%;">
-                        <img src="../images/icones/adicionar-usuario.jpg" id="foto_perfil" class="imagem-usuario">
+                        <img src= "<?php echo 'data:image/png;base64,'.base64_encode($img_src) ?>" id="foto_perfil" class="imagem-usuario">
                         <input type="file" id="input" name="input_imagem" style="display: none;">
                     </label>
                 </div>
