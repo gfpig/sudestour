@@ -16,10 +16,18 @@
         $nomeanun = $_POST["nome"];
         $cnpjanun = $_POST["documento"];
         $emailanun = $_POST["email"];
-        
-        $imagem = addslashes(file_get_contents($_FILES["input_imagem"]["tmp_name"]));
 
-        $query = "UPDATE anunciante SET NomeAnunciante='{$nomeanun}', EmailAnunciante='{$emailanun}', FotoAnunciante='{$imagem}' WHERE Cnpj='{$cnpjanun}'";
+        //$imagem = addslashes(file_get_contents($_FILES["input_imagem"]["tmp_name"]));
+
+        $query = "UPDATE anunciante SET NomeAnunciante='{$nomeanun}', EmailAnunciante='{$emailanun}'";//WHERE Cnpj='{$cnpjanun}'";
+        
+        if(empty ($_FILES['input_imagem']['tmp_name'])) {
+            $query .= " WHERE Cnpj='{$cnpjanun}'";
+        } else {
+            $imagem = addslashes(file_get_contents($_FILES["input_imagem"]["tmp_name"]));
+            $query .= ", FotoAnunciante='{$imagem}' WHERE Cnpj='{$cnpjanun}'";
+        }
+        
         $result = mysqli_query($mysqli, $query);
         if($result){ 
             $_SESSION['usuario'] = $nomeanun;
@@ -39,9 +47,28 @@
         $nome = $_POST["nome"];
         $cpf = $_POST["documento"];
         $email = $_POST["email"];
-        $imagem = addslashes(file_get_contents($_FILES["input_imagem"]["tmp_name"]));
+        //$imagem = addslashes(file_get_contents($_FILES["input_imagem"]["tmp_name"]));
 
-        $query = "UPDATE turista SET NomeTurista='{$nome}', EmailTurista='{$email}', FotoTurista='{$imagem}' WHERE Cpf='{$cpf}'";
+        $query = "UPDATE turista SET NomeTurista='{$nome}', EmailTurista='{$email}'";
+        //echo addslashes(file_get_contents($_FILES["input_imagem"]["tmp_name"]));
+        //exit();
+        //$imagem = addslashes(file_get_contents($_FILES["input_imagem"]["tmp_name"]));
+        if(empty ($_FILES['input_imagem']['tmp_name'])) {
+            $query .= " WHERE Cpf='{$cpf}'";
+            //$imagem = addslashes(file_get_contents($_FILES["input_imagem"]["tmp_name"]));
+            //$imagem = addslashes(file_get_contents($_FILES["input_imagem"]["tmp_name"]));
+            //$query .= " FotoTurista='{$imagem}' WHERE Cpf='{$cpf}'";
+            //echo $query;
+            //exit();
+            //$query = "UPDATE turista SET NomeTurista='{$nome}', EmailTurista='{$email}', FotoTurista='{$imagem}' WHERE Cpf='{$cpf}'";
+            //UPDATE turista SET NomeTurista='Flávia', EmailTurista='teste1@gmail.com,' FotoTurista='
+        } else {
+            //$query .= " WHERE Cpf='{$cpf}'";
+            $imagem = addslashes(file_get_contents($_FILES["input_imagem"]["tmp_name"]));
+            $query .= ", FotoTurista='{$imagem}' WHERE Cpf='{$cpf}'";
+        }
+        //echo $query;
+        //exit();
         $result = mysqli_query($mysqli, $query);
 
         if($result){ 

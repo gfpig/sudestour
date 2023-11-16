@@ -110,7 +110,7 @@
                 <div class="container-imagem">
                     <label id="lbl_img" class="escolher_img" style="margin-left: 40%;">
                         <img src= "<?php echo 'data:image/png;base64,'.base64_encode($img_src) ?>" id="foto_perfil" class="imagem-usuario">
-                        <input type="file" id="input" name="input_imagem" style="display: none;">
+                        <input type="file" id="input" name="input_imagem"  value="a">
                     </label>
                 </div>
                 <div class="botoes">
