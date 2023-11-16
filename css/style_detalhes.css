@@ -268,7 +268,7 @@ tr {
 }
 
 .comentario {
-    border-radius: 2px;
+    border-radius: 15px;
     background-color: white;
     margin: 0 auto;
     width: 450px;
@@ -276,7 +276,8 @@ tr {
 
 .icone-perfil {
     margin-left: 5px;
-    width: 25px;
+    width: 35px;
+    border-radius: 50%;
 }
 
 .perfil {

@@ -4,9 +4,9 @@
     $uf = "SP";
 
     if(isset($_SESSION['Anunciante'])) {
-        $queryFotoPerfil = "SELECT FotoAnunciante from anunciante where Cnpj='{$_SESSION['Cnpj']}'";
+        $queryFotoPerfil = "SELECT FotoAnunciante from anunciante where Cnpj='{$_SESSION['cnpj']}'";
         $resultFotoPerfil = mysqli_query($mysqli, $queryFotoPerfil);
-        $rowFotoPerfil = $result->fetch_assoc();
+        $rowFotoPerfil = $resultFotoPerfil->fetch_assoc();
         $img_src = $rowFotoPerfil["FotoAnunciante"];
       }
   

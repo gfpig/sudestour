@@ -100,7 +100,6 @@
         </div>
 
         <div class="container-direita">
-            <!--<form action="adicionar_ponto.php" method="POST">-->
                 <div class="primeira_linha" style="margin-top:1%">
                     <label class="label_formulario">Nome do Local:</label><br>
                     <input type="text" name="nome" class="texto_nome" required/><br>
@@ -185,24 +184,13 @@
         const counter = document.querySelector('.counter');
         const max = 300;
         var limite_atingido = false;
-        // Nope
-        // msgInput.addEventListener('keyup', (e) => {
-        //   console.log(e);
-        // });
+
         msgInput.onkeyup = function() {
             counter.innerHTML = max - this.value.length;
-            //document.getElementById("teste").innerHTML = 'oi';
-            /*if(!getCurrentContentLength(this.value, (max + 1))) {
-                //msgInput.disabled = true;
-                document.getElementById("teste").innerHTML = "oi";
-                var limite_atingido = true;
-            }*/
+
             if (counter.innerHTML < 0) {
                 var botao = document.getElementById("btnAdicionar")
                 botao.disabled = true;
-                //botao.style.backgroundColor = gray;
-                //limite_atingido = true;
-
             } else {
                 var botao = document.getElementById("btnAdicionar")
                 botao.disabled = false;
