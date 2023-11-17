@@ -6,14 +6,28 @@
       $query = "SELECT FotoAnunciante from anunciante where Cnpj='{$_SESSION['cnpj']}'";
       $result = mysqli_query($mysqli, $query);
       $row = $result->fetch_assoc();
-      $img_src = $row["FotoAnunciante"];
+
+      if($row["FotoAnunciante"] == null) {
+        $nulo = true;
+      } else {
+        $nulo = false;
+        $img_src = $row["FotoAnunciante"];
+      }
     }
 
     if(isset($_SESSION['Turista'])) {
       $query = "SELECT FotoTurista from turista where Cpf='{$_SESSION['cpf']}'";
       $result = mysqli_query($mysqli, $query);
       $row = $result->fetch_assoc();
-      $img_src = $row["FotoTurista"];
+      //$img_src = $row["FotoTurista"];
+      //echo $row["FotoTurista"] == null;
+      //exit();
+      if($row["FotoTurista"] == null) {
+        $nulo = true;
+        } else {
+          $nulo = false;
+          $img_src = $row["FotoTurista"];
+        }
     }
 ?>
 <!DOCTYPE html>
@@ -45,7 +59,7 @@
             if(isset($_SESSION['usuario'])): //caso o usuário esteja logado, o botão ficará com o nome dele
           ?>
           <div style="float:right;">
-            <li class="dropdown" id="botao"><button id="botao-login" class="botaoLogin"><a href="perfil.php" class="link_botao"><img src="<?php echo 'data:image/png;base64,'.base64_encode($img_src) ?>" class="foto_perfil"><?php echo $_SESSION['usuario'];else:?></a></button></li>
+            <li class="dropdown" id="botao"><button id="botao-login" class="botaoLogin"><a href="perfil.php" class="link_botao"><img src="<?php if($nulo == true) { echo '../images/icones/usuario-login.png'; } else{ echo 'data:image/png;base64,'.base64_encode($img_src); } ?>" class="foto_perfil"><?php echo $_SESSION['usuario'];else:?></a></button></li>
           </div>
           <div style="float:right;">
             <li class="dropdown" id="botao"><button id="botao-login" class="botaoLogin"><a href="login.php" class="link_botao"><img src="../images/icones/usuario-login.png" width="40" height="40">Login<?php endif; ?></a></button></li>

@@ -20,7 +20,12 @@
         $queryFotoPerfil = "SELECT FotoAnunciante from anunciante where Cnpj='{$_SESSION['cnpj']}'";
         $resultFotoPerfil = mysqli_query($mysqli, $queryFotoPerfil);
         $rowFotoPerfil = $resultFotoPerfil->fetch_assoc();
-        $img_src = $rowFotoPerfil["FotoAnunciante"];
+        if($rowFotoPerfil["FotoAnunciante"] != null) {
+            $nulo = true;
+        } else {
+            $nulo = false;
+            $img_src = "../images/icones/usuario-login.png";
+        }
 
         ?>
         <style>
@@ -36,7 +41,12 @@
         $queryFotoPerfil = "SELECT FotoTurista from turista where Cpf='{$_SESSION['cpf']}'";
         $resultFotoPerfil = mysqli_query($mysqli, $queryFotoPerfil);
         $rowFotoPerfil = $resultFotoPerfil->fetch_assoc();
-        $img_src = $rowFotoPerfil["FotoTurista"];
+        if($rowFotoPerfil["FotoTurista"] == null) {
+            $nulo = true;
+        } else {
+            $nulo = false;
+            $img_src = $row["FotoTurista"];
+        }
       }
 ?>
 
@@ -70,7 +80,7 @@
                 if(isset($_SESSION['usuario'])): //caso o usuário esteja logado, o botão ficará com o nome dele
             ?>
             <div style="float:right;">
-            <li class="dropdown" id="botao"><button id="botao-login" class="botaoLogin"><a href="perfil.php" class="link_botao"><img src="<?php echo 'data:image/png;base64,'.base64_encode($img_src) ?>" class="foto_perfil"><?php echo $_SESSION['usuario'];else:?></a></button></li>
+                <li class="dropdown" id="botao"><button id="botao-login" class="botaoLogin"><a href="perfil.php" class="link_botao"><img src="<?php if($nulo == true) { echo '../images/icones/usuario-login.png'; } else{ echo 'data:image/png;base64,'.base64_encode($img_src); } ?>" class="foto_perfil"><?php echo $_SESSION['usuario'];else:?></a></button></li>
             </div>
             <div style="float:right;">
                 <li class="dropdown" id="botao"><button id="botao-login" class="botaoLogin"><a href="login.php" class="link_botao"><img src="../images/icones/usuario-login.png" width="40" height="40">Login<?php endif; ?></a></button></li>

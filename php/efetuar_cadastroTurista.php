@@ -12,7 +12,8 @@
     $nomeTurista = mysqli_real_escape_string($mysqli, $_POST["nomeTurista"]);                
     $cpfTurista = mysqli_real_escape_string($mysqli, $_POST["cpfTurista"]);
     $senhaTurista = mysqli_real_escape_string($mysqli, $_POST["senhaTurista"]);   
-    $emailTurista = mysqli_real_escape_string($mysqli, $_POST["emailTurista"]);           
+    $emailTurista = mysqli_real_escape_string($mysqli, $_POST["emailTurista"]); 
+              
     $queryTurista = "INSERT INTO turista(`Cpf`, `SenhaTurista`,`EmailTurista`, `NomeTurista`) VALUES ('$cpfTurista', '$senhaTurista', '$emailTurista', '$nomeTurista')";
     
     //$sucesso = mysqli_query($mysqli, $queryTurista);

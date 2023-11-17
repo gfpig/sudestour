@@ -104,7 +104,7 @@
                     <?php echo '
                     <div class="c-inputs">
                         <label>Nome</label><br>
-                        <input class="text" name="nome" placeholder="Digite o nome" value='.$nome.' required><br>
+                        <input class="text" name="nome" placeholder="Digite o nome" value="'.$nome.'" required><br>
                     </div>
                     
                     <div class="c-inputs">
