@@ -127,37 +127,6 @@
                     <button name="submit_filtros" class="botaoBuscar">BUSCAR</button>
 
                     </form>
-
-                    <?php 
-                        /*if(isset($_POST['submit_filtros'])) {
-                            $cidade = $_POST['cidades'];
-                            $bairro = $_POST['bairros'];
-                            $categoria = $_POST['categorias'];
-
-                            // $result = $mysqli->query("SELECT * FROM `local` WHERE Uf = 'SP'"); 
-                            //$query = "SELECT * FROM local WHERE Bairro = '{$bairro}' AND Cidade = '{$cidade}' AND Categoria = '{$categoria}' AND Uf = 'SP'  ORDER BY `Bairro` ASC";
-                            $result = $mysqli->query("SELECT * FROM local WHERE Bairro = '{$bairro}' AND Cidade = '{$cidade}' AND IdCategoria = '{$categoria}' AND Uf = 'SP'  ORDER BY `Bairro` ASC");
-
-                            /*if(mysqli_num_rows($result) > 0) {
-                                foreach($result as $value) {
-                                    echo '<figure>
-                                    <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($row["Imagem"]). '"></img>
-                                    <p class = legenda>'.$row["NomeLocal"].'</p>
-                                    <p class = legenda>'.$row["Logradouro"].'</p>
-                                    </figure>';
-                                }
-                            }
-                            $html = preg_replace('#<div id="listaPontos">(.*?)</div>#', '', $html);
-                            while($row = $result->fetch_assoc()) {
-
-                                    echo '<figure>
-                                    <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($row["Imagem"]). '"></img>
-                                    <p class = legenda>'.$row["NomeLocal"].'</p>
-                                    <p class = legenda>'.$row["Logradouro"].'</p>
-                                    </figure>';
-                            }
-                        }*/
-                    ?>
                 </div>
                 
                 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -182,9 +151,9 @@
                 <div class="direita-radiobuttons">
                     ORDENAR POR:
                     <input type="radio" id="mais_visitados" name="ordenacao" class="radiobutton" checked="checked">
-                    <label for="html">MAIS VISITADOS</label>
+                    <label for="mais_visitados">MAIS VISITADOS</label>
                     <input type="radio" id="melhor_avaliados" name="ordenacao" class="radiobutton">
-                    <label for="css">MELHORES AVALIADOS</label>
+                    <label for="melhor_avaliados">MELHORES AVALIADOS</label>
                 </div>
                 <hr>
                 <div class="direita-destaques">

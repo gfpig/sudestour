@@ -8,9 +8,9 @@
         
     }*/
     if(isset($_SESSION['Anunciante'])) {
-        $queryFotoPerfil = "SELECT FotoAnunciante from anunciante where Cnpj='{$_SESSION['Cnpj']}'";
+        $queryFotoPerfil = "SELECT FotoAnunciante from anunciante where Cnpj='{$_SESSION['cnpj']}'";
         $resultFotoPerfil = mysqli_query($mysqli, $queryFotoPerfil);
-        $rowFotoPerfil = $result->fetch_assoc();
+        $rowFotoPerfil = $resultFotoPerfil->fetch_assoc();
         $img_src = $rowFotoPerfil["FotoAnunciante"];
       }
   
@@ -61,114 +61,66 @@
     <div class="container-principal">
         <div class="container-checkboxes">
             <form id="filtrar_favoritos" action="filtrar_favoritos.php" method="POST">
-                <!--<input type="checkbox" id="ES" name="ordenacao" class="checkbox" checked="checked" onchange="document.getElementById('filtrar_favoritos').submit()">
-                <label for="html">ESPÍRITO SANTO</label>
-                <input type="checkbox" id="MG" name="ordenacao" class="checkbox" checked="checked" onchange="document.getElementById('filtrar_favoritos').submit()">
-                <label for="css">MINAS GERAIS</label>
-                <input type="checkbox" id="RJ" name="ordenacao" class="checkbox" checked="checked" onchange="document.getElementById('filtrar_favoritos').submit()">
-                <label for="html">RIO DE JANEIRO</label>
-                <input type="checkbox" id="SP" name="ordenacao" class="checkbox" checked="checked" onchange="document.getElementById('filtrar_favoritos').submit()">
-                <label for="css">SÃO PAULO</label>-->
-
-                <input type="radio" id="ES" name="ordenacao" value="ES" class="checkbox" onchange="document.getElementById('filtrar_favoritos').submit()">
-                <label for="html">ESPÍRITO SANTO</label>
-                <input type="radio" id="MG" name="ordenacao" value="MG" class="checkbox" onchange="document.getElementById('filtrar_favoritos').submit()">
-                <label for="css">MINAS GERAIS</label>
-                <input type="radio" id="RJ" name="ordenacao" value="RJ" class="checkbox" onchange="document.getElementById('filtrar_favoritos').submit()">
-                <label for="html">RIO DE JANEIRO</label>
-                <input type="radio" id="SP" name="ordenacao" value="SP" class="checkbox" onchange="document.getElementById('filtrar_favoritos').submit()">
-                <label for="css">SÃO PAULO</label>
+                <input type="radio" id="ES" name="ordenacao" value="ES" class="checkbox" onchange="document.getElementById('filtrar_favoritos').submit()" <?php if(isset($_SESSION['ordenacao']) && $_SESSION['ordenacao'] == 'ES') { echo 'checked'; } ?> >
+                <label for="ES">ESPÍRITO SANTO</label>
+                <input type="radio" id="MG" name="ordenacao" value="MG" class="checkbox" onchange="document.getElementById('filtrar_favoritos').submit()" <?php if(isset($_SESSION['ordenacao']) && $_SESSION['ordenacao'] == 'MG') { echo 'checked'; } ?>>
+                <label for="MG">MINAS GERAIS</label>
+                <input type="radio" id="RJ" name="ordenacao" value="RJ" class="checkbox" onchange="document.getElementById('filtrar_favoritos').submit()" <?php if(isset($_SESSION['ordenacao']) && $_SESSION['ordenacao'] == 'RJ') { echo 'checked'; } ?>>
+                <label for="RJ">RIO DE JANEIRO</label>
+                <input type="radio" id="SP" name="ordenacao" value="SP" class="checkbox" onchange="document.getElementById('filtrar_favoritos').submit()" <?php if(isset($_SESSION['ordenacao']) && $_SESSION['ordenacao'] == 'SP') { echo 'checked'; } ?>>
+                <label for="SP">SÃO PAULO</label>
+                <?php unset($_SESSION['ordenacao']); ?>
             </form>
         </div>
         <div class="container-favoritos">
             <div id="listaFavoritos" class="divisaoFavoritos">
-            <?php
-            
-            if (isset($_SESSION["busca_completa"])) {
-                //echo $_SESSION['resultados_busca']['Cep'][0];
-                //exit();
-                //echo count($_SESSION['resultados_busca']['Cep']);
-                //exit();
-                echo '<form>';
-                for($i=0; $i<count($_SESSION['resultados_busca']['Cep']); $i++ ){
-                    echo '<a href=detalhes_ponto.php?Cep='.$_SESSION['resultados_busca']['Cep'][$i].'>
-                    <figure>
-                    <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($_SESSION['resultados_busca']['Imagem'][$i]). '"></img>
-                    <p class = legenda>'.$_SESSION['resultados_busca']["NomeLocal"][$i].'</p>
-                    <p class = legenda>'.$_SESSION['resultados_busca']["Logradouro"][$i].'</p>
-                    </figure>
-                    </a>';
-                    //unset($_SESSION['resultados_busca']['Cep'][$i]);
-                    unset($_SESSION['resultados_busca']['Imagem'][$i]);
-                    unset($_SESSION['resultados_busca']['NomeLocal'][$i]);
-                    unset($_SESSION['resultados_busca']['Logradouro'][$i]);
-                    //echo $i;
-
-                    /*
-                    $_SESSION['resultados_busca']['NomeLocal'][$i] = $row['NomeLocal'];
-                    $_SESSION['resultados_busca']['Logradouro'][$i] = $row['Logradouro'];
-                    $_SESSION['resultados_busca']['Imagem'][$i] = $row['Imagem'];
-                    */
-                    //echo $i<count($_SESSION['resultados_busca']['Cep']);
-                }
-                //echo $i;
-                //echo $i<count($_SESSION['resultados_busca']['Cep']);
-                unset($_SESSION['resultados_busca']);
-                echo '</form>';
-                unset($_SESSION['busca_completa']);
-            } else {
-                if (isset( $_SESSION['busca_fracasso'])) {
-                    echo "<p style='text-align:center'>Você não possui nenhum ponto favorito nesse estado.</p>";
-                    exit();
-                }
-                if(isset($_SESSION['Anunciante'])) {
-                    $queryFavoritos = "SELECT CepPonto from favoritos WHERE CnpjAnunciante = '{$_SESSION['cnpj']}'";
-                    //$resultFavoritos = mysqli_query($mysqli, $queryFavoritos);
-                }
-
-                if(isset($_SESSION['Turista'])) {
-                    $queryFavoritos = "SELECT CepPonto from favoritos WHERE CpfTurista = '{$_SESSION['cpf']}'";
-                }
-
-                $resultFavoritos = mysqli_query($mysqli, $queryFavoritos);
-                while($row = $resultFavoritos->fetch_assoc()) {
-                    $queryPontos = "SELECT Cep, NomeLocal, Logradouro, Imagem from local WHERE Cep='{$row['CepPonto']}'";
-                    $resultPontos = mysqli_query($mysqli, $queryPontos);
-                    while($rowPontos = $resultPontos->fetch_assoc()) {
-                        echo '<a href=detalhes_ponto.php?Cep='.$rowPontos["Cep"].'>
-                        <figure id='.$rowPontos["Cep"].'>
-                        <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($rowPontos["Imagem"]). '"></img>
-                        <p class = legenda>'.$rowPontos["NomeLocal"].'</p>
-                        <p class = legenda>'.$rowPontos["Logradouro"].'</p>
-                        </figure>
-                        </a>';
-                    }
-                }
-            }
-            //}
-                   /* if(isset($_SESSION['Anunciante'])) {
-                        $queryFavoritos = "SELECT CepPonto from favoritos WHERE CnpjAnunciante = '{$_SESSION['cnpj']}'";
-                        //$resultFavoritos = mysqli_query($mysqli, $queryFavoritos);
-                    }
-
-                    if(isset($_SESSION['Turista'])) {
-                        $queryFavoritos = "SELECT CepPonto from favoritos WHERE CpfTurista = '{$_SESSION['cpf']}'";
-                    }
-
-                    $resultFavoritos = mysqli_query($mysqli, $queryFavoritos);
-                    while($row = $resultFavoritos->fetch_assoc()) {
-                        $queryPontos = "SELECT Cep, NomeLocal, Logradouro, Imagem from local WHERE Cep='{$row['CepPonto']}'";
-                        $resultPontos = mysqli_query($mysqli, $queryPontos);
-                        while($rowPontos = $resultPontos->fetch_assoc()) {
-                            echo '<a href=detalhes_ponto.php?Cep='.$rowPontos["Cep"].'>
-                            <figure id='.$rowPontos["Cep"].'>
-                            <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($rowPontos["Imagem"]). '"></img>
-                            <p class = legenda>'.$rowPontos["NomeLocal"].'</p>
-                            <p class = legenda>'.$rowPontos["Logradouro"].'</p>
+                <?php
+                    if (isset($_SESSION["busca_completa"])) {
+                        echo '<form>';
+                        for($i=0; $i<count($_SESSION['resultados_busca']['Cep']); $i++ ){
+                            echo '<a href=detalhes_ponto.php?Cep='.$_SESSION['resultados_busca']['Cep'][$i].'>
+                            <figure>
+                            <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($_SESSION['resultados_busca']['Imagem'][$i]). '"></img>
+                            <p class = legenda>'.$_SESSION['resultados_busca']["NomeLocal"][$i].'</p>
+                            <p class = legenda>'.$_SESSION['resultados_busca']["Logradouro"][$i].'</p>
                             </figure>
                             </a>';
+                            unset($_SESSION['resultados_busca']['Imagem'][$i]);
+                            unset($_SESSION['resultados_busca']['NomeLocal'][$i]);
+                            unset($_SESSION['resultados_busca']['Logradouro'][$i]);
                         }
-                    }*/
+                        unset($_SESSION['resultados_busca']);
+                        echo '</form>';
+                        unset($_SESSION['busca_completa']);
+                    } else {
+                        if (isset( $_SESSION['busca_fracasso'])) {
+                            echo "<p style='text-align:center'>Você não possui nenhum ponto favorito nesse estado.</p>";
+                            unset($_SESSION['busca_fracasso']);
+                            exit();
+                        }
+                        if(isset($_SESSION['Anunciante'])) {
+                            $queryFavoritos = "SELECT CepPonto from favoritos WHERE CnpjAnunciante = '{$_SESSION['cnpj']}'";
+                        }
+
+                        if(isset($_SESSION['Turista'])) {
+                            $queryFavoritos = "SELECT CepPonto from favoritos WHERE CpfTurista = '{$_SESSION['cpf']}'";
+                        }
+
+                        $resultFavoritos = mysqli_query($mysqli, $queryFavoritos);
+                        while($row = $resultFavoritos->fetch_assoc()) {
+                            $queryPontos = "SELECT Cep, NomeLocal, Logradouro, Imagem from local WHERE Cep='{$row['CepPonto']}'";
+                            $resultPontos = mysqli_query($mysqli, $queryPontos);
+                            while($rowPontos = $resultPontos->fetch_assoc()) {
+                                echo '<a href=detalhes_ponto.php?Cep='.$rowPontos["Cep"].'>
+                                <figure id='.$rowPontos["Cep"].'>
+                                <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($rowPontos["Imagem"]). '"></img>
+                                <p class = legenda>'.$rowPontos["NomeLocal"].'</p>
+                                <p class = legenda>'.$rowPontos["Logradouro"].'</p>
+                                </figure>
+                                </a>';
+                            }
+                        }
+                    }
                 ?>
             </div>
         </div>

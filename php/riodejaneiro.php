@@ -4,9 +4,9 @@
     $uf= "RJ";
 
     if(isset($_SESSION['Anunciante'])) {
-        $queryFotoPerfil = "SELECT FotoAnunciante from anunciante where Cnpj='{$_SESSION['Cnpj']}'";
+        $queryFotoPerfil = "SELECT FotoAnunciante from anunciante where Cnpj='{$_SESSION['cnpj']}'";
         $resultFotoPerfil = mysqli_query($mysqli, $queryFotoPerfil);
-        $rowFotoPerfil = $result->fetch_assoc();
+        $rowFotoPerfil = $resultFotoPerfil->fetch_assoc();
         $img_src = $rowFotoPerfil["FotoAnunciante"];
       }
   
@@ -122,9 +122,9 @@
             <div class="direita-radiobuttons">
                 ORDENAR POR:
                 <input type="radio" id="mais_visitados" name="ordenacao" class="radiobutton" checked="checked">
-                <label for="html">MAIS VISITADOS</label>
+                <label for="mais_visitados">MAIS VISITADOS</label>
                 <input type="radio" id="melhor_avaliados" name="ordenacao" class="radiobutton">
-                <label for="css">MELHORES AVALIADOS</label>
+                <label for="melhor_avaliados">MELHORES AVALIADOS</label>
             </div>
             <hr>
             <div class="direita-destaques">
