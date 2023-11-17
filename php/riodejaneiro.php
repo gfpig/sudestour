@@ -131,13 +131,17 @@
             </script>
         </div>
         <div class="container-direita">
-            <div class="direita-radiobuttons">
-                ORDENAR POR:
-                <input type="radio" id="mais_visitados" name="ordenacao" class="radiobutton" checked="checked">
-                <label for="mais_visitados">MAIS VISITADOS</label>
-                <input type="radio" id="melhor_avaliados" name="ordenacao" class="radiobutton">
-                <label for="melhor_avaliados">MELHORES AVALIADOS</label>
-            </div>
+            <form id="ordenar_pontos" action="ordenar_pontos.php" method="POST">
+                <div class="direita-radiobuttons">
+                    ORDENAR POR:
+                    <input type='hidden' name='uf' value='RJ'/>
+                        <input type="radio" id="Comentario" value="Comentario" name="ordenacao" class="radiobutton" onchange="document.getElementById('ordenar_pontos').submit()" <?php if(isset($_SESSION['tipo_ordenacao']) && $_SESSION['tipo_ordenacao'] == 'Comentario') { echo 'checked'; } ?>>
+                        <label for="Comentario">MAIS COMENTADOS</label>
+                        <input type="radio" id="Avaliacao" value="Avaliacao" name="ordenacao" class="radiobutton" onchange="document.getElementById('ordenar_pontos').submit()" <?php if(isset($_SESSION['tipo_ordenacao']) && $_SESSION['tipo_ordenacao'] == 'Avaliacao') { echo 'checked'; } ?>>
+                        <label for="Avaliacao">MELHORES AVALIADOS</label>
+                        <?php unset($_SESSION['tipo_ordenacao']); ?>
+                </div>
+            </form>
             <hr>
             <div class="direita-destaques">
                 <div class="divisaoCategorias">

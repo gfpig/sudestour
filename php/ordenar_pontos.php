@@ -19,8 +19,8 @@
     $ordem = $_POST['ordenacao'];
 
     $query = "SELECT NomeLocal, Cep, Logradouro, Imagem, Comentario FROM local WHERE Uf = '{$uf}'  ORDER BY $ordem DESC";
-    echo $query;
-    exit();
+    //echo $query;
+    //exit();
     $result = mysqli_query($mysqli, $query);
     $qtde_row = mysqli_num_rows($result);
     $i = 0;
@@ -50,8 +50,9 @@
             $i++;
         }
         $_SESSION['busca_completa'] = true;
+        $_SESSION['tipo_ordenacao'] = $ordem;
     } else {
-        $_SESSION['busca_fracasso'] = true;
+        $_SESSION['ordenacao_fracasso'] = true;
     }
 
     if ($uf == "SP") {

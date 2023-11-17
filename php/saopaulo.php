@@ -151,10 +151,12 @@
             <form id="ordenar_pontos" action="ordenar_pontos.php" method="POST">
                 <div class="direita-radiobuttons">
                     ORDENAR POR:
-                    <input type="radio" id="Comentario" value="Comentario" name="ordenacao" class="radiobutton" onchange="document.getElementById('ordenar_pontos').submit()">
-                    <label for="Comentario">MAIS VISITADOS</label>
-                    <input type="radio" id="Avaliacao" value="Avaliacao" name="ordenacao" class="radiobutton" onchange="document.getElementById('ordenar_pontos').submit()">
+                    <input type='hidden' name='uf' value='SP'/>
+                    <input type="radio" id="Comentario" value="Comentario" name="ordenacao" class="radiobutton" onchange="document.getElementById('ordenar_pontos').submit()" <?php if(isset($_SESSION['tipo_ordenacao']) && $_SESSION['tipo_ordenacao'] == 'Comentario') { echo 'checked'; } ?>>
+                    <label for="Comentario">MAIS COMENTADOS</label>
+                    <input type="radio" id="Avaliacao" value="Avaliacao" name="ordenacao" class="radiobutton" onchange="document.getElementById('ordenar_pontos').submit()" <?php if(isset($_SESSION['tipo_ordenacao']) && $_SESSION['tipo_ordenacao'] == 'Avaliacao') { echo 'checked'; } ?>>
                     <label for="Avaliacao">MELHORES AVALIADOS</label>
+                    <?php unset($_SESSION['tipo_ordenacao']); ?>
                 </div>
             </form>
             <hr>

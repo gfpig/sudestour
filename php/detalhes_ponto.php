@@ -199,9 +199,10 @@
                             $queryComentarios = "SELECT avaliacao.Comentario, avaliacao.nota, turista.NomeTurista, turista.FotoTurista FROM avaliacao INNER JOIN turista ON avaliacao.CpfTurista = turista.cpf AND avaliacao.CepPonto = '{$Cep}'";
                             $resultComentarios = mysqli_query($mysqli, $queryComentarios);
                             if (mysqli_num_rows($resultComentarios) > 0) {
-                                while($row = $resultComentarios->fetch_assoc()) {      
+                                while($row = $resultComentarios->fetch_assoc()) {  
+                                    if($row["FotoTurista"] == null)  { $sem_foto = true; } else { $sem_foto = false; }
                                     echo '<div class = "comentario">
-                                    <img src="data:image/png;base64,'.base64_encode($row['FotoTurista']).'" class="icone-perfil"></img>
+                                    <img src="'; if($sem_foto == true) { echo '../images/icones/usuario-login.png'; } else{ echo 'data:image/png;base64,'.base64_encode($row['FotoTurista']); } echo '" class="icone-perfil"></img>
                                     <div class = "perfil">
                                         <p>'.$row['NomeTurista'].'</p>
                                     </div>
