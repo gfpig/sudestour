@@ -20,7 +20,7 @@
         $queryFotoPerfil = "SELECT FotoAnunciante from anunciante where Cnpj='{$_SESSION['cnpj']}'";
         $resultFotoPerfil = mysqli_query($mysqli, $queryFotoPerfil);
         $rowFotoPerfil = $resultFotoPerfil->fetch_assoc();
-        if($rowFotoPerfil["FotoAnunciante"] != null) {
+        if($rowFotoPerfil["FotoAnunciante"] == null) {
             $nulo = true;
         } else {
             $nulo = false;
@@ -45,7 +45,7 @@
             $nulo = true;
         } else {
             $nulo = false;
-            $img_src = $row["FotoTurista"];
+            $img_src = $rowFotoPerfil["FotoTurista"];
         }
       }
 ?>
@@ -169,7 +169,7 @@
                 ?>
                     <form action="adicionar_avaliacao.php?Cep=<?php echo $Cep; ?>" method="POST">
                     <?php 
-                        $media = 0;
+                        /*$media = 0;
                         $queryMedia = "SELECT nota FROM avaliacao WHERE CepPonto = '{$Cep}'";
                         $resultMedia = mysqli_query($mysqli, $queryMedia);
                         $rows = mysqli_num_rows($resultMedia);
@@ -178,10 +178,10 @@
                                 $media += $rowMedia['nota'];
                             }
                             $media = $media / $rows;
-                        }   
+                        }*/
                     ?>
                         <div class="nota_avaliar">
-                            <p class="nota"><b><i><?php echo round($media, 2); ?></i></b></p>
+                            <p class="nota"><b><i><?php echo round($row['Avaliacao'], 2); ?></i></b></p>
                             <img src="../images/icones/estrela_vazia.png" class="img_nota" style="width:20px;" name="um" id='1' onclick=darNota(1)>
                             <img src="../images/icones/estrela_vazia.png" class="img_nota" style="width:20px;" name="dois" id='2' onclick=darNota(2)>
                             <img src="../images/icones/estrela_vazia.png" class="img_nota" style="width:20px;" name="tres" id='3' onclick=darNota(3)>

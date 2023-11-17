@@ -2,11 +2,6 @@
     session_start();
     include('conecta.php');
 
-    /*if(isset($_SESSION['Anunciante'])) {
-        $queryFavoritos = "SELECT CepPonto from favoritos WHERE Cnpj = '{$_SESSION['cnpj']}')";
-        $resultFavoritos = mysqli_query($mysqli, $queryFavoritos);
-        
-    }*/
     if(isset($_SESSION['Anunciante'])) {
         $queryFotoPerfil = "SELECT FotoAnunciante from anunciante where Cnpj='{$_SESSION['cnpj']}'";
         $resultFotoPerfil = mysqli_query($mysqli, $queryFotoPerfil);
@@ -55,8 +50,6 @@
         <ul class="menu">
             <li class="dropdown"><a href="index.php"><img src="../images/logos/sudestour_logo_claro.png" width="50" height="50" ></a></li>
             <li class="dropdown"><a class="categorias-menu" href="#"><b>LISTA DE FAVORITOS</b></a></li>
-            <!--<li class="dropdown" id="menuUsuario"><a href="login.php"><img src="../images/icones/usuario-login.png" width="40" height="40"></a></li>-->
-        <!--Mudar a página de destino da foto de perfil do usuário para o perfil dele ao invés da tela de login-->
             <?php
                 if(isset($_SESSION['usuario'])): //caso o usuário esteja logado, o botão ficará com o nome dele
             ?>

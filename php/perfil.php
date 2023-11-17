@@ -86,13 +86,6 @@
             </div>
         </div>
         <?php
-            //echo $_SESSION["sucesso"];
-            /*if(isset($_SESSION["sucesso"])) {
-                echo 'oi';
-                echo "<script type='text/javascript'>alert('Dados alterados com sucesso!');</script>";
-            }
-            unset($_SESSION["sucesso"]);*/
-            //echo $_SESSION['sucesso'];
             if (isset($_SESSION['sucesso'])) {
                 echo "<script type='text/javascript'>alert('Dados atualizados com sucesso!');</script>";
             }

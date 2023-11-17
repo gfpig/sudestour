@@ -3,23 +3,42 @@
     include("conecta.php");
 
     //SE NÃO TIVER VALOR RECEBIDO, REDIRECIONAR PARA A TELA INDEX
-    if (empty($_POST['bairros']) || empty($_POST['cidades']) || empty($_POST['categorias'])) {
+    /*if (empty($_POST['bairros']) || empty($_POST['cidades']) || empty($_POST['categorias'])) {
+        header('Location: index.php');
+        exit();
+    }*/
+    if (empty($_POST['ordenacao'])) {
         header('Location: index.php');
         exit();
     }
-
-    $bairro = mysqli_real_escape_string($mysqli, $_POST['bairros']);
+    /*$bairro = mysqli_real_escape_string($mysqli, $_POST['bairros']);
     $cidade = mysqli_real_escape_string($mysqli, $_POST['cidades']);
     $categoria = mysqli_real_escape_string($mysqli, $_POST['categorias']);
+    $uf = mysqli_real_escape_string($mysqli, $_POST['uf']);*/
     $uf = mysqli_real_escape_string($mysqli, $_POST['uf']);
+    $ordem = $_POST['ordenacao'];
 
-    $query = "SELECT * FROM local WHERE Bairro = '{$bairro}' AND Cidade = '{$cidade}' AND IdCategoria = '{$categoria}' AND Uf = '{$uf}'  ORDER BY Bairro ASC";
+    $query = "SELECT NomeLocal, Cep, Logradouro, Imagem, Comentario FROM local WHERE Uf = '{$uf}'  ORDER BY $ordem DESC";
+    echo $query;
+    exit();
     $result = mysqli_query($mysqli, $query);
     $qtde_row = mysqli_num_rows($result);
     $i = 0;
 
     if (mysqli_num_rows($result) > 0) {
         while($row = $result->fetch_assoc()) {
+            $media = 0;
+            /*$queryMedia = "SELECT * FROM avaliacao WHERE CepPonto = '{$row['Cep']}'";
+            $resultMedia = mysqli_query($mysqli, $queryMedia);
+            $rows = mysqli_num_rows($resultMedia);
+            if (mysqli_num_rows($resultMedia) > 0) {
+                while($rowMedia = $resultMedia->fetch_assoc()) { 
+                    $media += $rowMedia['nota'];
+                }
+                $media = $media / $rows;
+            }  
+            echo $media.'<br>';
+            exit();  */
             $_SESSION['resultados_busca']['nome'][$i] = $row['NomeLocal'];
             $_SESSION['resultados_busca']['cep'][$i] = $row['Cep'];
             $_SESSION['resultados_busca']['logradouro'][$i] = $row['Logradouro'];

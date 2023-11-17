@@ -17,7 +17,7 @@
                 $_SESSION['resultados_busca']['Imagem'][$i] = $row['Imagem'];
                 
                 
-                $i++;                
+                $i++;      
             }
             $_SESSION['ordenacao'] = $uf;
             $_SESSION['busca_completa'] = true;

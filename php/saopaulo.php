@@ -87,18 +87,18 @@
             </figure>';
         }*/
     ?>
-        <div class="container-principal">
-            <div class="container-esquerda">
-                <div class="container-filtros">
+    <div class="container-principal">
+        <div class="container-esquerda">
+            <div class="container-filtros">
 
-                    <?php
-                        if(isset($_SESSION['busca_fracasso'])) {
-                            echo "Nenhum ponto satisfaz sua busca :(";
-                        }
-                        unset($_SESSION['busca_fracasso']);
-                    ?>
+                <?php
+                    if(isset($_SESSION['busca_fracasso'])) {
+                        echo "Nenhum ponto satisfaz sua busca :(";
+                    }
+                    unset($_SESSION['busca_fracasso']);
+                ?>
                     
-                    <form action="aplicar_filtro.php" method="POST">
+                <form action="aplicar_filtro.php" method="POST">
                     <input type='hidden' name='uf' value='SP'/>
                     
                     <label><b>Selecione a cidade:</b></label><br>
@@ -111,153 +111,94 @@
                             }
                         ?>
                     </select><br>
-
                     <label for="bairros"><b>Selecione o bairro:</b></label><br>
                     <select name="bairros" id="bairros" class="combobox_filtros">
                         <option value=""></option>
-                        <?php
-                            /*$result = $mysqli->query("SELECT DISTINCT `Bairro` FROM `local` WHERE Uf = 'SP' ORDER BY `Bairro` ASC");
-                            while($row = $result->fetch_assoc()) {
-                                echo '<option value ="' . $row['Bairro'] . '">' . $row['Bairro'] . '</option>';
-                            }*/
-                        ?>
                     </select><br>
-
                     <label for="categorias"><b>Selecione a categoria:</b></label><br>
                     <select name="categorias" id="categorias" class="combobox_filtros">
                         <option value=""></option>
                         <?php
-                            //$result = $mysqli->query("SELECT DISTINCT `IdCategoria` FROM `local` WHERE Uf = 'SP'");
                             $result = $mysqli->query("SELECT DISTINCT categoria.NomeCategoria, categoria.IdCategoria from categoria INNER JOIN local ON categoria.IdCategoria = local.IdCategoria WHERE Uf = 'SP'");
                             while($row = $result->fetch_assoc()) {
-                                //$nomeCategoria = $mysqli->query("SELECT DISTINCT `categoria.NomeCategoria` from categoria INNER JOIN local ON categoria.IdCategoria = local.IdCategoria WHERE Uf = 'SP'")
                                 echo '<option value ="' . $row['IdCategoria'] . '">' . $row['NomeCategoria'] . '</option>';
                             }
                         ?>
                     </select><br>
-
                     <button name="submit_filtros" class="botaoBuscar">BUSCAR</button>
-
-                    </form>
-                </div>
-                
-                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-
-                 <script type="text/javascript">
-                    $(function() {
-                        $('#cidades').change(function() {
-                            if( $(this).val()) {
-                                $.getJSON('preencher_bairros.php?search=', {cidades: $(this).val(), ajax: 'true'}, function(j) {
-                                    var options = '<option value=""></option>';
-                                    for (var i = 0; i < j.length; i++) {
-                                        options += '<option value="' + j[i].bairros + '">' + j[i].bairros + '</option>';
-                                    }
-                                    $('#bairros').html(options).show();
-                                });
-                            }      
-                        });
-                    });
-                </script>
+                </form>
             </div>
-            <div class="container-direita">
+                
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+            <script type="text/javascript">
+                $(function() {
+                    $('#cidades').change(function() {
+                        if( $(this).val()) {
+                            $.getJSON('preencher_bairros.php?search=', {cidades: $(this).val(), ajax: 'true'}, function(j) {
+                                var options = '<option value=""></option>';
+                                for (var i = 0; i < j.length; i++) {
+                                    options += '<option value="' + j[i].bairros + '">' + j[i].bairros + '</option>';
+                                }
+                                $('#bairros').html(options).show();
+                            });
+                        }      
+                    });
+                });
+            </script>
+        </div>
+        <div class="container-direita">
+            <form id="ordenar_pontos" action="ordenar_pontos.php" method="POST">
                 <div class="direita-radiobuttons">
                     ORDENAR POR:
-                    <input type="radio" id="mais_visitados" name="ordenacao" class="radiobutton" checked="checked">
-                    <label for="mais_visitados">MAIS VISITADOS</label>
-                    <input type="radio" id="melhor_avaliados" name="ordenacao" class="radiobutton">
-                    <label for="melhor_avaliados">MELHORES AVALIADOS</label>
+                    <input type="radio" id="Comentario" value="Comentario" name="ordenacao" class="radiobutton" onchange="document.getElementById('ordenar_pontos').submit()">
+                    <label for="Comentario">MAIS VISITADOS</label>
+                    <input type="radio" id="Avaliacao" value="Avaliacao" name="ordenacao" class="radiobutton" onchange="document.getElementById('ordenar_pontos').submit()">
+                    <label for="Avaliacao">MELHORES AVALIADOS</label>
                 </div>
-                <hr>
-                <div class="direita-destaques">
-                    <div class="divisaoCategorias">
-                        <div id="listaDestaques" class="divisaoItensDestaque"></div>
-                    </div>
+            </form>
+            <hr>
+            <div class="direita-destaques">
+                <div class="divisaoCategorias">
+                    <div id="listaDestaques" class="divisaoItensDestaque"></div>
                 </div>
-                <div class="direita-pontos">
-                    <div id="listaPontos" class="divisaoItensNormais">
-                        <?php
-                            //$html = '<div id="listaPontos" class="divisaoItensNormais"></div>';
-                            if (isset($_SESSION["busca_completa"])) {
-                                echo '<form>';
-                                for($i=0; $i<count($_SESSION['resultados_busca']['cep']); $i++ ){
-                                    echo '<a href=detalhes_ponto.php?Cep='.$_SESSION['resultados_busca']['cep'][$i].'>
-                                    <figure>
-                                    <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($_SESSION['resultados_busca']['imagem'][$i]). '"></img>
-                                    <p class = legenda>'.$_SESSION['resultados_busca']["nome"][$i].'</p>
-                                    <p class = legenda>'.$_SESSION['resultados_busca']["logradouro"][$i].'</p>
-                                    </figure>
-                                    </a>';
-                                    unset($_SESSION['resultados_busca']['imagem'][$i]);
-                                    unset($_SESSION['resultados_busca']['nome'][$i]);
-                                    unset($_SESSION['resultados_busca']['logradouro'][$i]);
-                                }
-                                echo '</form>';
-                                unset($_SESSION['resultados_busca']);
-                                unset($_SESSION['busca_completa']);
-                            } else {
-                                $result = $mysqli->query("SELECT * FROM `local` WHERE Uf = 'SP'");
-                                while($row = $result->fetch_assoc()) {
-                                    echo '<a href=detalhes_ponto.php?Cep='.$row["Cep"].'>
-                                    <figure id='.$row["Cep"].'>
-                                    <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($row["Imagem"]). '"></img>
-                                    <p class = legenda>'.$row["NomeLocal"].'</p>
-                                    <p class = legenda>'.$row["Logradouro"].'</p>
-                                    </figure>
-                                    </a>';
-                                }
-                            }
-                        ?>
-                        <script type="text/javascript">
-                            /*(function() {
-                                $('#cidades').change(function() {
-                                    if( $(this).val()) {
-                                        $.getJSON('preencher_bairros.php?search=', {cidades: $(this).val(), ajax: 'true'}, function(j) {
-                                            var options = '<option value=""></option>';
-                                            for (var i = 0; i < j.length; i++) {
-                                                options += '<option value="' + j[i].bairros + '">' + j[i].bairros + '</option>';
-                                            }
-                                            $('#bairros').html(options).show();
-                                        });
-                                    }      
-                                });
-                            });*/
-                        </script>
-                    </div>
+            </div>
+            <div class="direita-pontos">
+                <div id="listaPontos" class="divisaoItensNormais">
                     <?php
-                        //$html = '<div id="listaPontos" class="divisaoItensNormais"></div>';
-                        /*if (isset($_SESSION["busca_completa"])) {
+                        if (isset($_SESSION["busca_completa"])) {
+                            echo '<form>';
                             for($i=0; $i<count($_SESSION['resultados_busca']['cep']); $i++ ){
-                                echo '<figure>
+                                echo '<a href=detalhes_ponto.php?Cep='.$_SESSION['resultados_busca']['cep'][$i].'>
+                                <figure>
                                 <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($_SESSION['resultados_busca']['imagem'][$i]). '"></img>
                                 <p class = legenda>'.$_SESSION['resultados_busca']["nome"][$i].'</p>
                                 <p class = legenda>'.$_SESSION['resultados_busca']["logradouro"][$i].'</p>
-                                </figure>';
+                                </figure>
+                                </a>';
                                 unset($_SESSION['resultados_busca']['imagem'][$i]);
                                 unset($_SESSION['resultados_busca']['nome'][$i]);
                                 unset($_SESSION['resultados_busca']['logradouro'][$i]);
                             }
+                            echo '</form>';
+                            unset($_SESSION['resultados_busca']);
                             unset($_SESSION['busca_completa']);
                         } else {
-                            $result = $mysqli->query("SELECT * FROM `local` WHERE Uf = 'SP'"); 
+                            $result = $mysqli->query("SELECT * FROM `local` WHERE Uf = 'SP'");
                             while($row = $result->fetch_assoc()) {
-                                echo '<figure>
+                                echo '<a href=detalhes_ponto.php?Cep='.$row["Cep"].'>
+                                <figure id='.$row["Cep"].'>
                                 <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($row["Imagem"]). '"></img>
                                 <p class = legenda>'.$row["NomeLocal"].'</p>
                                 <p class = legenda>'.$row["Logradouro"].'</p>
-                                </figure>';
+                                </figure>
+                                </a>';
                             }
-                        }*/
+                        }
                     ?>
-
-                    <script type="text/javascript">
-                        /*$(document).ready(function() {
-                            $("#cidades").on('change', function() {
-                                var value = $(this).val();
-                            })
-                        })*/
-                    </script>
                 </div>
             </div>
         </div>
-       <script src="../js/filtro.js"></script>
-    </body>
+    </div>
+    <script src="../js/filtro.js"></script>
+</body>

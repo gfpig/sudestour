@@ -34,7 +34,7 @@
     $categoria = $_POST['categoria'];
     $imagem = addslashes(file_get_contents($_FILES["input_imagem"]["tmp_name"]));
     
-    $queryLocal = "INSERT INTO local(`Cep`, `Bairro`,`Logradouro`, `Complemento`, `Telefone`, `RedeSocial` , `Imagem`, `Uf`, `Cidade`, `NomeLocal`,`Numero`, `Descricao`, `CNPJ`, `IdCategoria`) VALUES ('$cep', '$bairro', '$logradouro', '$complemento', '$telefone', '$site', '$imagem', '$uf', '$cidade','$nome', '$numero', '$descricao', '$cnpj', '$categoria')";                    
+    $queryLocal = "INSERT INTO local(`Cep`, `Bairro`,`Logradouro`, `Complemento`, `Telefone`, `Avaliacao`, `RedeSocial` , `Imagem`, `Uf`, `Cidade`, `NomeLocal`,`Numero`, `Descricao`, `Comentario`, `CNPJ`, `IdCategoria`) VALUES ('$cep', '$bairro', '$logradouro', '$complemento', '$telefone', 0, '$site', '$imagem', '$uf', '$cidade','$nome', '$numero', '$descricao', 0,  '$cnpj', '$categoria')";                    
     
     //ADICIONANDO NA TABELA DE HORARIOS
     $SegAbertura = mysqli_real_escape_string($mysqli, $_POST['SegAbre']);
