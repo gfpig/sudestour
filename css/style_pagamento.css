@@ -137,6 +137,11 @@ body {
     max-height: 300px;
 }
 
+.botao_qrcode {
+    background: none;
+    border: none;
+}
+
 .text {
     margin-left: 500px;
     height: 30px;

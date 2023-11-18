@@ -30,18 +30,44 @@
                 <img src="../images/logos/sudestour_logo.png" width="100" height="85">
         </div>
         <?php
-        if (isset($_SESSION["nao_autenticado"])) {
-            echo "<script type='text/javascript'>alert('Usuário ou senha incorretos');</script>";
-        }
-        unset($_SESSION["nao_autenticado"]);
+            if (isset($_SESSION["nao_autenticado"])) {
+                echo "<script type='text/javascript'>alert('Usuário ou senha incorretos');</script>";
+            }
+            unset($_SESSION["nao_autenticado"]);
+
+            if (isset($_SESSION["senha_trocada"])) {
+                echo "<script type='text/javascript'>alert('Senha alterada com sucesso!!');</script>";
+            }
+            unset($_SESSION["senha_trocada"]);
+
+            if (isset($_SESSION["nao_trocada"])) {
+                echo "<script type='text/javascript'>alert('Usuário ou senha incorretos');</script>";
+            }
+            unset($_SESSION["nao_trocada"]);
         ?>
-        <form action="valida_login.php" method="POST">
+        <form action="trocar_senha.php" id="troca_senha" method="POST" style="display: none";>
             <div class="c-inputs">
+                <label style="width: 300px;">E-mail: </label><br>
+                <input class="text" name="email_esqueci_senha" id="email_esqueci_senha" required/><br>
+                <label>Nova senha: </label><br>
+                <input class="text" type="password" name="nova_senha" id="nova_senha" pattern="(?=.*[a-z])(?=.*[A-Z]).{8,}" title="A senha deve conter uma letra maiúscula, uma minúscula e pelo menos 8 caracteres" required/>
+            </div>
+            <div class="c-buttons">
+                <input type="radio" id="novo_anunciante" name="tipousr" class="radiobutton" value="anunciante">
+                <label for="novo_anunciante">Anuciante</label>
+                <input type="radio" id="novo_turista" name="tipousr" class="radiobutton" value="turista" style="margin-left:25%">
+                <label for="novo_turista">Turista</label>
+                <!--<button class="esqueci" onclick="voltarLogin();">Voltar</button>-->
+                <button class="botao">CONFIRMAR</button>
+            </div>
+        </form>
+        <form action="valida_login.php" id="form_login" method="POST">
+            <div class="c-inputs" id="inputs">
                 <input class="text" name="usuario" placeholder="E-MAIL" required/><br>
                 <input class="text" type="password" name="senha" placeholder="SENHA" required/><br>
                 <button class="esqueci" onclick="esqueciSenha();">Esqueci a senha</button>
             </div>
-            <div class="c-buttons">
+            <div class="c-buttons" id="botoes">
                 <input type="radio" id="anunciante" name="tipousr" class="radiobutton" value="anunciante">
                 <label for="anunciante">Anuciante</label>
                 <input type="radio" id="turista" name="tipousr" class="radiobutton" value="turista" style="margin-left:25%">
@@ -53,4 +79,7 @@
         <a href="index.php" class="voltar">Voltar à página inicial</a>
     </div>
     <script src="../js/login.js"></script>
+    <script>
+        //document.getElementById('email_esqueci_senha').value = email;
+    </script>
 </body>

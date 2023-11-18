@@ -48,7 +48,15 @@
         </div>
         <!--</div>-->
         <div class="container-imagem">
-            <center><img src="../images/qrcode.jpg" class="imagem-qrcode"></center><br>
+            <?php
+                if(isset($_SESSION['erro_premium'])) {
+                    echo "<script type='text/javascript'>alert('Ocorreu um erro no pagamento :(');</script>";
+                }
+                unset($_SESSION['erro_premium']);
+            ?>
+            <form action="ativar_premium" method="POST">
+                <center><button class="botao_qrcode"><img src="../images/qrcode.png" class="imagem-qrcode"></button></center><br>
+            </form>
         </div>    
        
     </div>
