@@ -67,7 +67,7 @@ p {
     font-family: 'League Spartan', sans-serif;
     font-size: 30px;
     display: inline-block;
-    color: #EAE8E8; ;
+    /*color: #EAE8E8;*/
 }
 
 .c-carteira_anunciante {
@@ -84,7 +84,7 @@ p {
 }
 
 .container {
-    background-color: #545454;
+    /*background-color: #545454;*/
     max-width:80%;
     height:84%;
     margin-top: 3%;
@@ -157,7 +157,7 @@ label {
     height: 50px;
     margin-top: 15%;
     margin-left: 5%;
-    background-color: #8d8787;
+    /*background-color: #8d8787;*/
     color: white;
     border-radius: 4px;
 }

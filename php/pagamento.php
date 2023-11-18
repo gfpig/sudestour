@@ -54,7 +54,7 @@
                 }
                 unset($_SESSION['erro_premium']);
             ?>
-            <form action="ativar_premium" method="POST">
+            <form action="ativar_premium.php" method="POST">
                 <center><button class="botao_qrcode"><img src="../images/qrcode.png" class="imagem-qrcode"></button></center><br>
             </form>
         </div>    

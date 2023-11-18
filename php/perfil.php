@@ -17,6 +17,36 @@
         $documento = $row["Cnpj"];
         $email = $row["EmailAnunciante"];
         $img_src = $row["FotoAnunciante"];
+
+        if($row['statusPremium'] == 1) {
+            echo '
+            <style>
+                p {
+                    color: #545454;
+                }
+                .container {
+                    background: linear-gradient(to right, #BF953F, #FCF6BA, #FBF5B7, #AA771C);
+                }
+
+                .botao{
+                    background-color: #daa425;
+                }
+            </style>';
+        } else {
+            echo '
+            <style>
+                p {
+                    color: #EAE8E8;
+                }
+                .container {
+                    background-color: #545454;
+                }
+
+                .botao {
+                    background-color: #8d8787;
+                }
+            </style>';
+        }
     }
 
     //PREENCHER OS DADOS SE FOR TURISTA
