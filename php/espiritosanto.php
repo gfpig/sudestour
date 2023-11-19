@@ -144,7 +144,22 @@
             <hr>
             <div class="direita-destaques">
                 <div class="divisaoCategorias">
-                    <div id="listaDestaques" class="divisaoItensDestaque"></div>
+                    <div id="listaDestaques" class="divisaoItensDestaque">
+                        <?php 
+                                $result = $mysqli->query("SELECT local.NomeLocal, local.Cep, local.Logradouro, local.Imagem, anunciante.statusPremium FROM `local` INNER JOIN anunciante ON local.CNPJ = anunciante.Cnpj WHERE Uf = 'ES'");
+                                while($row = $result->fetch_assoc()) {
+                                        if($row['statusPremium'] == 1) {
+                                        echo '<a href=detalhes_ponto.php?Cep='.$row["Cep"].'>
+                                        <figure id='.$row["Cep"].'>
+                                        <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($row["Imagem"]). '"></img>
+                                        <p class = legenda>'.$row["NomeLocal"].'</p>
+                                        <p class = legenda>'.$row["Logradouro"].'</p>
+                                        </figure>
+                                        </a>';
+                                    }
+                                }
+                            ?>
+                    </div>
                 </div>
             </div>
             <div class="direita-pontos">
@@ -167,15 +182,17 @@
                         unset($_SESSION['resultados_busca']);
                         unset($_SESSION['busca_completa']);
                     } else {
-                        $result = $mysqli->query("SELECT * FROM `local` WHERE Uf = 'ES'"); 
+                        $result = $mysqli->query("SELECT local.NomeLocal, local.Cep, local.Logradouro, local.Imagem, anunciante.statusPremium FROM `local` INNER JOIN anunciante ON local.CNPJ = anunciante.Cnpj WHERE Uf = 'ES'");
                         while($row = $result->fetch_assoc()) {
-                            echo '<a href=detalhes_ponto.php?Cep='.$row["Cep"].'>
-                            <figure>
-                            <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($row["Imagem"]). '"></img>
-                            <p class = legenda>'.$row["NomeLocal"].'</p>
-                            <p class = legenda>'.$row["Logradouro"].'</p>
-                            </figure>
-                            </a>';
+                            if($row['statusPremium'] == 0) {
+                                echo '<a href=detalhes_ponto.php?Cep='.$row["Cep"].'>
+                                <figure>
+                                <img class = "img_ponto" src = "data:image/png;base64,' .base64_encode($row["Imagem"]). '"></img>
+                                <p class = legenda>'.$row["NomeLocal"].'</p>
+                                <p class = legenda>'.$row["Logradouro"].'</p>
+                                </figure>
+                                </a>';
+                            }
                         }
                     }
                     ?>

@@ -146,11 +146,8 @@
             <div class="direita-destaques">
                 <div class="divisaoCategorias">
                     <div id="listaDestaques" class="divisaoItensDestaque">
-                    <?php 
+                        <?php 
                             $result = $mysqli->query("SELECT local.NomeLocal, local.Cep, local.Logradouro, local.Imagem, anunciante.statusPremium FROM `local` INNER JOIN anunciante ON local.CNPJ = anunciante.Cnpj WHERE Uf = 'RJ'");
-                            //$queryD = "SELECT local.NomeLocal, local.Cep, local.Logradouro, local.Imagem, anunciante.statusPremium FROM `local` INNER JOIN anunciante ON local.CNPJ = anunciante.Cnpj WHERE Uf = 'SP'";
-                            //echo $queryD;
-                            //exit();
                             while($row = $result->fetch_assoc()) {
                                     if($row['statusPremium'] == 1) {
                                     echo '<a href=detalhes_ponto.php?Cep='.$row["Cep"].'>
