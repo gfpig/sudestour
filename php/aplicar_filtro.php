@@ -3,7 +3,7 @@
     include("conecta.php");
 
     //SE NÃO TIVER VALOR RECEBIDO, REDIRECIONAR PARA A TELA INDEX
-    if (empty($_POST['bairros']) || empty($_POST['cidades']) || empty($_POST['categorias'])) {
+    if (empty($_POST['bairros']) && empty($_POST['cidades']) && empty($_POST['categorias'])) {
         header('Location: index.php');
         exit();
     }
@@ -13,7 +13,19 @@
     $categoria = mysqli_real_escape_string($mysqli, $_POST['categorias']);
     $uf = mysqli_real_escape_string($mysqli, $_POST['uf']);
 
-    $query = "SELECT * FROM local WHERE Bairro = '{$bairro}' AND Cidade = '{$cidade}' AND IdCategoria = '{$categoria}' AND Uf = '{$uf}'  ORDER BY Bairro ASC";
+    $query = "SELECT * FROM local WHERE Cidade = '{$cidade}'";
+    
+    if(!empty($_POST['bairros'])) {
+        $query .= " AND Bairro = '{$bairro}'";
+    }
+
+    if(!empty($_POST['categorias'])) {
+        $query .= " AND IdCategoria = '{$categoria}'";
+    }
+
+    $query .= " AND Uf = '{$uf}'  ORDER BY Bairro ASC";
+    //echo $query;
+    //exit();
     $result = mysqli_query($mysqli, $query);
     $qtde_row = mysqli_num_rows($result);
     $i = 0;
