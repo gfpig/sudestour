@@ -70,7 +70,7 @@
       <div class="container-esquerda">
         <div class="slogan">
             <h1>ENCONTRE O LUGAR CERTO PARA VOCÊ!</h1>
-            <div class="container-busca">
+            <div class="container-busca" style="display: none;">
               <input class="texto" type=text id="categoria_lugar" placeholder="O que você está procurando?"><br>
               <input class="texto" type=text id="cidade_lugar" placeholder="Onde?"><br>
               <button class="btn btn-secondary rounded-2">BUSCAR</button>
