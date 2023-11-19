@@ -1,6 +1,6 @@
 //<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-var elementoListaDestaques = document.getElementById('listaDestaques');
+/*var elementoListaDestaques = document.getElementById('listaDestaques');
 //var elementoListaPontos = document.getElementById('listaPontos');
 
 var listaDeDestaques = ["../images/masp.jpg",
@@ -43,7 +43,7 @@ for (var i = 0; i < listaDeDestaques.length; ++i) {
       <p class = legenda><b>${listaDeNomesDestaques[i]}</b></p>
       <p class = legenda>${listaEnderecosDestaques[i]}</p>
     </figure>`
-}
+}*/
 
 
 //TIRAR O COMENTÁRIO QUANDO DEIXAR A PARTE DOS PONTOS DESTACADOS ITERATIVOS

@@ -50,7 +50,7 @@
             <label>CNPJ:</label><br>
             <input type="text" name="cnpjAnunciante" class="texto" onblur="validarCNPJ(this.value)" required/>
             <label>Senha:</label><br>
-            <input type="text" name="senhaAnunciante" id="senha" class="texto" pattern="(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Sua senha deve conter uma letra maiúscula, uma minúscula e pelo menos 8 caracteres" required/>
+            <input type="password" name="senhaAnunciante" id="senha" class="texto" pattern="(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Sua senha deve conter uma letra maiúscula, uma minúscula e pelo menos 8 caracteres" required/>
             <label>E-mail:</label><br>
             <input type="email" name="emailAnunciante" class="texto" required/>
             <button type="submit" name="btnAnunciante" class="cadastrar">CADASTRAR</button>
@@ -82,7 +82,7 @@
             <label>CPF:</label><br>
             <input type="text" name="cpfTurista" class="texto" onblur="validarCPF(this.value);" required/>
             <label>Senha:</label><br>
-            <input type="text" name="senhaTurista" id="senha" class="texto" pattern="(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Sua senha deve conter uma letra maiúscula, uma minúscula e pelo menos 8 caracteres" required/>
+            <input type="password" name="senhaTurista" id="senha" class="texto" pattern="(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Sua senha deve conter uma letra maiúscula, uma minúscula e pelo menos 8 caracteres" required/>
             <label>E-mail:</label><br>
             <input type="email" name="emailTurista" class="texto" required/>
             <button type="submit" name="btnTurista" class="cadastrar">CADASTRAR</button>

@@ -44,9 +44,9 @@
             $_SESSION['resultados_busca']['logradouro'][$i] = $row['Logradouro'];
             $_SESSION['resultados_busca']['imagem'][$i] = $row['Imagem'];
 
-            $_SESSION['select_cidade'] = $row['Cidade'];
+            /*$_SESSION['select_cidade'] = $row['Cidade'];
             $_SESSION['select_bairro'] = $row['Bairro'];
-            $_SESSION['select_categoria'] = $row['IdCategoria'];
+            $_SESSION['select_categoria'] = $row['IdCategoria'];*/
             $i++;
         }
         $_SESSION['busca_completa'] = true;
