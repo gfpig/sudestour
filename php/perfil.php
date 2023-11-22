@@ -65,6 +65,17 @@
             .categorias-menu {
                 display:none;
             }
+
+            p {
+                color: #EAE8E8;
+            }
+            .container {
+                background-color: #545454;
+            }
+
+            .botao {
+                background-color: #8d8787;
+            }
         </style>
         <?php
     }

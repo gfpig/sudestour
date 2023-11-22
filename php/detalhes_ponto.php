@@ -24,7 +24,7 @@
             $nulo = true;
         } else {
             $nulo = false;
-            $img_src = "../images/icones/usuario-login.png";
+            $img_src = $rowFotoPerfil["FotoAnunciante"];
         }
 
         ?>

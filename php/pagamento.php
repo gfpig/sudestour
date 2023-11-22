@@ -34,7 +34,7 @@
             </div>
         </ul>
     </nav>
-    <div class="container">
+    <div class="container" style="background-color: #CECECE;">
         <div class="container-cabecalho">
             <div class="c-pacote_premium">
                 <p class="titulo">PACOTE PREMIUM</p>

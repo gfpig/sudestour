@@ -10,7 +10,7 @@
     $senha = mysqli_real_escape_string($mysqli, $_POST['senha']);
     $tipo_usuario = $_POST['tipousr'];
     if ($tipo_usuario == "anunciante") {
-        $query = "SELECT Cnpj, SenhaAnunciante, NomeAnunciante from anunciante WHERE EmailAnunciante = '{$usuario}' AND SenhaAnunciante = '{$senha}'";
+        $query = "SELECT Cnpj, SenhaAnunciante, NomeAnunciante from anunciante WHERE EmailAnunciante = '{$usuario}' AND BINARY SenhaAnunciante = '{$senha}'";
         $result = mysqli_query($mysqli, $query);
 
         $coluna = $result->fetch_assoc();	
@@ -31,7 +31,7 @@
             exit();
         }
     } else {
-        $query = "SELECT Cpf, SenhaTurista, NomeTurista from turista WHERE EmailTurista = '{$usuario}' AND SenhaTurista = '{$senha}'";
+        $query = "SELECT Cpf, SenhaTurista, NomeTurista from turista WHERE EmailTurista = '{$usuario}' AND BINARY SenhaTurista = '{$senha}'";
         $result = mysqli_query($mysqli, $query);
         //$result = $mysqli -> query($query);
         $coluna = $result->fetch_assoc();	

@@ -72,21 +72,6 @@
             </div>
         </ul>
     </nav>
-    <?php
-        /*$result = $mysqli->query("SELECT * FROM `local` WHERE Uf = 'SP'"); 
-        while($row = $result->fetch_assoc()) {
-            //echo '<script>addNormais($row["NomeLocal"], $row["Logradouro"], $row["Imagem"]);</script>';
-            /*$NomeLocal = $row["nome"];
-            $Logradouro = $row["Logradouro"];
-            $Imagem = $row["Imagem"];//
-            //echo json_encode($result);
-            echo '<figure style="margin-top: 2%;text-align: center; display: inline-table; position: static;">
-            <img src = "data:image/png;base64,' .base64_encode($row["Imagem"]). '"></img>
-            <p style="font-family: "Roboto", sans-serif; font-size: 17px; margin: -10px; color: #545454;">'.$row["NomeLocal"].'</p>
-            <p class = legenda>'.$row["Logradouro"].'</p>
-            </figure>';
-        }*/
-    ?>
     <div class="container-principal">
         <div class="container-esquerda">
             <div class="container-filtros">
@@ -165,9 +150,6 @@
                     <div id="listaDestaques" class="divisaoItensDestaque">
                         <?php 
                             $result = $mysqli->query("SELECT local.NomeLocal, local.Cep, local.Logradouro, local.Imagem, anunciante.statusPremium FROM `local` INNER JOIN anunciante ON local.CNPJ = anunciante.Cnpj WHERE Uf = 'SP'");
-                            //$queryD = "SELECT local.NomeLocal, local.Cep, local.Logradouro, local.Imagem, anunciante.statusPremium FROM `local` INNER JOIN anunciante ON local.CNPJ = anunciante.Cnpj WHERE Uf = 'SP'";
-                            //echo $queryD;
-                            //exit();
                             while($row = $result->fetch_assoc()) {
                                     if($row['statusPremium'] == 1) {
                                     echo '<a href=detalhes_ponto.php?Cep='.$row["Cep"].'>
