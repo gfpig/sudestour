@@ -1,5 +1,20 @@
 <?php
-  $mysqli = new mysqli("localhost", "root", "", "sudestour2");
+  /*
+    $servername = "172.17.0.1";
+    $username_db = "username_db";
+    $password_db = "password_db";
+    $db = "db";
+    $port= = 3307;
+
+    $db = mysqli_connect($servername, $username_db, $password_db, $db, $port);
+  */
+  $servername = "172.17.0.1";
+  $username_db = "localhost";
+  $password_db = "root";
+  $db = "sudestour";
+  $port = 3306;
+  //$mysqli = new mysqli("localhost", "root", "", "sudestour2");
+  $mysqli = new mysqli($servername, $username_db, $password_db, $db, $port);
   if ($mysqli->connect_errno) {        
     echo "<head><link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous'></head>";        
     echo "<body class='bg-dark text-center'>";        
