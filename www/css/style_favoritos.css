@@ -1,0 +1,88 @@
+html, body {
+    height: 100%;
+    background-color: #EAE8E8;
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    text-align: center
+}
+
+.menu {
+    list-style-type: none;
+    margin: 0;
+    margin-left: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #545454;
+}
+
+li a.categorias-menu, .dropbtn {
+    /*margin-left: 30px;*/
+    margin: 0 auto;
+    /*display: contents;*/
+    color: #CDCDCD;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+  
+li.dropdown {
+    padding: 0px;
+    display: inline-block;
+}
+
+#botao-login {
+    margin-top: 3%;
+    background-color: #737373;
+    color: #ECECEC;
+    text-decoration: none;
+}
+
+.foto_perfil {
+    border-radius: 50%;
+    width: 40px;
+    height:40px;
+}
+
+.link_botao {
+    color: #ECECEC;
+    text-decoration: none;
+}
+
+div.container-principal {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    background-color: #EAE8E8;
+}
+
+.container-checkboxes {
+    font-family: 'DM Sans', sans-serif;
+    background-color: #D9D9D9;
+    text-align: center;
+}
+
+input.checkbox {
+    margin-left: 5%;
+}
+
+#listaFavoritos img {
+    margin: 10px;
+    max-height: 150px;
+}
+
+figure {
+    text-align: center;
+    display: inline-table;
+    position: static;
+    width: 295px;
+}
+
+.legenda {
+    font-family: 'Roboto', sans-serif;
+    font-size: 17px;
+    margin: -10px;
+    color: #545454;
+}

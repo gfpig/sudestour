@@ -1,0 +1,227 @@
+html, body {
+    position: relative;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+overflow: auto;
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+}
+
+nav {
+    position: sticky;
+    top: 0;
+}
+
+.menu {
+    list-style-type: none;
+    margin: 0;
+    margin-left: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #545454;
+}
+
+li a.categorias-menu:hover, .dropdown:hover .dropbtn {
+    color: black;
+    background-color: #CDCDCD;
+}
+
+li a.categorias-menu, .dropbtn {
+    margin-left: 30px;
+    display: inline-flexbox;
+    color: #CDCDCD;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/*
+li a.categorias-menu, .dropbtn {
+    margin-left: 30px;
+    display: inline-flexbox;
+    color: #CDCDCD;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}*/
+  
+li.dropdown {
+    padding: 0px;
+    display: inline-block;
+    /*margin-left: 8%;*/
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #FFFFE0;
+    min-width: 160px;
+    box-shadow: 0px 4px 8px 0px rgba(0,0,0,1);
+    z-index: 0.2;
+}
+  
+.dropdown-content a:hover {
+    background-color: #CDCDCD;
+}
+  
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+#botao-login {
+    margin-top: 3%;
+    background-color: #737373;
+}
+
+.foto_perfil {
+    border-radius: 50%;
+    width: 40px;
+    height:40px;
+}
+
+.link_botao {
+    color: #ECECEC;
+    text-decoration: none;
+}
+
+.container-principal {
+    background-color: #EAE8E8;
+    display: flex;
+    height: 100%;
+}
+
+.container-esquerda {
+    display:table-column;
+    width: 30%;
+    margin-top: 3%;
+    margin-right: 2%;
+}
+
+label {
+    font-family: 'DM Sans', sans-serif;
+}
+
+#categorias {
+    font-family: 'DM Sans', sans-serif;
+}
+
+.container-filtros {
+    margin-top: 50%;
+    margin-left: 10%;
+}
+
+.container-direita {
+    margin-top: 1%;
+    float: right;
+    align-items: center;
+    width: 80%;
+    height: 100%;
+}
+
+.direita-radiobuttons{
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 2%;
+}
+
+.radiobutton{
+    margin-left: 3%;
+}
+
+.botaoLogin {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    background-color: #737373;
+    margin-top: 3%;
+}
+
+.botaoBuscar {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    color: white;
+    background-color: #737373;
+    margin-top: 3%;
+    width: 140px;
+    height: 40px;
+}
+
+.combobox_filtros {
+    background-color: white;
+    margin-bottom: 5%;
+    width: 50%;
+}
+
+/* ÁREA DOS PONTO DE INTERESSE DESTACADOS */
+/*#listaDestaques img {
+    margin: 10px;
+    max-height: 150px;
+}
+
+#listaPontos img {
+    margin: 10px;
+    max-height: 150px;
+}
+
+img {
+    margin: 10px;
+    max-height: 150px;
+}*/
+
+.direita-destaques {
+    margin-top: -1%;
+    overflow: hidden;
+}
+
+.divisaoItensDestaque {
+    opacity: 1;
+    text-align: left;
+    width: auto;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.divisaoItensNormais {
+    opacity: 1;
+    text-align: left;
+    width: auto;
+    overflow-x: auto;
+}
+
+.divisaoCategorias {
+    background-color: #CECECE; 
+}
+
+a {
+    text-decoration: none;
+    color: black
+}
+
+figure {
+    text-align: center;
+    display: inline-table;
+    position: static;
+    width: 295px;
+}
+
+.img_ponto {
+    margin: 10px;
+    max-height: 150px; 
+}
+
+.legenda {
+    font-family: 'Roboto', sans-serif;
+    font-size: 17px;
+    margin: -10px;
+    color: #545454;
+}

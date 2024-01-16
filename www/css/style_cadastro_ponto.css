@@ -1,0 +1,221 @@
+html, body {
+    height: 100%;
+}
+
+nav {
+    position: sticky;
+    top: 0;
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+    display: inline-block;
+    color: #545454;
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+}
+
+.menu {
+    font-family: 'Roboto', sans-serif;
+    list-style-type: none;
+    margin: 0;
+    margin-left: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #545454;
+}
+
+li a.categorias-menu:hover, .dropdown:hover .dropbtn {
+    color: black;
+    background-color: #CDCDCD;
+}
+
+li a.categorias-menu, .dropbtn {
+    margin-left: 30px;
+    display: inline-flexbox;
+    color: #CDCDCD;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+  
+li.dropdown {
+    padding: 0px;
+    display: inline-block;
+}
+
+.logo {
+    display: flex;
+    float: left;
+}
+
+.opcoes_menu {
+    /*width: 87%;*/
+    margin-top: 0.7%;
+    float: right;
+    /*display: flex;*/
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    margin-left:8%;
+    width:80%;
+    display:contents;
+}
+
+.container-principal {
+    background-color: #EAE8E8;
+    display: flex;
+    height: 100%;
+}
+
+.container-esquerda {
+    display:table-column;
+    margin-top: 3%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.escolher_img {
+    cursor: pointer;
+}
+
+.escolher_img>img {
+    min-width: 500px;
+    max-width: 500px;
+    max-height: 500px;
+}
+
+.escolher_img>input {
+    display: none;
+}
+
+div.hora_funcionamento {
+    margin-left: 15%;
+}
+
+.hora {
+    height: 20px;
+    width: 50px;
+}
+
+.label_formulario {
+    font-family: 'Roboto', sans-serif;
+}
+
+.container-direita {
+    margin-top: 3%;
+    margin-left: 10%;
+    float: right;
+    align-items: center;
+    width: 80%;
+    height: 100%;
+}
+
+.segunda_linha {
+    display: inline-flex;
+    margin-top: 1%;
+}
+
+.terceira-linha {
+    margin-top: 1%;
+}
+
+.quarta_linha {
+    display: inline-flex;
+    margin-top: 1%;
+}
+
+.quinta_linha {
+    display: inline-flex;
+    margin-top: 1%;
+}
+
+.bairro {
+    margin-left: 100px;
+}
+
+.UF {
+    margin-left: 50px;
+}
+
+.numero {
+    margin-left: 50px;
+}
+
+.telefone {
+    margin-left: 50px;
+}
+
+.texto_nome {
+    background-color: #D2D2D3;
+    width:500px;
+}
+
+.texto_site {
+    background-color: #D2D2D3;
+    width:195x;
+}
+
+.texto_CEP {
+    background-color: #D2D2D3;
+    width: 200px;
+}
+
+.texto_bairro {
+    background-color: #D2D2D3;
+    width: 200px;
+}
+
+.texto_logradouro {
+    background-color: #D2D2D3;
+    width: 500px;
+}
+
+.texto_cidade {
+    background-color: #D2D2D3;
+    width: 400px;
+}
+
+.texto_UF {
+    background-color: #D2D2D3;
+    width: 50px;
+}
+
+.texto_complemento {
+    background-color: #D2D2D3;
+    width: 200px;
+}
+
+.texto_No {
+    background-color: #D2D2D3;
+    width: 50px;
+}
+
+.texto_telefone {
+    background-color: #D2D2D3;
+    width: 150px;
+}
+
+.texto_descricao {
+    background-color: #D2D2D3;
+    width: 500px;
+    height: 200px;
+}
+
+button {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    color: white;
+    background-color: #737373;
+    margin-top: 3%;
+    width: 140px;
+    height: 40px;
+}
+
+button:disabled {
+    background-color: lightgray;
+    color:grey;
+}
