@@ -19,9 +19,7 @@
       $query = "SELECT FotoTurista from turista where Cpf='{$_SESSION['cpf']}'";
       $result = mysqli_query($mysqli, $query);
       $row = $result->fetch_assoc();
-      //$img_src = $row["FotoTurista"];
-      //echo $row["FotoTurista"] == null;
-      //exit();
+      
       if($row["FotoTurista"] == null) {
         $nulo = true;
         } else {
@@ -35,7 +33,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Descubra o melhor lugar para você - Sudestour</title>
     <link rel="shortcut icon" 
           href="../images/logos/sudestour_logo.png">
@@ -76,24 +74,18 @@
               <button class="btn btn-secondary rounded-2">BUSCAR</button>
             </div>
         </div>
-        <!--<div class="container-busca">
-          <input class="texto" type=text id="categoria_lugar" placeholder="O que você está procurando?"><br>
-          <input class="texto" type=text id="cidade_lugar" placeholder="Onde?"><br>
-          <button class="btn btn-secondary rounded-2">BUSCAR</button>
-        </div>
-      -->
       </div>
       <div class="container-direita">
         <div class="container-carrossel">
           <div id="CarrosselSudestour" class="carousel-slide" data-bs-ride="carousel">
                 <div class="carousel-item active">
-                  <img src="../images/bondinho-rj.webp" class="d-block w-100" alt="...">
+                  <img src="../images/bondinho-rj.webp" class="d-block w-100" alt="..." style="width:100%;">
                 </div>
                 <div class="carousel-item">
-                  <img src="../images/ouro_preto" class="d-block w-100" alt="...">
+                  <img src="../images/ouro_preto" class="d-block w-100" alt="..." style="width:100%;">
                 </div>
                 <div class="carousel-item">
-                  <img src="../images/masp.jpg" class="d-block w-100" alt="...">
+                  <img src="../images/masp.jpg" class="d-block w-100" alt="..." style="width:100%;">
                 </div>
               </div>
             </div>

@@ -19,7 +19,7 @@ p {
     font-family: 'Roboto', sans-serif;
     font-style: italic;
     color: #545454;
-    margin-left: 51%;
+    /*margin-left: 51%;*/
     padding: 1%;
 }
 
@@ -30,7 +30,7 @@ button.esqueci {
     font-style: italic;
     font-size: 15px;
     color: #545454;
-    margin-left: 93%;
+    float:  right;
     width: 150px;
     cursor: pointer;
 }
@@ -53,37 +53,57 @@ button.esqueci {
 }
 
 .container {
+    /*display: flex;
+    justify-content: center;*/
+    margin: auto;
     background-color: #CECECE;
-    max-width:25%;
-    height:100%;
-    margin-top: 4.5%;
-    margin-left: 40%;
+    max-width: 400px;
+    height: 100%;
+    /*margin-top: 4.5%;
+    margin-left: 40%;*/
 }
 
 .container-cabecalho {
-    margin-top: 25%;
-    margin-left: 29%;
-    display: inline-flex;
+    margin: 15%;
+    display: flex;
+    justify-content: center;
+    /*margin-left: 29%;*/
+    left: 50%;
+    right: 50%;
+    
 }
 
 .c-bemvindo {
-    /*margin-top: 5%;*/
+    margin-top: 25%;
     height: 50%;
     width: 40%;
 }
 
 .c-inputs {
+    /*display: flex;
+    justify-content: center;*/
+    text-align: center;
     font-family: 'Roboto', sans-serif;
     margin-top: 10%;
-    margin-left: 21%;
-    width: 30%;
+    /*margin-left: 21%;*/
+    max-width: 100%;
 }
 
 .c-buttons {
+    text-align: center;
     margin-top: 3%;
-    margin-left: 23%;
-    width: 70%;
+    /*margin-left: 23%;*/
+    width: 100%;
     float:center;
+}
+
+.c-checkboxes {
+    /*display: flex;
+    justify-content: center;*/
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 8%;
+    max-width: 100%;
 }
 
 /*button {
@@ -96,7 +116,7 @@ button.esqueci {
 }*/
 
 .text {
-    margin-left: 500px;
+    /*margin-left: 500px;*/
     height: 30px;
     width: 250px;
     margin: 5px;

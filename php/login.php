@@ -27,7 +27,7 @@
             <div class="c-bemvindo">
                 <p>BEM-VINDO!</p>
             </div>
-                <img src="../images/logos/sudestour_logo.png" width="100" height="85">
+                <img src="../images/logos/sudestour_logo.png" width="100" height="85" style="margin-top: 25%;">
         </div>
         <?php
             if (isset($_SESSION["nao_autenticado"])) {
@@ -55,9 +55,8 @@
             <div class="c-buttons">
                 <input type="radio" id="novo_anunciante" name="tipousr" class="radiobutton" value="anunciante">
                 <label for="novo_anunciante">Anuciante</label>
-                <input type="radio" id="novo_turista" name="tipousr" class="radiobutton" value="turista" style="margin-left:25%">
+                <input type="radio" id="novo_turista" name="tipousr" class="radiobutton" value="turista" style="margin-left:5%">
                 <label for="novo_turista">Turista</label>
-                <!--<button class="esqueci" onclick="voltarLogin();">Voltar</button>-->
                 <button class="botao">CONFIRMAR</button>
             </div>
         </form>
@@ -67,11 +66,17 @@
                 <input class="text" type="password" name="senha" placeholder="SENHA" required/><br>
                 <button class="esqueci" onclick="esqueciSenha();">Esqueci a senha</button>
             </div>
-            <div class="c-buttons" id="botoes">
+            <div class="c-checkboxes">
                 <input type="radio" id="anunciante" name="tipousr" class="radiobutton" value="anunciante">
                 <label for="anunciante">Anuciante</label>
-                <input type="radio" id="turista" name="tipousr" class="radiobutton" value="turista" style="margin-left:25%">
+                <input type="radio" id="turista" name="tipousr" class="radiobutton" value="turista" style="margin-left:15%">
                 <label for="turista">Turista</label>
+            </div>
+            <div class="c-buttons" id="botoes">
+                <!--<input type="radio" id="anunciante" name="tipousr" class="radiobutton" value="anunciante">
+                <label for="anunciante">Anuciante</label>
+                <input type="radio" id="turista" name="tipousr" class="radiobutton" value="turista" style="margin-left:15%">
+                <label for="turista">Turista</label>-->
                 <button class="botao">LOGIN</button><br>
                 <button class="botao"><a href="cadastro.php" class="botao">CADASTRE-SE</a></button>
             </div>
@@ -79,7 +84,4 @@
         <a href="index.php" class="voltar">Voltar à página inicial</a>
     </div>
     <script src="../js/login.js"></script>
-    <script>
-        //document.getElementById('email_esqueci_senha').value = email;
-    </script>
 </body>
