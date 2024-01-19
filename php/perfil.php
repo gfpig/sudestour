@@ -132,47 +132,49 @@
             }
             unset($_SESSION["sucesso"]);
         ?>
-        <form action="valida_edita_perfil.php" method="POST" enctype="multipart/form-data">
+        <div class="container-dados">    
             <div class="container-esquerda">
-                <div>
+                <form action="valida_edita_perfil.php" method="POST" enctype="multipart/form-data">
                     <?php echo '
-                    <div class="c-inputs">
-                        <label>Nome</label><br>
-                        <input class="text" name="nome" placeholder="Digite o nome" value="'.$nome.'" required><br>
-                    </div>
-                    
-                    <div class="c-inputs">
-                    <label>Nº DOCUMENTO</label><br>
-                        <input class="text" name="documento" placeholder="Digite o CPF/CNPJ" value='.$documento.'><br>
-                    </div>
-                    <div class="c-inputs">
-                    <label>Email</label><br>
-                        <input class="text" name="email" placeholder="Digite o seu EMAIL" value='.$email.' required><br>
-                    </div>
-                </div>';
-                ?>
+                        <div class="c-inputs">
+                            <label>Nome</label><br>
+                            <input class="text" name="nome" placeholder="Digite o nome" value="'.$nome.'" required><br>
+                        </div>
+                        
+                        <div class="c-inputs">
+                            <label>Nº DOCUMENTO</label><br>
+                                <input class="text" name="documento" placeholder="Digite o CPF/CNPJ" value='.$documento.'><br>
+                        </div>
+                        <div class="c-inputs">
+                            <label>Email</label><br>
+                                <input class="text" name="email" placeholder="Digite o seu EMAIL" value='.$email.' required><br>
+                        </div>';
+                    ?>
+                </form>
             </div>
-          
+                  
             <div class="container-descricao">
                 <div class="container-imagem">
-                    <label id="lbl_img" class="escolher_img" style="margin-left: 40%;">
-                        <?php if($img_src == null): ?>
-                            <img src="../images/icones/adicionar-usuario.jpg" id="foto_perfil" class="imagem-usuario">
-                        <?php else: ?>
-                            <img src= "<?php echo 'data:image/png;base64,'.base64_encode($img_src) ?>" id="foto_perfil" class="imagem-usuario">
-                        <?php endif ?>
-                        <input type="file" id="input" name="input_imagem" style="display:none;">
-                    </label>
+                    <form action="valida_edita_perfil.php" method="POST" enctype="multipart/form-data">
+                        <label id="lbl_img" class="escolher_img" style="margin-left: 40%;">
+                            <?php if($img_src == null): ?>
+                                <img src="../images/icones/adicionar-usuario.jpg" id="foto_perfil" class="imagem-usuario">
+                            <?php else: ?>
+                                <img src= "<?php echo 'data:image/png;base64,'.base64_encode($img_src) ?>" id="foto_perfil" class="imagem-usuario">
+                            <?php endif ?>
+                            <input type="file" id="input" name="input_imagem" style="display:none;">
+                        </label>
                 </div>
-                <div class="botoes">
+            </div>            
+        </div>
+            <div class="botoes">
                     <button type="submit" name="editar" class="botao">EDITAR PERFIL</button>
                     </form>
                         <button class="botao" name="favoritos"><a class="link_btn" href="favoritos.php">FAVORITOS</a></button>
                     <form action="logout.php" method="POST">
                         <button class="botao" name="sair" style="background-color: red;">SAIR</button>
                     </form>
-                </div>           
-            </div>
+                </div> 
 
             <?php
                 if (isset($_POST['favoritos']) || isset($_POST['sair'])) {
